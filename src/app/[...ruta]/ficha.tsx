@@ -194,7 +194,7 @@ export default function Ficha({ l }: { l: Listing }) {
           </div>
 
           {/* contacto: sticky en escritorio, es el unico mecanismo de conversion */}
-          <aside className="space-y-4 lg:sticky lg:top-24 lg:self-start">
+          <aside className="min-w-0 space-y-4 lg:sticky lg:top-24 lg:self-start">
             <div className="rounded-card border border-borde p-6 shadow-[var(--shadow-pill)]">
               <p className="tabular text-lg font-semibold">{formatPrecio(l.precio)}</p>
               <p className="mt-0.5 text-sm text-tinta-2">{tipoNombre} en {OPERACION_LABEL[l.operacion].toLowerCase()}</p>

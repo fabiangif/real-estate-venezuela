@@ -28,7 +28,7 @@ export function Buscador({
 
   // al compactar desaparecen las etiquetas y queda solo el valor: misma funcion, menos altura
   const segmento = `flex min-w-0 flex-1 flex-col justify-center text-left transition-[padding] duration-200 ${
-    compacto ? "px-4 py-1.5" : "px-5 py-2"
+    compacto ? "px-3 py-1.5 sm:px-4" : "px-3 py-2 sm:px-5"
   }`;
   const etiqueta = `overflow-hidden text-[11px] font-semibold leading-tight text-tinta transition-all duration-200 ${
     compacto ? "h-0 opacity-0" : "h-4 opacity-100"
@@ -60,9 +60,9 @@ export function Buscador({
         </select>
       </div>
 
-      <span className={`hidden w-px shrink-0 bg-borde transition-[height] duration-200 sm:block ${compacto ? "h-5" : "h-8"}`} />
+      <span className={`w-px shrink-0 bg-borde transition-[height] duration-200 ${compacto ? "h-5" : "h-8"}`} />
 
-      <div className={`${segmento} hidden sm:flex`}>
+      <div className={segmento}>
         <label htmlFor="b-ciudad" className={etiqueta}>Dónde</label>
         <select id="b-ciudad" className={campo} value={ciudad} onChange={(e) => setCiudad(e.target.value)}>
           {ciudades.map((c) => (

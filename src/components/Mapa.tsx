@@ -265,7 +265,7 @@ export default function Mapa({
   return (
     <div>
       <div className={`relative overflow-hidden ${hero ? "" : "rounded-card border border-borde"}`}>
-        <div ref={cont} className={`w-full touch-none ${hero ? "h-[calc(100dvh-4.75rem)] max-h-[48rem] min-h-[28rem]" : "h-[30rem] sm:h-[34rem]"}`} />
+        <div ref={cont} className={`w-full touch-none ${hero ? "h-[58dvh] min-h-[22rem] sm:h-[calc(100dvh-4.75rem)] sm:max-h-[48rem] sm:min-h-[28rem]" : "h-[30rem] sm:h-[34rem]"}`} />
 
         {/* trazo en vivo, por encima del lienzo */}
         <svg ref={svg} className="pointer-events-none absolute inset-0 h-full w-full">
@@ -299,6 +299,13 @@ export default function Mapa({
             ))}
           </div>
 
+          {hero && !zonaActiva && (
+            <p className="w-fit rounded-full border border-borde bg-papel px-4 py-2 text-sm font-medium shadow-[var(--shadow-pill)]">
+              <span className="tabular">{visibles.length}</span>{" "}
+              {filtroOp === "venta" ? "en venta" : filtroOp === "alquiler" ? "en alquiler" : "inmuebles"}
+            </p>
+          )}
+
           {zonaActiva && (
             <button onClick={limpiar}
               className="flex items-center gap-2 rounded-full border border-borde bg-papel px-4 py-2.5 text-sm font-medium shadow-[var(--shadow-pill)] transition-colors hover:bg-humo">
@@ -306,13 +313,6 @@ export default function Mapa({
             </button>
           )}
         </div>
-
-        {hero && !zonaActiva && (
-          <p className="absolute left-1/2 top-3 -translate-x-1/2 rounded-full border border-borde bg-papel px-4 py-2 text-sm font-medium shadow-[var(--shadow-pill)]">
-            <span className="tabular">{visibles.length}</span>{" "}
-            {filtroOp === "venta" ? "en venta" : filtroOp === "alquiler" ? "en alquiler" : "inmuebles"} en el mapa
-          </p>
-        )}
 
         {dibujando && (
           <p className="absolute inset-x-0 bottom-6 mx-auto w-fit rounded-full bg-tinta/90 px-4 py-2 text-xs text-white">

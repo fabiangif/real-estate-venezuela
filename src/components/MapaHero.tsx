@@ -33,7 +33,7 @@ export function MapaHero({ children }: { children?: React.ReactNode }) {
   if (Mapa && puntos) return <Mapa puntos={puntos} hero>{children}</Mapa>;
 
   return (
-    <div className="grid h-[calc(100dvh-4.75rem)] max-h-[48rem] min-h-[28rem] w-full place-content-center bg-humo text-sm text-tinta-2">
+    <div className="grid h-[58dvh] min-h-[22rem] sm:h-[calc(100dvh-4.75rem)] sm:max-h-[48rem] sm:min-h-[28rem] w-full place-content-center bg-humo text-sm text-tinta-2">
       {error ? "No se pudo cargar el mapa." : "Cargando mapa…"}
     </div>
   );
