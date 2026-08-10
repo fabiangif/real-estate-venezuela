@@ -1,0 +1,42 @@
+[
+  {
+    "Resumen por ciudad": null,
+    "col_2": null,
+    "col_3": null
+  },
+  {
+    "Resumen por ciudad": "Ciudad",
+    "col_2": "Posts totales scrapeados",
+    "col_3": "Inmuebles detectados"
+  },
+  {
+    "Resumen por ciudad": "Barquisimeto",
+    "col_2": 450,
+    "col_3": 300
+  },
+  {
+    "Resumen por ciudad": "Caracas",
+    "col_2": 1748,
+    "col_3": 377
+  },
+  {
+    "Resumen por ciudad": "Maracaibo",
+    "col_2": 300,
+    "col_3": 219
+  },
+  {
+    "Resumen por ciudad": "Maracay",
+    "col_2": 300,
+    "col_3": 154
+  },
+  {
+    "Resumen por ciudad": "Valencia",
+    "col_2": 150,
+    "col_3": 96
+  },
+  {
+    "Resumen por ciudad": "Total",
+    "col_2": 2948,
+    "col_3": 1146
+  }
+]

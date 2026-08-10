@@ -1,0 +1,2187 @@
+[
+  {
+    "slug": "distrito-capital",
+    "nombre": "Distrito Capital",
+    "total": 352,
+    "ciudades": [
+      {
+        "slug": "caracas",
+        "nombre": "Caracas",
+        "estado": "distrito-capital",
+        "estadoNombre": "Distrito Capital",
+        "total": 352,
+        "barrios": [
+          {
+            "slug": "las-mercedes",
+            "nombre": "Las Mercedes",
+            "total": 17
+          },
+          {
+            "slug": "la-boyera",
+            "nombre": "La Boyera",
+            "total": 16
+          },
+          {
+            "slug": "los-palos-grandes",
+            "nombre": "Los Palos Grandes",
+            "total": 12
+          },
+          {
+            "slug": "la-candelaria",
+            "nombre": "La Candelaria",
+            "total": 10
+          },
+          {
+            "slug": "la-trinidad",
+            "nombre": "La Trinidad",
+            "total": 9
+          },
+          {
+            "slug": "el-rosal",
+            "nombre": "El Rosal",
+            "total": 8
+          },
+          {
+            "slug": "colinas-de-valle-arriba",
+            "nombre": "Colinas de Valle Arriba",
+            "total": 8
+          },
+          {
+            "slug": "los-samanes",
+            "nombre": "Los Samanes",
+            "total": 8
+          },
+          {
+            "slug": "campo-alegre",
+            "nombre": "Campo Alegre",
+            "total": 8
+          },
+          {
+            "slug": "los-naranjos-del-cafetal",
+            "nombre": "Los Naranjos del Cafetal",
+            "total": 8
+          },
+          {
+            "slug": "cerro-verde",
+            "nombre": "Cerro Verde",
+            "total": 7
+          },
+          {
+            "slug": "la-castellana",
+            "nombre": "La Castellana",
+            "total": 7
+          },
+          {
+            "slug": "colinas-de-la-tahona",
+            "nombre": "Colinas de la Tahona",
+            "total": 7
+          },
+          {
+            "slug": "altamira",
+            "nombre": "Altamira",
+            "total": 6
+          },
+          {
+            "slug": "caurimare",
+            "nombre": "Caurimare",
+            "total": 6
+          },
+          {
+            "slug": "prados-del-este",
+            "nombre": "Prados del Este",
+            "total": 6
+          },
+          {
+            "slug": "lomas-del-sol",
+            "nombre": "Lomas del Sol",
+            "total": 5
+          },
+          {
+            "slug": "los-chorros",
+            "nombre": "Los Chorros",
+            "total": 5
+          },
+          {
+            "slug": "la-lagunita",
+            "nombre": "La Lagunita",
+            "total": 5
+          },
+          {
+            "slug": "alto-hatillo",
+            "nombre": "Alto Hatillo",
+            "total": 5
+          },
+          {
+            "slug": "la-lagunita-country-club",
+            "nombre": "La Lagunita Country Club",
+            "total": 5
+          },
+          {
+            "slug": "san-bernardino",
+            "nombre": "San Bernardino",
+            "total": 5
+          },
+          {
+            "slug": "las-acacias",
+            "nombre": "Las Acacias",
+            "total": 5
+          },
+          {
+            "slug": "chacao",
+            "nombre": "Chacao",
+            "total": 4
+          },
+          {
+            "slug": "la-alameda",
+            "nombre": "La Alameda",
+            "total": 4
+          },
+          {
+            "slug": "santa-paula",
+            "nombre": "Santa Paula",
+            "total": 4
+          },
+          {
+            "slug": "los-naranjos-de-las-mercedes",
+            "nombre": "Los Naranjos de las Mercedes",
+            "total": 4
+          },
+          {
+            "slug": "el-marques",
+            "nombre": "El Marqués",
+            "total": 4
+          },
+          {
+            "slug": "los-naranjos",
+            "nombre": "Los Naranjos",
+            "total": 4
+          },
+          {
+            "slug": "la-urbina",
+            "nombre": "La Urbina",
+            "total": 3
+          },
+          {
+            "slug": "los-dos-caminos",
+            "nombre": "Los Dos Caminos",
+            "total": 3
+          },
+          {
+            "slug": "oripoto",
+            "nombre": "Oripoto",
+            "total": 3
+          },
+          {
+            "slug": "country-club",
+            "nombre": "Country Club",
+            "total": 3
+          },
+          {
+            "slug": "san-luis",
+            "nombre": "San Luis",
+            "total": 3
+          },
+          {
+            "slug": "colinas-de-bello-monte",
+            "nombre": "Colinas de Bello Monte",
+            "total": 3
+          },
+          {
+            "slug": "escampadero",
+            "nombre": "Escampadero",
+            "total": 3
+          },
+          {
+            "slug": "el-encantado",
+            "nombre": "El Encantado",
+            "total": 3
+          },
+          {
+            "slug": "la-bonita",
+            "nombre": "La Bonita",
+            "total": 3
+          },
+          {
+            "slug": "la-campina",
+            "nombre": "La Campiña",
+            "total": 3
+          },
+          {
+            "slug": "el-volcan",
+            "nombre": "El Volcán",
+            "total": 2
+          },
+          {
+            "slug": "lomas-de-la-trinidad",
+            "nombre": "Lomas de la Trinidad",
+            "total": 2
+          },
+          {
+            "slug": "boleita-sur",
+            "nombre": "Boleíta Sur",
+            "total": 2
+          },
+          {
+            "slug": "santa-fe",
+            "nombre": "Santa Fe",
+            "total": 2
+          },
+          {
+            "slug": "san-roman",
+            "nombre": "San Román",
+            "total": 2
+          },
+          {
+            "slug": "la-union",
+            "nombre": "La Unión",
+            "total": 2
+          },
+          {
+            "slug": "chuao",
+            "nombre": "Chuao",
+            "total": 2
+          },
+          {
+            "slug": "lomas-de-santa-fe",
+            "nombre": "Lomas de Santa Fe",
+            "total": 2
+          },
+          {
+            "slug": "cumbres-de-curumo",
+            "nombre": "Cumbres de Curumo",
+            "total": 2
+          },
+          {
+            "slug": "macaracuay",
+            "nombre": "Macaracuay",
+            "total": 2
+          },
+          {
+            "slug": "playa-grande",
+            "nombre": "Playa Grande",
+            "total": 2
+          },
+          {
+            "slug": "ccct",
+            "nombre": "Ccct",
+            "total": 2
+          },
+          {
+            "slug": "bosques-de-la-lagunita",
+            "nombre": "Bosques de la Lagunita",
+            "total": 2
+          },
+          {
+            "slug": "los-caobos",
+            "nombre": "Los Caobos",
+            "total": 2
+          },
+          {
+            "slug": "av-san-martin",
+            "nombre": "Av. San Martín",
+            "total": 2
+          },
+          {
+            "slug": "lomas-del-avila",
+            "nombre": "Lomas del Ávila",
+            "total": 2
+          },
+          {
+            "slug": "la-california-norte",
+            "nombre": "La California Norte",
+            "total": 2
+          },
+          {
+            "slug": "el-llanito",
+            "nombre": "El Llanito",
+            "total": 2
+          },
+          {
+            "slug": "altagracia",
+            "nombre": "Altagracia",
+            "total": 2
+          },
+          {
+            "slug": "colinas-de-santa-monica",
+            "nombre": "Colinas de Santa Mónica",
+            "total": 2
+          },
+          {
+            "slug": "el-paraiso",
+            "nombre": "El Paraíso",
+            "total": 2
+          },
+          {
+            "slug": "naranjo-humboldt",
+            "nombre": "Naranjo Humboldt",
+            "total": 1
+          },
+          {
+            "slug": "valle-arriba",
+            "nombre": "Valle Arriba",
+            "total": 1
+          },
+          {
+            "slug": "el-country",
+            "nombre": "El Country",
+            "total": 1
+          },
+          {
+            "slug": "lomas-de-san-roman",
+            "nombre": "Lomas de San Román",
+            "total": 1
+          },
+          {
+            "slug": "trinidad-tepuy",
+            "nombre": "Trinidad Tepuy",
+            "total": 1
+          },
+          {
+            "slug": "el-penon",
+            "nombre": "El Peñón",
+            "total": 1
+          },
+          {
+            "slug": "colinas-del-tamanaco",
+            "nombre": "Colinas del Tamanaco",
+            "total": 1
+          },
+          {
+            "slug": "solar-del-hatillo",
+            "nombre": "Solar del Hatillo",
+            "total": 1
+          },
+          {
+            "slug": "boleita",
+            "nombre": "Boleita",
+            "total": 1
+          },
+          {
+            "slug": "puerto-encantado",
+            "nombre": "Puerto Encantado",
+            "total": 1
+          },
+          {
+            "slug": "mirador-de-los-campitos-i",
+            "nombre": "Mirador de los Campitos I",
+            "total": 1
+          },
+          {
+            "slug": "santa-fe-norte",
+            "nombre": "Santa Fe Norte",
+            "total": 1
+          },
+          {
+            "slug": "alto-prado",
+            "nombre": "Alto Prado",
+            "total": 1
+          },
+          {
+            "slug": "chulavista",
+            "nombre": "Chulavista",
+            "total": 1
+          },
+          {
+            "slug": "lomas-de-prados-del-este",
+            "nombre": "Lomas de Prados del Este",
+            "total": 1
+          },
+          {
+            "slug": "caribe",
+            "nombre": "Caribe",
+            "total": 1
+          },
+          {
+            "slug": "santa-eduvigis",
+            "nombre": "Santa Eduvigis",
+            "total": 1
+          },
+          {
+            "slug": "montalban",
+            "nombre": "Montalbán",
+            "total": 1
+          },
+          {
+            "slug": "el-cafetal",
+            "nombre": "El Cafetal",
+            "total": 1
+          },
+          {
+            "slug": "alto-grande",
+            "nombre": "Alto Grande",
+            "total": 1
+          },
+          {
+            "slug": "el-hatillo",
+            "nombre": "El Hatillo",
+            "total": 1
+          },
+          {
+            "slug": "el-placer-la-limonera",
+            "nombre": "El Placer / la Limonera",
+            "total": 1
+          },
+          {
+            "slug": "santa-marta",
+            "nombre": "Santa Marta",
+            "total": 1
+          },
+          {
+            "slug": "lomas-de-chuao",
+            "nombre": "Lomas de Chuao",
+            "total": 1
+          },
+          {
+            "slug": "caicaguana",
+            "nombre": "Caicaguana",
+            "total": 1
+          },
+          {
+            "slug": "guaicay",
+            "nombre": "Guaicay",
+            "total": 1
+          },
+          {
+            "slug": "los-campitos",
+            "nombre": "Los Campitos",
+            "total": 1
+          },
+          {
+            "slug": "los-guayabitos",
+            "nombre": "Los Guayabitos",
+            "total": 1
+          },
+          {
+            "slug": "lomas-de-las-mercedes",
+            "nombre": "Lomas de las Mercedes",
+            "total": 1
+          },
+          {
+            "slug": "alta-florida",
+            "nombre": "Alta Florida",
+            "total": 1
+          },
+          {
+            "slug": "catia",
+            "nombre": "Catia",
+            "total": 1
+          },
+          {
+            "slug": "quinta-crespo",
+            "nombre": "Quinta Crespo",
+            "total": 1
+          },
+          {
+            "slug": "montalban-ii",
+            "nombre": "Montalban II",
+            "total": 1
+          },
+          {
+            "slug": "pinto-salinas",
+            "nombre": "Pinto Salinas",
+            "total": 1
+          },
+          {
+            "slug": "bello-monte",
+            "nombre": "Bello Monte",
+            "total": 1
+          },
+          {
+            "slug": "palo-verde",
+            "nombre": "Palo Verde",
+            "total": 1
+          },
+          {
+            "slug": "santa-teresa",
+            "nombre": "Santa Teresa",
+            "total": 1
+          },
+          {
+            "slug": "caricuao-ud3",
+            "nombre": "Caricuao Ud3",
+            "total": 1
+          },
+          {
+            "slug": "av-fuerzas-armadas",
+            "nombre": "Av. Fuerzas Armadas",
+            "total": 1
+          },
+          {
+            "slug": "centro-de-caracas",
+            "nombre": "Centro de Caracas",
+            "total": 1
+          },
+          {
+            "slug": "los-ruices",
+            "nombre": "Los Ruices",
+            "total": 1
+          },
+          {
+            "slug": "la-carlota",
+            "nombre": "La Carlota",
+            "total": 1
+          },
+          {
+            "slug": "mirador-de-los-campitos",
+            "nombre": "Mirador de los Campitos",
+            "total": 1
+          },
+          {
+            "slug": "llano-verde",
+            "nombre": "Llano Verde",
+            "total": 1
+          },
+          {
+            "slug": "el-bosque",
+            "nombre": "El Bosque",
+            "total": 1
+          },
+          {
+            "slug": "terrazas-de-santa-ines",
+            "nombre": "Terrazas de Santa Inés",
+            "total": 1
+          },
+          {
+            "slug": "colinas-de-la-california",
+            "nombre": "Colinas de la California",
+            "total": 1
+          },
+          {
+            "slug": "el-junko-country-club",
+            "nombre": "El Junko Country Club",
+            "total": 1
+          },
+          {
+            "slug": "los-naranjos-norte-6",
+            "nombre": "Los Naranjos Norte 6",
+            "total": 1
+          },
+          {
+            "slug": "haciendas-el-encantado",
+            "nombre": "Haciendas el Encantado",
+            "total": 1
+          },
+          {
+            "slug": "hacienda-la-lagunita",
+            "nombre": "Hacienda la Lagunita",
+            "total": 1
+          },
+          {
+            "slug": "hatillo",
+            "nombre": "Hatillo",
+            "total": 1
+          },
+          {
+            "slug": "prado-del-este",
+            "nombre": "Prado del Este",
+            "total": 1
+          },
+          {
+            "slug": "los-naranjos-norte",
+            "nombre": "Los Naranjos Norte",
+            "total": 1
+          },
+          {
+            "slug": "el-pedregal",
+            "nombre": "El Pedregal",
+            "total": 1
+          },
+          {
+            "slug": "la-palomera",
+            "nombre": "La Palomera",
+            "total": 1
+          },
+          {
+            "slug": "la-bonita-guaicay-este",
+            "nombre": "La Bonita-guaicay Este",
+            "total": 1
+          },
+          {
+            "slug": "terrazas-del-club-hipico",
+            "nombre": "Terrazas del Club Hipico",
+            "total": 1
+          },
+          {
+            "slug": "manzanares-este",
+            "nombre": "Manzanares Este",
+            "total": 1
+          },
+          {
+            "slug": "este-de-caracas",
+            "nombre": "Este de Caracas",
+            "total": 1
+          },
+          {
+            "slug": "santa-monica",
+            "nombre": "Santa Monica",
+            "total": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "lara",
+    "nombre": "Lara",
+    "total": 266,
+    "ciudades": [
+      {
+        "slug": "barquisimeto",
+        "nombre": "Barquisimeto",
+        "estado": "lara",
+        "estadoNombre": "Lara",
+        "total": 266,
+        "barrios": [
+          {
+            "slug": "ciudad-roca",
+            "nombre": "Ciudad Roca",
+            "total": 9
+          },
+          {
+            "slug": "colinas-del-viento",
+            "nombre": "Colinas del Viento",
+            "total": 9
+          },
+          {
+            "slug": "zona-industrial-ii",
+            "nombre": "Zona Industrial II",
+            "total": 8
+          },
+          {
+            "slug": "nueva-segovia",
+            "nombre": "Nueva Segovia",
+            "total": 7
+          },
+          {
+            "slug": "parque-la-musica",
+            "nombre": "Parque la Música",
+            "total": 7
+          },
+          {
+            "slug": "pedregal",
+            "nombre": "Pedregal",
+            "total": 6
+          },
+          {
+            "slug": "camino-de-tarabana",
+            "nombre": "Camino de Tarabana",
+            "total": 4
+          },
+          {
+            "slug": "zona-industrial-iii",
+            "nombre": "Zona Industrial III",
+            "total": 4
+          },
+          {
+            "slug": "terra-tiuna",
+            "nombre": "Terra Tiuna",
+            "total": 4
+          },
+          {
+            "slug": "el-pedregal",
+            "nombre": "El Pedregal",
+            "total": 4
+          },
+          {
+            "slug": "zona-industrial-i",
+            "nombre": "Zona Industrial I",
+            "total": 4
+          },
+          {
+            "slug": "centro",
+            "nombre": "Centro",
+            "total": 4
+          },
+          {
+            "slug": "caminos-de-tarabana",
+            "nombre": "Caminos de Tarabana",
+            "total": 3
+          },
+          {
+            "slug": "segovia-plaza",
+            "nombre": "Segovia Plaza",
+            "total": 3
+          },
+          {
+            "slug": "monte-real",
+            "nombre": "Monte Real",
+            "total": 3
+          },
+          {
+            "slug": "el-parral",
+            "nombre": "El Parral",
+            "total": 3
+          },
+          {
+            "slug": "santa-elena",
+            "nombre": "Santa Elena",
+            "total": 3
+          },
+          {
+            "slug": "triangulo-del-este",
+            "nombre": "Triángulo del Este",
+            "total": 3
+          },
+          {
+            "slug": "roca-del-valle",
+            "nombre": "Roca del Valle",
+            "total": 2
+          },
+          {
+            "slug": "carrera-19-entre-45-y-46",
+            "nombre": "Carrera 19 Entre 45 y 46",
+            "total": 2
+          },
+          {
+            "slug": "copacoa-del-este",
+            "nombre": "Copacoa del Este",
+            "total": 2
+          },
+          {
+            "slug": "torre-milenium",
+            "nombre": "Torre Milenium",
+            "total": 2
+          },
+          {
+            "slug": "zona-este",
+            "nombre": "Zona Este",
+            "total": 2
+          },
+          {
+            "slug": "la-rosaleda",
+            "nombre": "La Rosaleda",
+            "total": 2
+          },
+          {
+            "slug": "villa-esmeralda",
+            "nombre": "Villa Esmeralda",
+            "total": 2
+          },
+          {
+            "slug": "cedral-country",
+            "nombre": "Cedral Country",
+            "total": 2
+          },
+          {
+            "slug": "torre-plaza-madrid",
+            "nombre": "Torre Plaza Madrid",
+            "total": 2
+          },
+          {
+            "slug": "pietrasanta",
+            "nombre": "Pietrasanta",
+            "total": 2
+          },
+          {
+            "slug": "terra-mia",
+            "nombre": "Terra Mia",
+            "total": 2
+          },
+          {
+            "slug": "pedregal-plaza",
+            "nombre": "Pedregal Plaza",
+            "total": 2
+          },
+          {
+            "slug": "plaza-caribe",
+            "nombre": "Plaza Caribe",
+            "total": 2
+          },
+          {
+            "slug": "guayamure",
+            "nombre": "Guayamure",
+            "total": 2
+          },
+          {
+            "slug": "zona-industrial-1",
+            "nombre": "Zona Industrial 1",
+            "total": 2
+          },
+          {
+            "slug": "este",
+            "nombre": "Este",
+            "total": 2
+          },
+          {
+            "slug": "este-de-barquisimeto",
+            "nombre": "Este de Barquisimeto",
+            "total": 2
+          },
+          {
+            "slug": "residencias-ibiza",
+            "nombre": "Residencias Ibiza",
+            "total": 2
+          },
+          {
+            "slug": "parque-trinitarias",
+            "nombre": "Parque Trinitarias",
+            "total": 2
+          },
+          {
+            "slug": "el-manzano",
+            "nombre": "El Manzano",
+            "total": 2
+          },
+          {
+            "slug": "cabudare",
+            "nombre": "Cabudare",
+            "total": 2
+          },
+          {
+            "slug": "metropolitano-javier",
+            "nombre": "Metropolitano Javier",
+            "total": 2
+          },
+          {
+            "slug": "centro-este",
+            "nombre": "Centro Este",
+            "total": 2
+          },
+          {
+            "slug": "el-pedregal-este",
+            "nombre": "El Pedregal Este",
+            "total": 2
+          },
+          {
+            "slug": "colinas-de-santa-rosa",
+            "nombre": "Colinas de Santa Rosa",
+            "total": 2
+          },
+          {
+            "slug": "centro-de-barquisimeto",
+            "nombre": "Centro de Barquisimeto",
+            "total": 2
+          },
+          {
+            "slug": "santa-elena-norte",
+            "nombre": "Santa Elena Norte",
+            "total": 2
+          },
+          {
+            "slug": "los-olivos",
+            "nombre": "Los Olivos",
+            "total": 2
+          },
+          {
+            "slug": "tierra-del-sol",
+            "nombre": "Tierra del Sol",
+            "total": 2
+          },
+          {
+            "slug": "altos-de-bucare",
+            "nombre": "Altos de Bucare",
+            "total": 1
+          },
+          {
+            "slug": "urbanizacion-del-este",
+            "nombre": "Urbanización del Este",
+            "total": 1
+          },
+          {
+            "slug": "monte-luna",
+            "nombre": "Monte Luna",
+            "total": 1
+          },
+          {
+            "slug": "ciudadela",
+            "nombre": "Ciudadela",
+            "total": 1
+          },
+          {
+            "slug": "silver-house",
+            "nombre": "Silver House",
+            "total": 1
+          },
+          {
+            "slug": "bella-vista-plaza",
+            "nombre": "Bella Vista Plaza",
+            "total": 1
+          },
+          {
+            "slug": "el-morichal",
+            "nombre": "El Morichal",
+            "total": 1
+          },
+          {
+            "slug": "lara-palace",
+            "nombre": "Lara Palace",
+            "total": 1
+          },
+          {
+            "slug": "magnolia-plaza",
+            "nombre": "Magnolia Plaza",
+            "total": 1
+          },
+          {
+            "slug": "residencias-paris",
+            "nombre": "Residencias Paris",
+            "total": 1
+          },
+          {
+            "slug": "residencias-laguna-real",
+            "nombre": "Residencias Laguna Real",
+            "total": 1
+          },
+          {
+            "slug": "la-ciudadela",
+            "nombre": "La Ciudadela",
+            "total": 1
+          },
+          {
+            "slug": "carrera-25-entre-calles-21-y-22",
+            "nombre": "Carrera 25 Entre Calles 21 y 22",
+            "total": 1
+          },
+          {
+            "slug": "residencia-ina",
+            "nombre": "Residencia Ina",
+            "total": 1
+          },
+          {
+            "slug": "lomas-de-tabure",
+            "nombre": "Lomas de Tabure",
+            "total": 1
+          },
+          {
+            "slug": "terrazas-de-la-ensenada",
+            "nombre": "Terrazas de la Ensenada",
+            "total": 1
+          },
+          {
+            "slug": "ciudad-roca-onix",
+            "nombre": "Ciudad Roca Onix",
+            "total": 1
+          },
+          {
+            "slug": "villas-los-apamates",
+            "nombre": "Villas los Apamates",
+            "total": 1
+          },
+          {
+            "slug": "residencias-el-bosque",
+            "nombre": "Residencias el Bosque",
+            "total": 1
+          },
+          {
+            "slug": "residencias-kalahari",
+            "nombre": "Residencias Kalahari",
+            "total": 1
+          },
+          {
+            "slug": "brisas-de-terepaima",
+            "nombre": "Brisas de Terepaima",
+            "total": 1
+          },
+          {
+            "slug": "residencias-tiuna-park-b",
+            "nombre": "Residencias Tiuna Park B",
+            "total": 1
+          },
+          {
+            "slug": "parque-los-libertadores",
+            "nombre": "Parque los Libertadores",
+            "total": 1
+          },
+          {
+            "slug": "la-romana",
+            "nombre": "La Romana",
+            "total": 1
+          },
+          {
+            "slug": "villas-royal-gardens",
+            "nombre": "Villas Royal Gardens",
+            "total": 1
+          },
+          {
+            "slug": "club-hipico-las-trinitarias",
+            "nombre": "Club Hípico las Trinitarias",
+            "total": 1
+          },
+          {
+            "slug": "villas-park",
+            "nombre": "Villas Park",
+            "total": 1
+          },
+          {
+            "slug": "aguamiel",
+            "nombre": "Aguamiel",
+            "total": 1
+          },
+          {
+            "slug": "altos-de-gavidea",
+            "nombre": "Altos de Gavidea",
+            "total": 1
+          },
+          {
+            "slug": "villa-paris",
+            "nombre": "Villa París",
+            "total": 1
+          },
+          {
+            "slug": "sahara",
+            "nombre": "Sahara",
+            "total": 1
+          },
+          {
+            "slug": "parque-las-trinitarias",
+            "nombre": "Parque las Trinitarias",
+            "total": 1
+          },
+          {
+            "slug": "jose-gil-fourtoul",
+            "nombre": "José Gil Fourtoul",
+            "total": 1
+          },
+          {
+            "slug": "tramontana",
+            "nombre": "Tramontana",
+            "total": 1
+          },
+          {
+            "slug": "el-amanecer",
+            "nombre": "El Amanecer",
+            "total": 1
+          },
+          {
+            "slug": "villas-del-este-ii",
+            "nombre": "Villas del Este II",
+            "total": 1
+          },
+          {
+            "slug": "torre-financiera-de-lara",
+            "nombre": "Torre Financiera de Lara",
+            "total": 1
+          },
+          {
+            "slug": "segovia",
+            "nombre": "Segovia",
+            "total": 1
+          },
+          {
+            "slug": "pedregal-0240",
+            "nombre": "Pedregal 0240",
+            "total": 1
+          },
+          {
+            "slug": "cumbres-de-guayamure",
+            "nombre": "Cumbres de Guayamure",
+            "total": 1
+          },
+          {
+            "slug": "quibor",
+            "nombre": "Quíbor",
+            "total": 1
+          },
+          {
+            "slug": "sonata",
+            "nombre": "Sonata",
+            "total": 1
+          },
+          {
+            "slug": "villa-trapiche",
+            "nombre": "Villa Trapiche",
+            "total": 1
+          },
+          {
+            "slug": "oeste-de-barquisimeto",
+            "nombre": "Oeste de Barquisimeto",
+            "total": 1
+          },
+          {
+            "slug": "manzano",
+            "nombre": "Manzano",
+            "total": 1
+          },
+          {
+            "slug": "zona-del-pedregal",
+            "nombre": "Zona del Pedregal",
+            "total": 1
+          },
+          {
+            "slug": "loma-linda",
+            "nombre": "Loma Linda",
+            "total": 1
+          },
+          {
+            "slug": "pedregal-i",
+            "nombre": "Pedregal I",
+            "total": 1
+          },
+          {
+            "slug": "cumbres-del-manzano",
+            "nombre": "Cumbres del Manzano",
+            "total": 1
+          },
+          {
+            "slug": "villas-paris-j",
+            "nombre": "Villas París J",
+            "total": 1
+          },
+          {
+            "slug": "residencias-buenaventura",
+            "nombre": "Residencias Buenaventura",
+            "total": 1
+          },
+          {
+            "slug": "tarabana",
+            "nombre": "Tarabana",
+            "total": 1
+          },
+          {
+            "slug": "zona-del-impulso",
+            "nombre": "Zona del Impulso",
+            "total": 1
+          },
+          {
+            "slug": "mocao-alto",
+            "nombre": "Mocao Alto",
+            "total": 1
+          },
+          {
+            "slug": "oeste",
+            "nombre": "Oeste",
+            "total": 1
+          },
+          {
+            "slug": "residencias-villas-park",
+            "nombre": "Residencias Villas Park",
+            "total": 1
+          },
+          {
+            "slug": "poa-poa",
+            "nombre": "Poa Poa",
+            "total": 1
+          },
+          {
+            "slug": "residencias-villas-del-parque",
+            "nombre": "Residencias Villas del Parque",
+            "total": 1
+          },
+          {
+            "slug": "altavista",
+            "nombre": "Altavista",
+            "total": 1
+          },
+          {
+            "slug": "campo-alegre",
+            "nombre": "Campo Alegre",
+            "total": 1
+          },
+          {
+            "slug": "residencias-cerdena",
+            "nombre": "Residencias Cerdeña",
+            "total": 1
+          },
+          {
+            "slug": "aguaviva",
+            "nombre": "Aguaviva",
+            "total": 1
+          },
+          {
+            "slug": "san-antonio",
+            "nombre": "San Antonio",
+            "total": 1
+          },
+          {
+            "slug": "colinas-de-la-rosaleda",
+            "nombre": "Colinas de la Rosaleda",
+            "total": 1
+          },
+          {
+            "slug": "roca-tower",
+            "nombre": "Roca Tower",
+            "total": 1
+          },
+          {
+            "slug": "el-este",
+            "nombre": "El Este",
+            "total": 1
+          },
+          {
+            "slug": "tarabana-plaza",
+            "nombre": "Tarabana Plaza",
+            "total": 1
+          },
+          {
+            "slug": "res-san-antonio-i",
+            "nombre": "Res. San Antonio I",
+            "total": 1
+          },
+          {
+            "slug": "res-lara-palace",
+            "nombre": "Res. Lara Palace",
+            "total": 1
+          },
+          {
+            "slug": "residencias-pedregal-plaza",
+            "nombre": "Residencias Pedregal Plaza",
+            "total": 1
+          },
+          {
+            "slug": "residencias-lafayette-nueva-segovia",
+            "nombre": "Residencias Lafayette, Nueva Segovia",
+            "total": 1
+          },
+          {
+            "slug": "villa-roca-ii",
+            "nombre": "Villa Roca II",
+            "total": 1
+          },
+          {
+            "slug": "res-altavista",
+            "nombre": "Res. Altavista",
+            "total": 1
+          },
+          {
+            "slug": "colinas-de-santa-rosa-norte",
+            "nombre": "Colinas de Santa Rosa Norte",
+            "total": 1
+          },
+          {
+            "slug": "los-almendros",
+            "nombre": "Los Almendros",
+            "total": 1
+          },
+          {
+            "slug": "sotavento",
+            "nombre": "Sotavento",
+            "total": 1
+          },
+          {
+            "slug": "res-sonata",
+            "nombre": "Res. Sonata",
+            "total": 1
+          },
+          {
+            "slug": "villas-del-este",
+            "nombre": "Villas del Este",
+            "total": 1
+          },
+          {
+            "slug": "barici",
+            "nombre": "Barici",
+            "total": 1
+          },
+          {
+            "slug": "residencias-luis-miguel",
+            "nombre": "Residencias Luis Miguel",
+            "total": 1
+          },
+          {
+            "slug": "trapiche-villas-2",
+            "nombre": "Trapiche Villas 2",
+            "total": 1
+          },
+          {
+            "slug": "res-san-antonio",
+            "nombre": "Res. San Antonio",
+            "total": 1
+          },
+          {
+            "slug": "los-tulipanes",
+            "nombre": "Los Tulipanes",
+            "total": 1
+          },
+          {
+            "slug": "club-hipico",
+            "nombre": "Club Hípico",
+            "total": 1
+          },
+          {
+            "slug": "residencias-santa-barbara",
+            "nombre": "Residencias Santa Bárbara",
+            "total": 1
+          },
+          {
+            "slug": "villa-del-carmen",
+            "nombre": "Villa del Carmen",
+            "total": 1
+          },
+          {
+            "slug": "la-pastorena",
+            "nombre": "La Pastoreña",
+            "total": 1
+          },
+          {
+            "slug": "residencias-los-samanes",
+            "nombre": "Residencias los Samanes",
+            "total": 1
+          },
+          {
+            "slug": "res-villareal",
+            "nombre": "Res. Villareal",
+            "total": 1
+          },
+          {
+            "slug": "el-parque",
+            "nombre": "El Parque",
+            "total": 1
+          },
+          {
+            "slug": "agua-miel",
+            "nombre": "Agua Miel",
+            "total": 1
+          },
+          {
+            "slug": "residencias-florida",
+            "nombre": "Residencias Florida",
+            "total": 1
+          },
+          {
+            "slug": "terrazas-de-monte-real-iii",
+            "nombre": "Terrazas de Monte Real III",
+            "total": 1
+          },
+          {
+            "slug": "villas-del-bosque",
+            "nombre": "Villas del Bosque",
+            "total": 1
+          },
+          {
+            "slug": "residencias-jacinto-lara",
+            "nombre": "Residencias Jacinto Lara",
+            "total": 1
+          },
+          {
+            "slug": "centro-metropolitano-javier",
+            "nombre": "Centro Metropolitano Javier",
+            "total": 1
+          },
+          {
+            "slug": "conjunto-agata",
+            "nombre": "Conjunto Ágata",
+            "total": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "zulia",
+    "nombre": "Zulia",
+    "total": 189,
+    "ciudades": [
+      {
+        "slug": "maracaibo",
+        "nombre": "Maracaibo",
+        "estado": "zulia",
+        "estadoNombre": "Zulia",
+        "total": 189,
+        "barrios": [
+          {
+            "slug": "la-lago",
+            "nombre": "La Lago",
+            "total": 20
+          },
+          {
+            "slug": "tierra-negra",
+            "nombre": "Tierra Negra",
+            "total": 10
+          },
+          {
+            "slug": "el-milagro",
+            "nombre": "El Milagro",
+            "total": 6
+          },
+          {
+            "slug": "bella-vista",
+            "nombre": "Bella Vista",
+            "total": 5
+          },
+          {
+            "slug": "bellas-artes",
+            "nombre": "Bellas Artes",
+            "total": 5
+          },
+          {
+            "slug": "zona-norte",
+            "nombre": "Zona Norte",
+            "total": 4
+          },
+          {
+            "slug": "valle-frio",
+            "nombre": "Valle Frío",
+            "total": 4
+          },
+          {
+            "slug": "parque-santa-lucia",
+            "nombre": "Parque Santa Lucía",
+            "total": 3
+          },
+          {
+            "slug": "la-coromoto",
+            "nombre": "La Coromoto",
+            "total": 3
+          },
+          {
+            "slug": "santa-rita",
+            "nombre": "Santa Rita",
+            "total": 2
+          },
+          {
+            "slug": "villa-oasis-country-iii",
+            "nombre": "Villa Oasis Country III",
+            "total": 2
+          },
+          {
+            "slug": "villa-dunas-del-mar",
+            "nombre": "Villa Dunas del Mar",
+            "total": 2
+          },
+          {
+            "slug": "san-francisco",
+            "nombre": "San Francisco",
+            "total": 2
+          },
+          {
+            "slug": "alejandra-sofia",
+            "nombre": "Alejandra Sofía",
+            "total": 2
+          },
+          {
+            "slug": "lago-mar-beach",
+            "nombre": "Lago Mar Beach",
+            "total": 2
+          },
+          {
+            "slug": "edificio-nuvolari",
+            "nombre": "Edificio Nuvolari",
+            "total": 2
+          },
+          {
+            "slug": "cantabrisa",
+            "nombre": "Cantabrisa",
+            "total": 2
+          },
+          {
+            "slug": "virginia-palace",
+            "nombre": "Virginia Palace",
+            "total": 2
+          },
+          {
+            "slug": "canaima",
+            "nombre": "Canaima",
+            "total": 2
+          },
+          {
+            "slug": "milagro-norte",
+            "nombre": "Milagro Norte",
+            "total": 2
+          },
+          {
+            "slug": "don-bosco",
+            "nombre": "Don Bosco",
+            "total": 2
+          },
+          {
+            "slug": "isla-dorada",
+            "nombre": "Isla Dorada",
+            "total": 2
+          },
+          {
+            "slug": "la-pequena-europa",
+            "nombre": "La Pequeña Europa",
+            "total": 2
+          },
+          {
+            "slug": "san-jacinto",
+            "nombre": "San Jacinto",
+            "total": 1
+          },
+          {
+            "slug": "villa-camino-del-doral",
+            "nombre": "Villa Camino del Doral",
+            "total": 1
+          },
+          {
+            "slug": "los-olivos",
+            "nombre": "Los Olivos",
+            "total": 1
+          },
+          {
+            "slug": "santa-fe",
+            "nombre": "Santa Fe",
+            "total": 1
+          },
+          {
+            "slug": "via-veneto",
+            "nombre": "Vía Véneto",
+            "total": 1
+          },
+          {
+            "slug": "delicias",
+            "nombre": "Delicias",
+            "total": 1
+          },
+          {
+            "slug": "las-naciones",
+            "nombre": "Las Naciones",
+            "total": 1
+          },
+          {
+            "slug": "la-estrella",
+            "nombre": "La Estrella",
+            "total": 1
+          },
+          {
+            "slug": "villa-monte-fino",
+            "nombre": "Villa Monte Fino",
+            "total": 1
+          },
+          {
+            "slug": "villa-del-sol",
+            "nombre": "Villa del Sol",
+            "total": 1
+          },
+          {
+            "slug": "el-bosque-ii",
+            "nombre": "El Bosque II",
+            "total": 1
+          },
+          {
+            "slug": "edificio-nuvolaris",
+            "nombre": "Edificio Nuvolaris",
+            "total": 1
+          },
+          {
+            "slug": "av-universidad",
+            "nombre": "Av. Universidad",
+            "total": 1
+          },
+          {
+            "slug": "villa-bahia-del-lago",
+            "nombre": "Villa Bahia del Lago",
+            "total": 1
+          },
+          {
+            "slug": "villa-punta-de-piedra",
+            "nombre": "Villa Punta de Piedra",
+            "total": 1
+          },
+          {
+            "slug": "villa-portal-del-sol",
+            "nombre": "Villa Portal del Sol",
+            "total": 1
+          },
+          {
+            "slug": "av-bella-vista",
+            "nombre": "Av Bella Vista",
+            "total": 1
+          },
+          {
+            "slug": "villa-paraiso",
+            "nombre": "Villa Paraiso",
+            "total": 1
+          },
+          {
+            "slug": "villa-las-dunas",
+            "nombre": "Villa las Dunas",
+            "total": 1
+          },
+          {
+            "slug": "dunas-del-mar",
+            "nombre": "Dunas del Mar",
+            "total": 1
+          },
+          {
+            "slug": "vistazul",
+            "nombre": "Vistazul",
+            "total": 1
+          },
+          {
+            "slug": "lago-country-3",
+            "nombre": "Lago Country 3",
+            "total": 1
+          },
+          {
+            "slug": "villa-lago-country-1",
+            "nombre": "Villa Lago Country 1",
+            "total": 1
+          },
+          {
+            "slug": "zapara",
+            "nombre": "Zapara",
+            "total": 1
+          },
+          {
+            "slug": "indio-mara",
+            "nombre": "Indio Mara",
+            "total": 1
+          },
+          {
+            "slug": "villa-lago-country-ii",
+            "nombre": "Villa Lago Country II",
+            "total": 1
+          },
+          {
+            "slug": "palma-dorada",
+            "nombre": "Palma Dorada",
+            "total": 1
+          },
+          {
+            "slug": "villa-palma-dorada",
+            "nombre": "Villa Palma Dorada",
+            "total": 1
+          },
+          {
+            "slug": "lago-country",
+            "nombre": "Lago Country",
+            "total": 1
+          },
+          {
+            "slug": "portal-del-doral",
+            "nombre": "Portal del Doral",
+            "total": 1
+          },
+          {
+            "slug": "fiorano",
+            "nombre": "Fiorano",
+            "total": 1
+          },
+          {
+            "slug": "villa-marlene",
+            "nombre": "Villa Marlene",
+            "total": 1
+          },
+          {
+            "slug": "villa-lagunita-country",
+            "nombre": "Villa Lagunita Country",
+            "total": 1
+          },
+          {
+            "slug": "costa-del-sol",
+            "nombre": "Costa del Sol",
+            "total": 1
+          },
+          {
+            "slug": "villa-santa-fe-i",
+            "nombre": "Villa Santa Fe I",
+            "total": 1
+          },
+          {
+            "slug": "sector-la-lago",
+            "nombre": "Sector la Lago",
+            "total": 1
+          },
+          {
+            "slug": "zona-industrial-sur",
+            "nombre": "Zona Industrial Sur",
+            "total": 1
+          },
+          {
+            "slug": "resid-hialeah",
+            "nombre": "Resid Hialeah",
+            "total": 1
+          },
+          {
+            "slug": "las-mercedes",
+            "nombre": "Las Mercedes",
+            "total": 1
+          },
+          {
+            "slug": "creole",
+            "nombre": "Creole",
+            "total": 1
+          },
+          {
+            "slug": "avenida-5-de-julio",
+            "nombre": "Avenida 5 de Julio",
+            "total": 1
+          },
+          {
+            "slug": "irama",
+            "nombre": "Irama",
+            "total": 1
+          },
+          {
+            "slug": "5-de-julio",
+            "nombre": "5 de Julio",
+            "total": 1
+          },
+          {
+            "slug": "villa-antanona",
+            "nombre": "Villa Antañona",
+            "total": 1
+          },
+          {
+            "slug": "costa-rosmini",
+            "nombre": "Costa Rosmini",
+            "total": 1
+          },
+          {
+            "slug": "banco-mara",
+            "nombre": "Banco Mara",
+            "total": 1
+          },
+          {
+            "slug": "monte-bello",
+            "nombre": "Monte Bello",
+            "total": 1
+          },
+          {
+            "slug": "paraiso",
+            "nombre": "Paraiso",
+            "total": 1
+          },
+          {
+            "slug": "budapest-juana-de-avila",
+            "nombre": "Budapest, Juana de Avila",
+            "total": 1
+          },
+          {
+            "slug": "puntazul-valle-frio",
+            "nombre": "Puntazul, Valle Frío",
+            "total": 1
+          },
+          {
+            "slug": "pequena-europa",
+            "nombre": "Pequeña Europa",
+            "total": 1
+          },
+          {
+            "slug": "lago-mall",
+            "nombre": "Lago Mall",
+            "total": 1
+          },
+          {
+            "slug": "la-virginia",
+            "nombre": "La Virginia",
+            "total": 1
+          },
+          {
+            "slug": "santa-fe-villas",
+            "nombre": "Santa Fe Villas",
+            "total": 1
+          },
+          {
+            "slug": "cabo-norte-villas",
+            "nombre": "Cabo Norte Villas",
+            "total": 1
+          },
+          {
+            "slug": "villa-lago-country-i",
+            "nombre": "Villa Lago Country I",
+            "total": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "aragua",
+    "nombre": "Aragua",
+    "total": 120,
+    "ciudades": [
+      {
+        "slug": "maracay",
+        "nombre": "Maracay",
+        "estado": "aragua",
+        "estadoNombre": "Aragua",
+        "total": 120,
+        "barrios": [
+          {
+            "slug": "el-bosque",
+            "nombre": "El Bosque",
+            "total": 10
+          },
+          {
+            "slug": "san-jacinto",
+            "nombre": "San Jacinto",
+            "total": 8
+          },
+          {
+            "slug": "base-aragua",
+            "nombre": "Base Aragua",
+            "total": 8
+          },
+          {
+            "slug": "la-soledad",
+            "nombre": "La Soledad",
+            "total": 6
+          },
+          {
+            "slug": "la-morita",
+            "nombre": "La Morita",
+            "total": 3
+          },
+          {
+            "slug": "el-limon",
+            "nombre": "El Limón",
+            "total": 3
+          },
+          {
+            "slug": "el-centro",
+            "nombre": "El Centro",
+            "total": 3
+          },
+          {
+            "slug": "la-ciudadela",
+            "nombre": "La Ciudadela",
+            "total": 3
+          },
+          {
+            "slug": "san-isidro",
+            "nombre": "San Isidro",
+            "total": 3
+          },
+          {
+            "slug": "bosque-alto",
+            "nombre": "Bosque Alto",
+            "total": 2
+          },
+          {
+            "slug": "la-morita-i",
+            "nombre": "La Morita I",
+            "total": 2
+          },
+          {
+            "slug": "limon",
+            "nombre": "Limón",
+            "total": 2
+          },
+          {
+            "slug": "la-arboleda",
+            "nombre": "La Arboleda",
+            "total": 2
+          },
+          {
+            "slug": "el-castano",
+            "nombre": "El Castaño",
+            "total": 2
+          },
+          {
+            "slug": "barrio-sucre",
+            "nombre": "Barrio Sucre",
+            "total": 2
+          },
+          {
+            "slug": "valle-fresco",
+            "nombre": "Valle Fresco",
+            "total": 2
+          },
+          {
+            "slug": "cagua",
+            "nombre": "Cagua",
+            "total": 1
+          },
+          {
+            "slug": "terrasur",
+            "nombre": "Terrasur",
+            "total": 1
+          },
+          {
+            "slug": "terrasanta-cagua",
+            "nombre": "Terrasanta, Cagua",
+            "total": 1
+          },
+          {
+            "slug": "narayola-ii",
+            "nombre": "Narayola II",
+            "total": 1
+          },
+          {
+            "slug": "terrasanta",
+            "nombre": "Terrasanta",
+            "total": 1
+          },
+          {
+            "slug": "terra-santa",
+            "nombre": "Terra Santa",
+            "total": 1
+          },
+          {
+            "slug": "fundacion-mendoza",
+            "nombre": "Fundación Mendoza",
+            "total": 1
+          },
+          {
+            "slug": "cantarana",
+            "nombre": "Cantarana",
+            "total": 1
+          },
+          {
+            "slug": "bahia-de-cata",
+            "nombre": "Bahía de Cata",
+            "total": 1
+          },
+          {
+            "slug": "villas-del-sol-ii",
+            "nombre": "Villas del Sol II",
+            "total": 1
+          },
+          {
+            "slug": "los-caobos",
+            "nombre": "Los Caobos",
+            "total": 1
+          },
+          {
+            "slug": "corinsa",
+            "nombre": "Corinsa",
+            "total": 1
+          },
+          {
+            "slug": "castano",
+            "nombre": "Castaño",
+            "total": 1
+          },
+          {
+            "slug": "arias-blanco",
+            "nombre": "Arias Blanco",
+            "total": 1
+          },
+          {
+            "slug": "meru-park",
+            "nombre": "Meru Park",
+            "total": 1
+          },
+          {
+            "slug": "cantarrana",
+            "nombre": "Cantarrana",
+            "total": 1
+          },
+          {
+            "slug": "lomas-de-palmarito",
+            "nombre": "Lomas de Palmarito",
+            "total": 1
+          },
+          {
+            "slug": "calicanto",
+            "nombre": "Calicanto",
+            "total": 1
+          },
+          {
+            "slug": "san-miguel",
+            "nombre": "San Miguel",
+            "total": 1
+          },
+          {
+            "slug": "el-bosque-las-delicias",
+            "nombre": "El Bosque las Delicias",
+            "total": 1
+          },
+          {
+            "slug": "el-pinal",
+            "nombre": "El Piñal",
+            "total": 1
+          },
+          {
+            "slug": "el-hipodromo",
+            "nombre": "El Hipodromo",
+            "total": 1
+          },
+          {
+            "slug": "nuevo-bosque-alto",
+            "nombre": "Nuevo Bosque Alto",
+            "total": 1
+          },
+          {
+            "slug": "terra-norte",
+            "nombre": "Terra Norte",
+            "total": 1
+          }
+        ]
+      }
+    ]
+  },
+  {
+    "slug": "carabobo",
+    "nombre": "Carabobo",
+    "total": 89,
+    "ciudades": [
+      {
+        "slug": "valencia",
+        "nombre": "Valencia",
+        "estado": "carabobo",
+        "estadoNombre": "Carabobo",
+        "total": 89,
+        "barrios": [
+          {
+            "slug": "el-parral",
+            "nombre": "El Parral",
+            "total": 8
+          },
+          {
+            "slug": "las-chimeneas",
+            "nombre": "Las Chimeneas",
+            "total": 8
+          },
+          {
+            "slug": "la-trigalena",
+            "nombre": "La Trigaleña",
+            "total": 7
+          },
+          {
+            "slug": "el-vinedo",
+            "nombre": "El Viñedo",
+            "total": 6
+          },
+          {
+            "slug": "manongo",
+            "nombre": "Mañongo",
+            "total": 5
+          },
+          {
+            "slug": "prebo",
+            "nombre": "Prebo",
+            "total": 4
+          },
+          {
+            "slug": "piedra-pintada",
+            "nombre": "Piedra Pintada",
+            "total": 3
+          },
+          {
+            "slug": "el-bosque",
+            "nombre": "El Bosque",
+            "total": 3
+          },
+          {
+            "slug": "valle-de-oro",
+            "nombre": "Valle de Oro",
+            "total": 3
+          },
+          {
+            "slug": "valle-blanco",
+            "nombre": "Valle Blanco",
+            "total": 3
+          },
+          {
+            "slug": "valles-de-camoruco",
+            "nombre": "Valles de Camoruco",
+            "total": 3
+          },
+          {
+            "slug": "san-diego",
+            "nombre": "San Diego",
+            "total": 3
+          },
+          {
+            "slug": "terrazas-del-country",
+            "nombre": "Terrazas del Country",
+            "total": 3
+          },
+          {
+            "slug": "los-mangos",
+            "nombre": "Los Mangos",
+            "total": 2
+          },
+          {
+            "slug": "tazajal",
+            "nombre": "Tazajal",
+            "total": 2
+          },
+          {
+            "slug": "valles-del-nogal",
+            "nombre": "Valles del Nogal",
+            "total": 2
+          },
+          {
+            "slug": "el-trigal",
+            "nombre": "El Trigal",
+            "total": 2
+          },
+          {
+            "slug": "la-trigalena-alta",
+            "nombre": "La Trigaleña Alta",
+            "total": 2
+          },
+          {
+            "slug": "manantial",
+            "nombre": "Manantial",
+            "total": 2
+          },
+          {
+            "slug": "trigal-norte",
+            "nombre": "Trigal Norte",
+            "total": 1
+          },
+          {
+            "slug": "parque-el-trigal",
+            "nombre": "Parque el Trigal",
+            "total": 1
+          },
+          {
+            "slug": "tulipan",
+            "nombre": "Tulipán",
+            "total": 1
+          },
+          {
+            "slug": "trigal-sur",
+            "nombre": "Trigal Sur",
+            "total": 1
+          },
+          {
+            "slug": "castillito",
+            "nombre": "Castillito",
+            "total": 1
+          },
+          {
+            "slug": "piedras-pintadas",
+            "nombre": "Piedras Pintadas",
+            "total": 1
+          },
+          {
+            "slug": "sabana-larga",
+            "nombre": "Sabana Larga",
+            "total": 1
+          },
+          {
+            "slug": "los-guayos",
+            "nombre": "Los Guayos",
+            "total": 1
+          },
+          {
+            "slug": "el-trigal-norte",
+            "nombre": "El Trigal Norte",
+            "total": 1
+          },
+          {
+            "slug": "la-vina",
+            "nombre": "La Viña",
+            "total": 1
+          },
+          {
+            "slug": "cumbres-de-la-esmeralda",
+            "nombre": "Cumbres de la Esmeralda",
+            "total": 1
+          },
+          {
+            "slug": "guacara",
+            "nombre": "Guacara",
+            "total": 1
+          },
+          {
+            "slug": "guataparo-country-club",
+            "nombre": "Guataparo Country Club",
+            "total": 1
+          },
+          {
+            "slug": "la-cumaca",
+            "nombre": "La Cumaca",
+            "total": 1
+          },
+          {
+            "slug": "las-quintas",
+            "nombre": "Las Quintas",
+            "total": 1
+          },
+          {
+            "slug": "naguanagua",
+            "nombre": "Naguanagua",
+            "total": 1
+          },
+          {
+            "slug": "cumbres-de-guataparo",
+            "nombre": "Cumbres de Guataparo",
+            "total": 1
+          },
+          {
+            "slug": "el-solar",
+            "nombre": "El Solar",
+            "total": 1
+          }
+        ]
+      }
+    ]
+  }
+]

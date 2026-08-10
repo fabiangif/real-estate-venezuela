@@ -1,26 +1,69 @@
 @import "tailwindcss";
 
-:root {
-  --background: #ffffff;
-  --foreground: #171717;
-}
+/* Sistema de diseño — minimalismo tipo Airbnb.
+   Blanco puro, gris neutro, borde de 1px, cero sombras salvo en flotantes.
+   El acento vive en 4 sitios y en ninguno mas: logo, boton de busqueda, CTA de contacto
+   y categoria activa. Es la contencion lo que hace que un acento acentue. */
+@theme {
+  --color-lienzo: #ffffff;
+  --color-papel: #ffffff;
+  --color-humo: #f7f7f7;        /* superficie de hover / relleno neutro */
+  --color-tinta: #222222;
+  --color-tinta-2: #717171;
+  --color-tinta-3: #9c9c9c;
+  --color-acento: #d9480f;        /* terracota: el equivalente al coral de Airbnb, sin ser rosado */
+  --color-acento-suave: #fdf0e9;
 
-@theme inline {
-  --color-background: var(--background);
-  --color-foreground: var(--foreground);
-  --font-sans: var(--font-geist-sans);
-  --font-mono: var(--font-geist-mono);
-}
+  /* Paleta secundaria. El acento manda; estos dos CLASIFICAN, no decoran:
+     mar = alquiler e inmueble comercial · ambar = suelo y cifras destacadas. */
+  --color-mar: #0b7285;
+  --color-mar-suave: #e7f3f6;
+  --color-ambar: #b8760b;
+  --color-ambar-suave: #fdf4e3;
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
-  }
+  /* Tintes de fondo para separar secciones sin dibujar cajas. */
+  --color-crema: #fdf7f3;
+  --color-menta: #f1f8f8;
+  --color-borde: #dddddd;
+  --color-borde-suave: #ebebeb;
+
+  --font-sans: var(--font-figtree), ui-sans-serif, system-ui, sans-serif;
+
+  --text-xs: 0.75rem;     /* 12 */
+  --text-sm: 0.875rem;    /* 14 */
+  --text-base: 1rem;      /* 16 */
+  --text-lg: 1.125rem;    /* 18 */
+  --text-xl: 1.375rem;    /* 22 */
+  --text-2xl: 2rem;       /* 32 */
+  --text-3xl: 3rem;       /* 48 */
+
+  --radius-card: 12px;
+
+  /* única sombra del sistema: la del buscador flotante */
+  --shadow-pill: 0 1px 2px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.05);
+  --shadow-pill-hover: 0 2px 4px rgba(0,0,0,.10), 0 6px 16px rgba(0,0,0,.08);
 }
 
 body {
-  background: var(--background);
-  color: var(--foreground);
-  font-family: Arial, Helvetica, sans-serif;
+  background: var(--color-lienzo);
+  color: var(--color-tinta);
+  font-family: var(--font-sans);
+  -webkit-font-smoothing: antialiased;
+}
+
+/* Las cifras deben alinear entre tarjetas del grid. */
+.tabular { font-variant-numeric: tabular-nums; }
+
+/* Tira de categorías: scroll horizontal sin barra visible, como el de Airbnb. */
+.sin-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
+.sin-scrollbar::-webkit-scrollbar { display: none; }
+
+:where(a, button, input, select):focus-visible {
+  outline: 2px solid var(--color-tinta);
+  outline-offset: 2px;
+  border-radius: 4px;
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *, *::before, *::after { animation-duration: .01ms !important; transition-duration: .01ms !important; }
 }

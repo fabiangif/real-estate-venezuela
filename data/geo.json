@@ -1,0 +1,2132 @@
+{
+  "ciudad:barquisimeto": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": true
+  },
+  "ciudad:caracas": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": true
+  },
+  "ciudad:maracaibo": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": true
+  },
+  "ciudad:maracay": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": true
+  },
+  "ciudad:valencia": {
+    "lat": 10.170026,
+    "lng": -68.0003987,
+    "exacto": true
+  },
+  "barrio:barquisimeto:pedregal": {
+    "lat": 10.024991,
+    "lng": -69.3797101,
+    "exacto": true
+  },
+  "barrio:barquisimeto:zona-industrial-ii": {
+    "lat": 10.0870088,
+    "lng": -69.3717099,
+    "exacto": true
+  },
+  "barrio:barquisimeto:el-morichal": {
+    "lat": 10.0610384,
+    "lng": -69.2804528,
+    "exacto": true
+  },
+  "barrio:barquisimeto:zona-industrial-iii": {
+    "lat": 10.0668751,
+    "lng": -69.3944979,
+    "exacto": true
+  },
+  "barrio:barquisimeto:ciudad-roca": {
+    "lat": 10.0769178,
+    "lng": -69.2703888,
+    "exacto": true
+  },
+  "barrio:barquisimeto:santa-elena": {
+    "lat": 10.070068,
+    "lng": -69.2779356,
+    "exacto": true
+  },
+  "barrio:barquisimeto:segovia": {
+    "lat": 10.0630028,
+    "lng": -69.2922047,
+    "exacto": true
+  },
+  "barrio:barquisimeto:pedregal-0240": {
+    "lat": 10.024991,
+    "lng": -69.3797101,
+    "exacto": true
+  },
+  "barrio:barquisimeto:zona-industrial-1": {
+    "lat": 10.0870088,
+    "lng": -69.3717099,
+    "exacto": true
+  },
+  "barrio:barquisimeto:este": {
+    "lat": 10.0832272,
+    "lng": -69.3018345,
+    "exacto": true
+  },
+  "barrio:barquisimeto:oeste-de-barquisimeto": {
+    "lat": 10.0534536,
+    "lng": -69.3759342,
+    "exacto": true
+  },
+  "barrio:barquisimeto:este-de-barquisimeto": {
+    "lat": 10.0832272,
+    "lng": -69.3018345,
+    "exacto": true
+  },
+  "barrio:barquisimeto:zona-industrial-i": {
+    "lat": 10.0870088,
+    "lng": -69.3717099,
+    "exacto": true
+  },
+  "barrio:barquisimeto:pedregal-i": {
+    "lat": 10.024991,
+    "lng": -69.3797101,
+    "exacto": true
+  },
+  "barrio:barquisimeto:centro": {
+    "lat": 10.066475,
+    "lng": -69.3178071,
+    "exacto": true
+  },
+  "barrio:barquisimeto:tarabana": {
+    "lat": 10.0539402,
+    "lng": -69.2856115,
+    "exacto": true
+  },
+  "barrio:barquisimeto:altavista": {
+    "lat": 10.0737865,
+    "lng": -69.3697002,
+    "exacto": true
+  },
+  "barrio:barquisimeto:san-antonio": {
+    "lat": 10.024488,
+    "lng": -69.3831049,
+    "exacto": true
+  },
+  "barrio:barquisimeto:los-olivos": {
+    "lat": 10.0833027,
+    "lng": -69.2854082,
+    "exacto": true
+  },
+  "barrio:barquisimeto:los-tulipanes": {
+    "lat": 10.0834331,
+    "lng": -69.2786571,
+    "exacto": true
+  },
+  "barrio:caracas:la-urbina": {
+    "lat": 10.4879581,
+    "lng": -66.8072592,
+    "exacto": true
+  },
+  "barrio:caracas:los-dos-caminos": {
+    "lat": 10.5418066,
+    "lng": -67.0101491,
+    "exacto": true
+  },
+  "barrio:caracas:el-rosal": {
+    "lat": 10.4891965,
+    "lng": -66.8656415,
+    "exacto": true
+  },
+  "barrio:caracas:altamira": {
+    "lat": 10.5054681,
+    "lng": -66.8507095,
+    "exacto": true
+  },
+  "barrio:caracas:colinas-de-valle-arriba": {
+    "lat": 10.469434,
+    "lng": -66.8698847,
+    "exacto": true
+  },
+  "barrio:caracas:los-samanes": {
+    "lat": 10.457206,
+    "lng": -66.8561196,
+    "exacto": true
+  },
+  "barrio:caracas:oripoto": {
+    "lat": 10.4165176,
+    "lng": -66.8344604,
+    "exacto": true
+  },
+  "barrio:caracas:valle-arriba": {
+    "lat": 10.4837227,
+    "lng": -66.8705483,
+    "exacto": true
+  },
+  "barrio:caracas:las-mercedes": {
+    "lat": 10.4819994,
+    "lng": -66.8611573,
+    "exacto": true
+  },
+  "barrio:caracas:cerro-verde": {
+    "lat": 10.4546981,
+    "lng": -66.8373132,
+    "exacto": true
+  },
+  "barrio:caracas:el-volcan": {
+    "lat": 10.416659,
+    "lng": -66.8492231,
+    "exacto": true
+  },
+  "barrio:caracas:chacao": {
+    "lat": 10.4932844,
+    "lng": -66.855787,
+    "exacto": true
+  },
+  "barrio:caracas:lomas-de-la-trinidad": {
+    "lat": 10.4259555,
+    "lng": -66.8607981,
+    "exacto": true
+  },
+  "barrio:caracas:campo-alegre": {
+    "lat": 10.5208989,
+    "lng": -66.9706929,
+    "exacto": true
+  },
+  "barrio:caracas:los-chorros": {
+    "lat": 10.5040684,
+    "lng": -66.8287933,
+    "exacto": true
+  },
+  "barrio:caracas:la-alameda": {
+    "lat": 10.4672501,
+    "lng": -66.8750989,
+    "exacto": true
+  },
+  "barrio:caracas:la-castellana": {
+    "lat": 10.5007544,
+    "lng": -66.8549973,
+    "exacto": true
+  },
+  "barrio:caracas:caurimare": {
+    "lat": 10.47563,
+    "lng": -66.8354251,
+    "exacto": true
+  },
+  "barrio:caracas:la-lagunita": {
+    "lat": 10.4245251,
+    "lng": -66.8095237,
+    "exacto": true
+  },
+  "barrio:caracas:alto-hatillo": {
+    "lat": 10.4357197,
+    "lng": -66.8210144,
+    "exacto": true
+  },
+  "barrio:caracas:el-country": {
+    "lat": 10.4930899,
+    "lng": -66.8676535,
+    "exacto": true
+  },
+  "barrio:caracas:boleita-sur": {
+    "lat": 10.4899745,
+    "lng": -66.8217391,
+    "exacto": true
+  },
+  "barrio:caracas:colinas-de-la-tahona": {
+    "lat": 10.4407098,
+    "lng": -66.8485411,
+    "exacto": true
+  },
+  "barrio:caracas:el-penon": {
+    "lat": 10.4416223,
+    "lng": -66.8767834,
+    "exacto": true
+  },
+  "barrio:caracas:santa-fe": {
+    "lat": 10.4655292,
+    "lng": -66.8706072,
+    "exacto": true
+  },
+  "barrio:caracas:colinas-del-tamanaco": {
+    "lat": 10.4676997,
+    "lng": -66.8530407,
+    "exacto": true
+  },
+  "barrio:caracas:la-candelaria": {
+    "lat": 10.5048254,
+    "lng": -66.9036822,
+    "exacto": true
+  },
+  "barrio:caracas:san-roman": {
+    "lat": 10.4721995,
+    "lng": -66.8573219,
+    "exacto": true
+  },
+  "barrio:caracas:santa-paula": {
+    "lat": 10.4639688,
+    "lng": -66.8371288,
+    "exacto": true
+  },
+  "barrio:caracas:country-club": {
+    "lat": 10.5015261,
+    "lng": -66.8631149,
+    "exacto": true
+  },
+  "barrio:caracas:la-union": {
+    "lat": 10.4127071,
+    "lng": -66.8182238,
+    "exacto": true
+  },
+  "barrio:caracas:boleita": {
+    "lat": 10.498414,
+    "lng": -66.8208083,
+    "exacto": true
+  },
+  "barrio:caracas:san-luis": {
+    "lat": 10.4684415,
+    "lng": -66.8442607,
+    "exacto": true
+  },
+  "barrio:caracas:colinas-de-bello-monte": {
+    "lat": 10.48509,
+    "lng": -66.8762134,
+    "exacto": true
+  },
+  "barrio:caracas:chuao": {
+    "lat": 10.4827897,
+    "lng": -66.8439656,
+    "exacto": true
+  },
+  "barrio:caracas:lomas-de-santa-fe": {
+    "lat": 10.4667753,
+    "lng": -66.8773016,
+    "exacto": true
+  },
+  "barrio:caracas:escampadero": {
+    "lat": 10.4420327,
+    "lng": -66.8529726,
+    "exacto": true
+  },
+  "barrio:caracas:los-palos-grandes": {
+    "lat": 10.5030704,
+    "lng": -66.8440212,
+    "exacto": true
+  },
+  "barrio:caracas:la-trinidad": {
+    "lat": 10.4327539,
+    "lng": -66.8607062,
+    "exacto": true
+  },
+  "barrio:caracas:prados-del-este": {
+    "lat": 10.4485961,
+    "lng": -66.8848886,
+    "exacto": true
+  },
+  "barrio:caracas:cumbres-de-curumo": {
+    "lat": 10.4614157,
+    "lng": -66.8862248,
+    "exacto": true
+  },
+  "barrio:caracas:macaracuay": {
+    "lat": 10.4673819,
+    "lng": -66.8176031,
+    "exacto": true
+  },
+  "barrio:caracas:alto-prado": {
+    "lat": 10.440103,
+    "lng": -66.8927694,
+    "exacto": true
+  },
+  "barrio:caracas:el-encantado": {
+    "lat": 10.4474561,
+    "lng": -66.7973942,
+    "exacto": true
+  },
+  "barrio:caracas:la-bonita": {
+    "lat": 10.4457481,
+    "lng": -66.8514834,
+    "exacto": true
+  },
+  "barrio:barquisimeto:altos-de-bucare": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:caminos-de-tarabana": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:urbanizacion-del-este": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:monte-luna": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:ciudadela": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:silver-house": {
+    "lat": 10.0744176,
+    "lng": -69.286621,
+    "exacto": true
+  },
+  "barrio:barquisimeto:roca-del-valle": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:bella-vista-plaza": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:lara-palace": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:magnolia-plaza": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencias-paris": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencias-laguna-real": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:segovia-plaza": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:la-ciudadela": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:carrera-19-entre-45-y-46": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:carrera-25-entre-calles-21-y-22": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:copacoa-del-este": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:torre-milenium": {
+    "lat": 10.0616987,
+    "lng": -69.2861934,
+    "exacto": true
+  },
+  "barrio:barquisimeto:camino-de-tarabana": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:zona-este": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencia-ina": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:lomas-de-tabure": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:terrazas-de-la-ensenada": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:la-rosaleda": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:ciudad-roca-onix": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:villas-los-apamates": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:villa-esmeralda": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencias-el-bosque": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:monte-real": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:cedral-country": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencias-kalahari": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:el-parral": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:brisas-de-terepaima": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencias-tiuna-park-b": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:torre-plaza-madrid": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:colinas-del-viento": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:parque-los-libertadores": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:la-romana": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:pietrasanta": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:villas-royal-gardens": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:terra-tiuna": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:terra-mia": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:club-hipico-las-trinitarias": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:villas-park": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:aguamiel": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:altos-de-gavidea": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:nueva-segovia": {
+    "lat": 10.0654915,
+    "lng": -69.2947969,
+    "exacto": true
+  },
+  "barrio:barquisimeto:pedregal-plaza": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:villa-paris": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:sahara": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:plaza-caribe": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:parque-las-trinitarias": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:jose-gil-fourtoul": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:tramontana": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:el-amanecer": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:villas-del-este-ii": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:guayamure": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:torre-financiera-de-lara": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:parque-la-musica": {
+    "lat": 10.0651246,
+    "lng": -69.2833719,
+    "exacto": true
+  },
+  "barrio:barquisimeto:cumbres-de-guayamure": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:triangulo-del-este": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:quibor": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:el-pedregal": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:sonata": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:villa-trapiche": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:manzano": {
+    "lat": 10.0566312,
+    "lng": -69.3157566,
+    "exacto": true
+  },
+  "barrio:barquisimeto:zona-del-pedregal": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:loma-linda": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:cumbres-del-manzano": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencias-ibiza": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:villas-paris-j": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencias-buenaventura": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:parque-trinitarias": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:el-manzano": {
+    "lat": 10.0566312,
+    "lng": -69.3157566,
+    "exacto": true
+  },
+  "barrio:barquisimeto:cabudare": {
+    "lat": 10.0314372,
+    "lng": -69.2555891,
+    "exacto": true
+  },
+  "barrio:barquisimeto:metropolitano-javier": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:zona-del-impulso": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:centro-este": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:mocao-alto": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:oeste": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencias-villas-park": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:poa-poa": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencias-villas-del-parque": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:campo-alegre": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:el-pedregal-este": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencias-cerdena": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:aguaviva": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:colinas-de-la-rosaleda": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:roca-tower": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:el-este": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:tarabana-plaza": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:colinas-de-santa-rosa": {
+    "lat": 10.0651293,
+    "lng": -69.2751047,
+    "exacto": true
+  },
+  "barrio:barquisimeto:res-san-antonio-i": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:centro-de-barquisimeto": {
+    "lat": 10.0726443,
+    "lng": -69.3216324,
+    "exacto": true
+  },
+  "barrio:barquisimeto:res-lara-palace": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:santa-elena-norte": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencias-pedregal-plaza": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencias-lafayette-nueva-segovia": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:villa-roca-ii": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:res-altavista": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:colinas-de-santa-rosa-norte": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:los-almendros": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:sotavento": {
+    "lat": 10.0665398,
+    "lng": -69.3531423,
+    "exacto": true
+  },
+  "barrio:barquisimeto:res-sonata": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:tierra-del-sol": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:villas-del-este": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:barici": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencias-luis-miguel": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:trapiche-villas-2": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:res-san-antonio": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:club-hipico": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencias-santa-barbara": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:villa-del-carmen": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:la-pastorena": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencias-los-samanes": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:res-villareal": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:el-parque": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:agua-miel": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:residencias-florida": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:terrazas-de-monte-real-iii": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:villas-del-bosque": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:caracas:naranjo-humboldt": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:lomas-del-sol": {
+    "lat": 10.4500369,
+    "lng": -66.8281203,
+    "exacto": true
+  },
+  "barrio:caracas:la-boyera": {
+    "lat": 10.426663,
+    "lng": -66.8383015,
+    "exacto": true
+  },
+  "barrio:caracas:los-naranjos-del-cafetal": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:lomas-de-san-roman": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:trinidad-tepuy": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:solar-del-hatillo": {
+    "lat": 10.4173855,
+    "lng": -66.837453,
+    "exacto": true
+  },
+  "barrio:caracas:los-naranjos-de-las-mercedes": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:puerto-encantado": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:mirador-de-los-campitos-i": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:la-lagunita-country-club": {
+    "lat": 10.4227652,
+    "lng": -66.8104245,
+    "exacto": true
+  },
+  "barrio:caracas:santa-fe-norte": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:chulavista": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:lomas-de-prados-del-este": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:caribe": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:playa-grande": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:santa-eduvigis": {
+    "lat": 10.5002861,
+    "lng": -66.8384638,
+    "exacto": true
+  },
+  "barrio:caracas:montalban": {
+    "lat": 10.4726295,
+    "lng": -66.9577539,
+    "exacto": true
+  },
+  "barrio:caracas:el-cafetal": {
+    "lat": 10.4649711,
+    "lng": -66.8294792,
+    "exacto": true
+  },
+  "barrio:caracas:alto-grande": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:ccct": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:bosques-de-la-lagunita": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:el-hatillo": {
+    "lat": 10.4236769,
+    "lng": -66.825252,
+    "exacto": true
+  },
+  "barrio:caracas:el-placer-la-limonera": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:san-bernardino": {
+    "lat": 10.5123207,
+    "lng": -66.9021365,
+    "exacto": true
+  },
+  "barrio:caracas:santa-marta": {
+    "lat": 10.4772094,
+    "lng": -66.8466944,
+    "exacto": true
+  },
+  "barrio:caracas:lomas-de-chuao": {
+    "lat": 10.4809862,
+    "lng": -66.8483359,
+    "exacto": true
+  },
+  "barrio:caracas:caicaguana": {
+    "lat": 10.4177969,
+    "lng": -66.7767048,
+    "exacto": true
+  },
+  "barrio:caracas:guaicay": {
+    "lat": 10.4462327,
+    "lng": -66.8568946,
+    "exacto": true
+  },
+  "barrio:caracas:los-campitos": {
+    "lat": 10.4604872,
+    "lng": -66.876247,
+    "exacto": true
+  },
+  "barrio:caracas:los-guayabitos": {
+    "lat": 10.4071523,
+    "lng": -66.8676268,
+    "exacto": true
+  },
+  "barrio:caracas:lomas-de-las-mercedes": {
+    "lat": 10.4765663,
+    "lng": -66.8681054,
+    "exacto": true
+  },
+  "barrio:caracas:alta-florida": {
+    "lat": 10.5087159,
+    "lng": -66.878008,
+    "exacto": true
+  },
+  "barrio:caracas:catia": {
+    "lat": 10.5118675,
+    "lng": -66.9474897,
+    "exacto": true
+  },
+  "barrio:caracas:los-caobos": {
+    "lat": 10.5001467,
+    "lng": -66.8844246,
+    "exacto": true
+  },
+  "barrio:caracas:quinta-crespo": {
+    "lat": 10.4969034,
+    "lng": -66.9173218,
+    "exacto": true
+  },
+  "barrio:caracas:montalban-ii": {
+    "lat": 10.4737679,
+    "lng": -66.9530501,
+    "exacto": true
+  },
+  "barrio:caracas:pinto-salinas": {
+    "lat": 10.5079817,
+    "lng": -66.8897833,
+    "exacto": true
+  },
+  "barrio:caracas:bello-monte": {
+    "lat": 10.488007,
+    "lng": -66.8756461,
+    "exacto": true
+  },
+  "barrio:caracas:palo-verde": {
+    "lat": 10.480406,
+    "lng": -66.7939353,
+    "exacto": true
+  },
+  "barrio:caracas:santa-teresa": {
+    "lat": 10.4899978,
+    "lng": -66.8454184,
+    "exacto": true
+  },
+  "barrio:caracas:av-san-martin": {
+    "lat": 10.5013627,
+    "lng": -66.922077,
+    "exacto": true
+  },
+  "barrio:caracas:lomas-del-avila": {
+    "lat": 10.4817458,
+    "lng": -66.7895043,
+    "exacto": true
+  },
+  "barrio:caracas:caricuao-ud3": {
+    "lat": 10.4326252,
+    "lng": -66.9816704,
+    "exacto": true
+  },
+  "barrio:caracas:la-california-norte": {
+    "lat": 10.4801449,
+    "lng": -66.820406,
+    "exacto": true
+  },
+  "barrio:caracas:av-fuerzas-armadas": {
+    "lat": 10.5106454,
+    "lng": -66.908149,
+    "exacto": true
+  },
+  "barrio:caracas:centro-de-caracas": {
+    "lat": 10.5034298,
+    "lng": -66.9167429,
+    "exacto": true
+  },
+  "barrio:caracas:el-marques": {
+    "lat": 10.5006567,
+    "lng": -66.8119234,
+    "exacto": true
+  },
+  "barrio:caracas:las-acacias": {
+    "lat": 10.4835964,
+    "lng": -66.9018057,
+    "exacto": true
+  },
+  "barrio:caracas:los-ruices": {
+    "lat": 10.486145,
+    "lng": -66.8293244,
+    "exacto": true
+  },
+  "barrio:caracas:el-llanito": {
+    "lat": 10.4697083,
+    "lng": -66.807459,
+    "exacto": true
+  },
+  "barrio:caracas:la-carlota": {
+    "lat": 10.4907676,
+    "lng": -66.8337131,
+    "exacto": true
+  },
+  "barrio:caracas:mirador-de-los-campitos": {
+    "lat": 10.4735379,
+    "lng": -66.8743253,
+    "exacto": true
+  },
+  "barrio:caracas:llano-verde": {
+    "lat": 10.4579577,
+    "lng": -66.8320812,
+    "exacto": true
+  },
+  "barrio:caracas:el-bosque": {
+    "lat": 10.4965693,
+    "lng": -66.8681504,
+    "exacto": true
+  },
+  "barrio:caracas:terrazas-de-santa-ines": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:altagracia": {
+    "lat": 10.5111256,
+    "lng": -66.9147635,
+    "exacto": true
+  },
+  "barrio:caracas:colinas-de-la-california": {
+    "lat": 10.4670061,
+    "lng": -66.8225119,
+    "exacto": true
+  },
+  "barrio:caracas:el-junko-country-club": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:colinas-de-santa-monica": {
+    "lat": 10.4771398,
+    "lng": -66.8851878,
+    "exacto": true
+  },
+  "barrio:caracas:el-paraiso": {
+    "lat": 10.4905685,
+    "lng": -66.9284156,
+    "exacto": true
+  },
+  "barrio:caracas:los-naranjos-norte-6": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:la-campina": {
+    "lat": 10.4988308,
+    "lng": -66.8733877,
+    "exacto": true
+  },
+  "barrio:caracas:haciendas-el-encantado": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:hacienda-la-lagunita": {
+    "lat": 10.4301234,
+    "lng": -66.8107892,
+    "exacto": true
+  },
+  "barrio:caracas:hatillo": {
+    "lat": 10.4236769,
+    "lng": -66.825252,
+    "exacto": true
+  },
+  "barrio:caracas:prado-del-este": {
+    "lat": 10.4452637,
+    "lng": -66.8744762,
+    "exacto": true
+  },
+  "barrio:caracas:los-naranjos-norte": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:el-pedregal": {
+    "lat": 10.5037625,
+    "lng": -66.8589199,
+    "exacto": true
+  },
+  "barrio:caracas:la-palomera": {
+    "lat": 10.4323477,
+    "lng": -66.8763757,
+    "exacto": true
+  },
+  "barrio:caracas:la-bonita-guaicay-este": {
+    "lat": 10.5060934,
+    "lng": -66.9146008,
+    "exacto": false
+  },
+  "barrio:caracas:los-naranjos": {
+    "lat": 10.4395625,
+    "lng": -66.8389422,
+    "exacto": true
+  },
+  "barrio:caracas:terrazas-del-club-hipico": {
+    "lat": 10.4469913,
+    "lng": -66.870869,
+    "exacto": true
+  },
+  "barrio:caracas:manzanares-este": {
+    "lat": 10.4452637,
+    "lng": -66.8744762,
+    "exacto": true
+  },
+  "barrio:caracas:este-de-caracas": {
+    "lat": 10.5089708,
+    "lng": -66.9126049,
+    "exacto": true
+  },
+  "barrio:caracas:santa-monica": {
+    "lat": 10.4770089,
+    "lng": -66.8910849,
+    "exacto": true
+  },
+  "barrio:maracaibo:santa-rita": {
+    "lat": 10.6695199,
+    "lng": -71.6097118,
+    "exacto": true
+  },
+  "barrio:maracaibo:parque-santa-lucia": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:san-jacinto": {
+    "lat": 10.7113851,
+    "lng": -71.6319298,
+    "exacto": true
+  },
+  "barrio:maracaibo:villa-camino-del-doral": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:zona-norte": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:villa-oasis-country-iii": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:los-olivos": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:bella-vista": {
+    "lat": 10.6458486,
+    "lng": -71.6062124,
+    "exacto": true
+  },
+  "barrio:maracaibo:villa-dunas-del-mar": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:la-coromoto": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:santa-fe": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:el-milagro": {
+    "lat": 10.6954616,
+    "lng": -71.5959327,
+    "exacto": true
+  },
+  "barrio:maracaibo:via-veneto": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:la-lago": {
+    "lat": 10.6885481,
+    "lng": -71.5953338,
+    "exacto": true
+  },
+  "barrio:maracaibo:delicias": {
+    "lat": 10.6088986,
+    "lng": -71.6104315,
+    "exacto": true
+  },
+  "barrio:maracaibo:san-francisco": {
+    "lat": 10.6705867,
+    "lng": -71.606926,
+    "exacto": true
+  },
+  "barrio:maracaibo:bellas-artes": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:las-naciones": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:la-estrella": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:villa-monte-fino": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:alejandra-sofia": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:villa-del-sol": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:lago-mar-beach": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:el-bosque-ii": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:edificio-nuvolari": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:edificio-nuvolaris": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:av-universidad": {
+    "lat": 10.6838969,
+    "lng": -71.6143029,
+    "exacto": true
+  },
+  "barrio:maracaibo:villa-bahia-del-lago": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:villa-punta-de-piedra": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:villa-portal-del-sol": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:av-bella-vista": {
+    "lat": 10.6633418,
+    "lng": -71.6015365,
+    "exacto": true
+  },
+  "barrio:maracaibo:villa-paraiso": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:villa-las-dunas": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:cantabrisa": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:virginia-palace": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:dunas-del-mar": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:tierra-negra": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:vistazul": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:lago-country-3": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:villa-lago-country-1": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:zapara": {
+    "lat": 10.6905399,
+    "lng": -71.6040802,
+    "exacto": true
+  },
+  "barrio:maracaibo:indio-mara": {
+    "lat": 10.6676874,
+    "lng": -71.6321301,
+    "exacto": true
+  },
+  "barrio:maracaibo:canaima": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:villa-lago-country-ii": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:milagro-norte": {
+    "lat": 10.7107073,
+    "lng": -71.6029108,
+    "exacto": true
+  },
+  "barrio:maracaibo:palma-dorada": {
+    "lat": 10.7056938,
+    "lng": -71.6252077,
+    "exacto": true
+  },
+  "barrio:maracaibo:villa-palma-dorada": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:don-bosco": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:lago-country": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:portal-del-doral": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:fiorano": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:villa-marlene": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:villa-lagunita-country": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:costa-del-sol": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:villa-santa-fe-i": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:sector-la-lago": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:zona-industrial-sur": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:resid-hialeah": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:las-mercedes": {
+    "lat": 10.6820792,
+    "lng": -71.6049796,
+    "exacto": true
+  },
+  "barrio:maracaibo:isla-dorada": {
+    "lat": 10.7362177,
+    "lng": -71.6182101,
+    "exacto": true
+  },
+  "barrio:maracaibo:la-pequena-europa": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:creole": {
+    "lat": 10.6750377,
+    "lng": -71.5979941,
+    "exacto": true
+  },
+  "barrio:maracaibo:avenida-5-de-julio": {
+    "lat": 10.6630638,
+    "lng": -71.6227636,
+    "exacto": true
+  },
+  "barrio:maracaibo:irama": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:valle-frio": {
+    "lat": 10.6602027,
+    "lng": -71.6024531,
+    "exacto": true
+  },
+  "barrio:maracaibo:5-de-julio": {
+    "lat": 10.6628561,
+    "lng": -71.6146591,
+    "exacto": true
+  },
+  "barrio:maracaibo:villa-antanona": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:costa-rosmini": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:banco-mara": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:monte-bello": {
+    "lat": 10.6021636,
+    "lng": -71.6418794,
+    "exacto": true
+  },
+  "barrio:maracaibo:paraiso": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:budapest-juana-de-avila": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:puntazul-valle-frio": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:pequena-europa": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:lago-mall": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:la-virginia": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:santa-fe-villas": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracaibo:cabo-norte-villas": {
+    "lat": 10.7357301,
+    "lng": -71.6249853,
+    "exacto": true
+  },
+  "barrio:maracay:la-morita": {
+    "lat": 10.227995,
+    "lng": -67.5531438,
+    "exacto": true
+  },
+  "barrio:maracay:el-limon": {
+    "lat": 10.2463613,
+    "lng": -67.6192308,
+    "exacto": true
+  },
+  "barrio:maracay:cagua": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:terrasur": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:san-jacinto": {
+    "lat": 10.2414968,
+    "lng": -67.5604973,
+    "exacto": true
+  },
+  "barrio:maracay:terrasanta-cagua": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:el-centro": {
+    "lat": 10.2360576,
+    "lng": -67.5979696,
+    "exacto": true
+  },
+  "barrio:maracay:el-bosque": {
+    "lat": 10.2581947,
+    "lng": -67.5890795,
+    "exacto": true
+  },
+  "barrio:maracay:narayola-ii": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:terrasanta": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:terra-santa": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:bosque-alto": {
+    "lat": 10.2359668,
+    "lng": -67.5868302,
+    "exacto": true
+  },
+  "barrio:maracay:la-ciudadela": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:la-soledad": {
+    "lat": 10.2624935,
+    "lng": -67.5914277,
+    "exacto": true
+  },
+  "barrio:maracay:fundacion-mendoza": {
+    "lat": 10.233397,
+    "lng": -67.5895863,
+    "exacto": true
+  },
+  "barrio:maracay:cantarana": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:base-aragua": {
+    "lat": 10.2548742,
+    "lng": -67.5891566,
+    "exacto": true
+  },
+  "barrio:maracay:bahia-de-cata": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:villas-del-sol-ii": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:los-caobos": {
+    "lat": 10.3147562,
+    "lng": -67.5546484,
+    "exacto": true
+  },
+  "barrio:maracay:la-morita-i": {
+    "lat": 10.227995,
+    "lng": -67.5531438,
+    "exacto": true
+  },
+  "barrio:maracay:corinsa": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:castano": {
+    "lat": 10.3166398,
+    "lng": -67.5555646,
+    "exacto": true
+  },
+  "barrio:maracay:limon": {
+    "lat": 10.2463613,
+    "lng": -67.6192308,
+    "exacto": true
+  },
+  "barrio:maracay:la-arboleda": {
+    "lat": 10.2682584,
+    "lng": -67.5918757,
+    "exacto": true
+  },
+  "barrio:maracay:arias-blanco": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:meru-park": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:el-castano": {
+    "lat": 10.3166398,
+    "lng": -67.5555646,
+    "exacto": true
+  },
+  "barrio:maracay:barrio-sucre": {
+    "lat": 10.2813675,
+    "lng": -67.5679876,
+    "exacto": true
+  },
+  "barrio:maracay:cantarrana": {
+    "lat": 10.2811986,
+    "lng": -67.5726439,
+    "exacto": true
+  },
+  "barrio:maracay:san-isidro": {
+    "lat": 10.2568981,
+    "lng": -67.5946428,
+    "exacto": true
+  },
+  "barrio:maracay:lomas-de-palmarito": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:valle-fresco": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:calicanto": {
+    "lat": 10.2562558,
+    "lng": -67.5987849,
+    "exacto": true
+  },
+  "barrio:maracay:san-miguel": {
+    "lat": 10.2370887,
+    "lng": -67.6062878,
+    "exacto": true
+  },
+  "barrio:maracay:el-bosque-las-delicias": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:el-pinal": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:el-hipodromo": {
+    "lat": 10.2367752,
+    "lng": -67.6014575,
+    "exacto": true
+  },
+  "barrio:valencia:el-vinedo": {
+    "lat": 10.2126045,
+    "lng": -68.0131012,
+    "exacto": true
+  },
+  "barrio:valencia:los-mangos": {
+    "lat": 10.1976781,
+    "lng": -68.0231499,
+    "exacto": true
+  },
+  "barrio:valencia:trigal-norte": {
+    "lat": 10.2275573,
+    "lng": -67.9972643,
+    "exacto": true
+  },
+  "barrio:valencia:parque-el-trigal": {
+    "lat": 10.2169473,
+    "lng": -67.9952206,
+    "exacto": true
+  },
+  "barrio:valencia:tazajal": {
+    "lat": 10.2538417,
+    "lng": -67.9997331,
+    "exacto": true
+  },
+  "barrio:valencia:tulipan": {
+    "lat": 10.170026,
+    "lng": -68.0003987,
+    "exacto": false
+  },
+  "barrio:valencia:la-trigalena": {
+    "lat": 10.2082193,
+    "lng": -67.9946634,
+    "exacto": true
+  },
+  "barrio:valencia:trigal-sur": {
+    "lat": 10.2129853,
+    "lng": -67.9923001,
+    "exacto": true
+  },
+  "barrio:valencia:valles-del-nogal": {
+    "lat": 10.170026,
+    "lng": -68.0003987,
+    "exacto": false
+  },
+  "barrio:valencia:piedra-pintada": {
+    "lat": 10.170026,
+    "lng": -68.0003987,
+    "exacto": false
+  },
+  "barrio:valencia:castillito": {
+    "lat": 10.1831088,
+    "lng": -68.0051523,
+    "exacto": true
+  },
+  "barrio:valencia:el-bosque": {
+    "lat": 10.1924474,
+    "lng": -68.0232811,
+    "exacto": true
+  },
+  "barrio:valencia:valle-de-oro": {
+    "lat": 10.1333608,
+    "lng": -67.9278311,
+    "exacto": true
+  },
+  "barrio:valencia:valle-blanco": {
+    "lat": 10.1994463,
+    "lng": -68.0195489,
+    "exacto": true
+  },
+  "barrio:valencia:piedras-pintadas": {
+    "lat": 10.2306626,
+    "lng": -67.9921317,
+    "exacto": true
+  },
+  "barrio:valencia:el-trigal": {
+    "lat": 10.21741,
+    "lng": -67.99411,
+    "exacto": true
+  },
+  "barrio:valencia:el-parral": {
+    "lat": 10.2049625,
+    "lng": -68.0330153,
+    "exacto": true
+  },
+  "barrio:valencia:prebo": {
+    "lat": 10.2098796,
+    "lng": -68.0215219,
+    "exacto": true
+  },
+  "barrio:valencia:manongo": {
+    "lat": 10.2344257,
+    "lng": -67.9977457,
+    "exacto": true
+  },
+  "barrio:valencia:sabana-larga": {
+    "lat": 10.2058497,
+    "lng": -68.0218935,
+    "exacto": true
+  },
+  "barrio:valencia:las-chimeneas": {
+    "lat": 10.2032544,
+    "lng": -67.9975328,
+    "exacto": true
+  },
+  "barrio:valencia:la-trigalena-alta": {
+    "lat": 10.170026,
+    "lng": -68.0003987,
+    "exacto": false
+  },
+  "barrio:valencia:los-guayos": {
+    "lat": 10.1904187,
+    "lng": -67.9428295,
+    "exacto": true
+  },
+  "barrio:valencia:valles-de-camoruco": {
+    "lat": 10.170026,
+    "lng": -68.0003987,
+    "exacto": false
+  },
+  "barrio:valencia:manantial": {
+    "lat": 10.2662408,
+    "lng": -68.0021303,
+    "exacto": true
+  },
+  "barrio:valencia:el-trigal-norte": {
+    "lat": 10.170026,
+    "lng": -68.0003987,
+    "exacto": false
+  },
+  "barrio:valencia:la-vina": {
+    "lat": 10.2157708,
+    "lng": -68.0192345,
+    "exacto": true
+  },
+  "barrio:valencia:cumbres-de-la-esmeralda": {
+    "lat": 10.170026,
+    "lng": -68.0003987,
+    "exacto": false
+  },
+  "barrio:valencia:guacara": {
+    "lat": 10.1802186,
+    "lng": -68.0496743,
+    "exacto": true
+  },
+  "barrio:valencia:san-diego": {
+    "lat": 10.183924,
+    "lng": -67.9691287,
+    "exacto": true
+  },
+  "barrio:valencia:guataparo-country-club": {
+    "lat": 10.1819495,
+    "lng": -68.0550008,
+    "exacto": true
+  },
+  "barrio:valencia:terrazas-del-country": {
+    "lat": 10.1747342,
+    "lng": -68.0541506,
+    "exacto": true
+  },
+  "barrio:valencia:la-cumaca": {
+    "lat": 10.170026,
+    "lng": -68.0003987,
+    "exacto": false
+  },
+  "barrio:valencia:las-quintas": {
+    "lat": 10.2452932,
+    "lng": -68.0069451,
+    "exacto": true
+  },
+  "barrio:valencia:naguanagua": {
+    "lat": 10.263664,
+    "lng": -68.0023623,
+    "exacto": true
+  },
+  "barrio:valencia:cumbres-de-guataparo": {
+    "lat": 10.170026,
+    "lng": -68.0003987,
+    "exacto": false
+  },
+  "barrio:valencia:el-solar": {
+    "lat": 10.2057378,
+    "lng": -68.0583536,
+    "exacto": true
+  },
+  "barrio:barquisimeto:residencias-jacinto-lara": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:centro-metropolitano-javier": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:barquisimeto:conjunto-agata": {
+    "lat": 10.0774374,
+    "lng": -69.3222293,
+    "exacto": false
+  },
+  "barrio:maracaibo:villa-lago-country-i": {
+    "lat": 10.6498095,
+    "lng": -71.6443596,
+    "exacto": false
+  },
+  "barrio:maracay:nuevo-bosque-alto": {
+    "lat": 10.2375144,
+    "lng": -67.5890216,
+    "exacto": false
+  },
+  "barrio:maracay:terra-norte": {
+    "lat": 10.2557758,
+    "lng": -67.5901232,
+    "exacto": true
+  }
+}
