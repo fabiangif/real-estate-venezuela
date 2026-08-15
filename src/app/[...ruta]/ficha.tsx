@@ -1,7 +1,8 @@
 import Link from "next/link";
 import { formatPrecio, TIPO_LABEL, OPERACION_LABEL, type Listing } from "@/lib/types";
 import { similares, rutaListado, rutaFicha, precioM2, medianaM2Ciudad, delMismoAnunciante, cuantos } from "@/lib/data";
-import { Foto, Grid, Seccion, MiniFila } from "@/components/ui";
+import { Grid, Seccion, MiniFila } from "@/components/ui";
+import MediaGallery from "@/components/MediaGallery";
 import { IconBed, IconBath, IconArea, IconCar, IconCheck, IconPin, IconWhatsapp, IconChevron } from "@/components/icons";
 
 import { SITIO as SITE } from "@/lib/seo";
@@ -146,24 +147,7 @@ export default function Ficha({ l }: { l: Listing }) {
         <div className="mt-8 grid gap-10 lg:grid-cols-[1fr_20rem]">
           <div className="min-w-0">
             <Seccion titulo="Galería">
-              <div className="grid gap-3 sm:grid-cols-2">
-                {l.fotos.length > 0 ? l.fotos.map((src, index) => (
-                  <div key={src} className={index === 0 ? "sm:col-span-2" : undefined}>
-                    <Foto
-                      listing={l}
-                      src={src}
-                      alt={`${l.titulo} — foto ${index + 1}`}
-                      preload={index === 0}
-                      ratio={index === 0 ? "aspect-[16/9]" : "aspect-[4/3]"}
-                      sizes={index === 0 ? "(max-width:1024px) 100vw, 60vw" : "(max-width:640px) 100vw, 30vw"}
-                    />
-                  </div>
-                )) : (
-                  <div className="sm:col-span-2">
-                    <Foto listing={l} ratio="aspect-[16/9]" sizes="(max-width:1024px) 100vw, 60vw" />
-                  </div>
-                )}
-              </div>
+              <MediaGallery listing={l} />
             </Seccion>
 
             {l.descripcion && (

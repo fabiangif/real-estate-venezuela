@@ -33,6 +33,8 @@ export function Foto({
           <span className="text-xs">
             {listing.fotosCount > 0
               ? `${listing.fotosCount} ${listing.fotosCount === 1 ? "foto" : "fotos"}`
+              : listing.videosCount > 0
+                ? `${listing.videosCount} ${listing.videosCount === 1 ? "video" : "videos"}`
               : TIPO_LABEL[listing.tipo].singular}
           </span>
         </div>

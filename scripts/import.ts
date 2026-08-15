@@ -63,6 +63,7 @@ type Extraido = {
 
 type CdnManifest = {
   imagesByShortcode?: Record<string, string[]>;
+  videosByShortcode?: Record<string, string[]>;
 };
 
 /** El area a dos decimales es ruido de parseo: "371.06 m²" se lee peor que "371 m²". */
@@ -81,7 +82,7 @@ export function titleCase(s: string): string {
 
 /** Cuanta informacion util trae una ficha. Decide cual sobrevive al deduplicar. */
 const riqueza = (l: Listing) =>
-  l.fotosCount * 10 +
+  (l.fotosCount + l.videosCount) * 10 +
   [l.precio, l.m2, l.habitaciones, l.banos, l.estacionamientos, l.areaTerreno, l.barrio].filter((v) => v !== null).length +
   l.amenidades.length +
   (l.descripcion?.length ?? 0) / 1000;
@@ -154,7 +155,9 @@ function main() {
     const descripcion = (r["Caption completo"] ?? "").toString().trim() || null;
     const handle = (r["Perfil IG"] ?? "").toString().trim() || null;
     const fotos = [...new Set(cdn.imagesByShortcode?.[shortcode] ?? [])];
+    const videos = [...new Set(cdn.videosByShortcode?.[shortcode] ?? [])];
     const fotosCount = fotos.length;
+    const videosCount = videos.length;
     const whatsapp = e164(e.telefono) ?? e164(handle ? wa[handle] ?? null : null);
 
     const m2 = redondear(num(e.m2) ?? num(r["M2"]));
@@ -185,6 +188,8 @@ function main() {
         whatsapp,
         fotos,
         fotosCount,
+        videos,
+        videosCount,
         fuente: {
           handle,
           postUrl: texto(r["URL del Post URL"]) ?? texto(r["URL del Post"]),
@@ -192,8 +197,8 @@ function main() {
         },
         // §10.4: completo si hay precio y (habitaciones o area)
         dataQuality: precio !== null && (habitaciones !== null || m2 !== null) ? "completo" : "parcial",
-        // ficha indexable: >=1 foto y (precio o descripcion)
-        indexable: fotos.length >= 1 && (precio !== null || descripcion !== null),
+        // ficha indexable: >=1 recurso visual y (precio o descripcion)
+        indexable: fotos.length + videos.length >= 1 && (precio !== null || descripcion !== null),
       });
     }
   }

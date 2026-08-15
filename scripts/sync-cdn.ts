@@ -108,21 +108,33 @@ function photoOrder(name: string): number {
   return numbered ? Number(numbered[1]) : 0;
 }
 
-function writeManifest(imagesByShortcode: Record<string, string[]>) {
+function writeManifest(
+  imagesByShortcode: Record<string, string[]>,
+  videosByShortcode: Record<string, string[]> = {},
+) {
   const totalImages = Object.values(imagesByShortcode).reduce((total, images) => total + images.length, 0);
+  const totalVideos = Object.values(videosByShortcode).reduce((total, videos) => total + videos.length, 0);
+  const propertiesWithMedia = new Set([
+    ...Object.keys(imagesByShortcode),
+    ...Object.keys(videosByShortcode),
+  ]).size;
   const manifest = {
     generatedAt: new Date().toISOString(),
     baseUrl: CDN_BASE_URL,
     totalProperties: properties.size,
     propertiesWithImages: Object.keys(imagesByShortcode).length,
+    propertiesWithVideos: Object.keys(videosByShortcode).length,
+    propertiesWithMedia,
     totalImages,
+    totalVideos,
     imagesByShortcode,
+    videosByShortcode,
   };
 
   writeFileSync(join(ROOT, "data", "cdn-images.json"), `${JSON.stringify(manifest, null, 2)}\n`);
   console.log(
     `Manifiesto listo: ${manifest.propertiesWithImages.toLocaleString("es-VE")}/${manifest.totalProperties.toLocaleString("es-VE")} propiedades, ` +
-    `${totalImages.toLocaleString("es-VE")} imágenes.`,
+    `${totalImages.toLocaleString("es-VE")} imágenes y ${totalVideos.toLocaleString("es-VE")} videos.`,
   );
 }
 
@@ -138,6 +150,7 @@ function fromInventory(inventoryPath: string) {
   }
 
   const imagesByShortcode: Record<string, string[]> = {};
+  const videosByShortcode: Record<string, string[]> = {};
   for (const property of properties.values()) {
     const shortcodes = [...new Set([property.shortcode, property.shortcode.replace(/_+$/, "")])].filter(Boolean);
     const folder = shortcodes
@@ -145,23 +158,31 @@ function fromInventory(inventoryPath: string) {
       .find((candidate) => byFolder.has(candidate));
     if (!folder) continue;
 
-    const images = (byFolder.get(folder) ?? [])
+    const folderItems = byFolder.get(folder) ?? [];
+    const images = folderItems
       .filter((item) => item.MimeType?.startsWith("image/") || /\.(?:jpe?g|png|webp)$/i.test(item.Name))
       .sort((a, b) => photoOrder(a.Name) - photoOrder(b.Name) || a.Name.localeCompare(b.Name));
-    if (!images.length) continue;
+    if (images.length) {
+      const [first, second] = images;
+      const duplicateFirst = Boolean(
+        second &&
+        second.Name === first.Name.replace(/(\.[^.]+)$/, "_1$1") &&
+        second.Size === first.Size,
+      );
+      const unique = duplicateFirst ? [first, ...images.slice(2)] : images;
+      imagesByShortcode[property.shortcode] = unique.map((item) => publicObjectUrl(item.Path));
+    }
 
-    const [first, second] = images;
-    const duplicateFirst = Boolean(
-      second &&
-      second.Name === first.Name.replace(/(\.[^.]+)$/, "_1$1") &&
-      second.Size === first.Size,
-    );
-    const unique = duplicateFirst ? [first, ...images.slice(2)] : images;
-    imagesByShortcode[property.shortcode] = unique.map((item) => publicObjectUrl(item.Path));
+    const videos = folderItems
+      .filter((item) => item.MimeType?.startsWith("video/") || /\.mp4$/i.test(item.Name))
+      .sort((a, b) => a.Name.localeCompare(b.Name));
+    if (videos.length) {
+      videosByShortcode[property.shortcode] = videos.map((item) => publicObjectUrl(item.Path));
+    }
   }
 
   console.log(`Inventario R2 leído: ${inventory.length.toLocaleString("es-VE")} objetos.`);
-  writeManifest(imagesByShortcode);
+  writeManifest(imagesByShortcode, videosByShortcode);
 }
 
 async function main() {

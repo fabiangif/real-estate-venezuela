@@ -33,6 +33,8 @@ export type Listing = {
   whatsapp: string | null;     // E.164. null => se cae al perfil de Instagram
   fotos: string[];             // URLs públicas verificadas en el CDN
   fotosCount: number;          // cuántas imágenes verificadas existen
+  videos: string[];            // videos MP4 públicos verificados en el CDN
+  videosCount: number;
 
   fuente: { handle: string | null; postUrl: string | null; driveUrl: string | null };
   dataQuality: "completo" | "parcial";

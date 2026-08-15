@@ -1,9 +1,12 @@
 {
-  "generatedAt": "2026-08-15T00:46:18.456Z",
+  "generatedAt": "2026-08-15T01:12:27.748Z",
   "baseUrl": "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev",
   "totalProperties": 1146,
   "propertiesWithImages": 1109,
+  "propertiesWithVideos": 37,
+  "propertiesWithMedia": 1146,
   "totalImages": 6737,
+  "totalVideos": 37,
   "imagesByShortcode": {
     "DbVpr87Df03": [
       "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DbVpr87Df03/genesisinmuebles_DbVpr87Df03.jpg",
@@ -8959,6 +8962,119 @@
       "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Valencia_inmuebles.valencia.carabobo_Czb7cvZPqDA/inmuebles.valencia.carabobo_Czb7cvZPqDA_8.jpg",
       "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Valencia_inmuebles.valencia.carabobo_Czb7cvZPqDA/inmuebles.valencia.carabobo_Czb7cvZPqDA_9.jpg",
       "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Valencia_inmuebles.valencia.carabobo_Czb7cvZPqDA/inmuebles.valencia.carabobo_Czb7cvZPqDA_10.jpg"
+    ]
+  },
+  "videosByShortcode": {
+    "Da79OdPDGQZ": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_Da79OdPDGQZ/Pent%20house%20en%20Venta%20Urbanizacio%CC%81n%20del%20Este%F0%9F%93%8DEste%20de%20la%20ciudad%20-%20Av%20Lara%20%2CSambil%2C%20Gym%20Furia%F0%9F%94%91Propi.mp4"
+    ],
+    "DZ7XkCUiFbM": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DZ7XkCUiFbM/GALPON%20%20ZONA%20INDUSTRIAL%20IIComplejo%20industrial%20Lara%20%208%20Galpo%CC%81n%20Con%20vigilancia.%20%F0%9F%93%90%20Doble%20altura%20Pla.mp4"
+    ],
+    "DZXcPboRNA7": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DZXcPboRNA7/Roca%20del%20valle%20IIICabudare%20-%20riberen%CC%83a%20Vive%20en%20unas%20de%20las%20zonas%20ma%CC%81s%20solicitadas%20de%20Cabudare%20%2C%20he.mp4"
+    ],
+    "DZFcLPfRYoB": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DZFcLPfRYoB/Bello%20apartamento%20en%20obra%20blancaLARA%20PALACE%20OESTE%20DE%20LA%20CUIDAD%2090%20metros%20cuadrados%203%20habitacione.mp4"
+    ],
+    "DYw1ADVRgo_": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DYw1ADVRgo/%F0%9F%93%8D%20Ubicado%20en%20Residencias%20Paris%2C%20al%20este%20de%20Barquisimeto.%20%F0%9F%8F%A0Apartamento%20de%20208%20M2%F0%9F%9B%8C%F0%9F%8F%BB4%20habitacio.mp4"
+    ],
+    "DYsDj7-xKE1": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DYsDj7-xKE1/Alquiler%20disponible%20en-%F0%9F%93%8D%20Residencias%20Laguna%20Real%F0%9F%93%90135mt2%F0%9F%9A%97%202%20espacios%20para%20vehi%CC%81culos%F0%9F%9B%8C%F0%9F%8F%BB%20Habita.mp4"
+    ],
+    "DYpG6xhxEog": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DYpG6xhxEog/Segovia%20Plaza%F0%9F%93%90%20134mts2%F0%9F%9B%8F%EF%B8%8F%203%20habitaciones%F0%9F%9B%81%203%20ban%CC%83os%20completos%F0%9F%9B%8B%EF%B8%8F%20Sala%F0%9F%8D%B4%20Comedor%F0%9F%8E%9B%EF%B8%8FCocina%20equipad.mp4"
+    ],
+    "DYhbr6gRYDj": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DYhbr6gRYDj/En%20venta%F0%9F%93%8DUrb.%20La%20ciudadela%20%F0%9F%93%90411%20M2%F0%9F%8F%A05%20niveles%20%F0%9F%8F%99%EF%B8%8F2%20terrazas%20%F0%9F%9B%8C%F0%9F%8F%BB5%20habitaciones%20%F0%9F%9A%BD7%20ban%CC%83os%20%F0%9F%9B%8B%EF%B8%8FSa.mp4"
+    ],
+    "DYMuwWzx2ET": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DYMuwWzx2ET/Ubicacio%CC%81n%2C%20Seguridad%20y%20Espacio-%20El%20tria%CC%81ngulo%20del%20e%CC%81xito%20para%20tu%20inversio%CC%81n%F0%9F%8F%A2%E2%9C%A8Ponemos%20a%20tu%20disposic.mp4"
+    ],
+    "DXpmYZaEcva": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DXpmYZaEcva/%F0%9F%93%8DZona%20Este%20de%20Barquisimeto%20Apartamentos%20en%20Obra%20blanca%202%20puestos%20de%20estacionamientoMaletero%E2%9E%A1%EF%B8%8FBo.mp4"
+    ],
+    "DXZSUyDDTit": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DXZSUyDDTit/Te%20presento%20esta%CC%81%20opcio%CC%81n%20ubicada%20en%20el%20centro-oeste%20de%20la%20ciudad.%F0%9F%93%8DResidencia%20Ina%F0%9F%93%90%20147%20mt2Piso%20b.mp4"
+    ],
+    "DXJ0I5uEcel": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DXJ0I5uEcel/%C2%BFDeseas%20invertir%20en%20una%20casa%20amplia%2C%20de%202%20niveles%20en%20una%20excelente%20zona%20%C2%A1esta%CC%81%20opcio%CC%81n%20es%20para%20ti!.mp4"
+    ],
+    "DVwqQdNESN8": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DVwqQdNESN8/Apartamento%20en%20alquilerCiudad%20Roca%F0%9F%93%8DAl%20este%20de%20la%20Ciudad%E2%9A%A1%EF%B8%8FConectado%20a%20Planta%20Ele%CC%81ctricaAmoblado%20y.mp4"
+    ],
+    "DU_zZirkZNf": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DU_zZirkZNf/Town%20House%20en%20VentaUrb%20Colinas%20del%20VientoEste%20de%20Barquisimeto%F0%9F%93%8F120mt2%F0%9F%9B%8F%EF%B8%8F3%20habitaciones%20%F0%9F%9B%802%20ban%CC%83os.mp4"
+    ],
+    "DU3TDR_kcP4": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DU3TDR_kcP4/%F0%9F%8F%ACHotel%20en%20VentaTucacas%20%F0%9F%8C%B43.400%20Mt2%F0%9F%93%8D39%20Habitaciones%20%F0%9F%9B%8F%EF%B8%8F%20Salida%20a%20la%20playa%20%F0%9F%8F%96%EF%B8%8F%20Piscina%20%F0%9F%8F%8A%F0%9F%8F%BC_%E2%99%80%EF%B8%8FLo.mp4"
+    ],
+    "DUTIefzDRUa": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DUTIefzDRUa/Town%20House%20en%20VentaUrb%20Colinas%20del%20VientoEste%20de%20BarquisimetoConectada%20a%20planta%20ele%CC%81ctrica%20%E2%9A%A1%EF%B8%8F%20%E2%8F%B2%EF%B8%8FA.mp4"
+    ],
+    "DUBIC4RDW3Y": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DUBIC4RDW3Y/%F0%9F%8F%99%EF%B8%8F%20Apartamento%20de%202%20pisos%F0%9F%8D%83Urb%20Colinas%20del%20Viento%F0%9F%8C%87Este%20de%20BarquisimetoConectado%20a%20planta%20ele%CC%81ct.mp4"
+    ],
+    "DTdX1pvjds-": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_genesisinmuebles_DTdX1pvjds-/%F0%9F%8F%A0Casa%20amplia%20de%20dos%20plantas%2C%20ideal%20para%20familia%20grande%2C%20ubicada%20en%20una%20zona%20con%20servicios%20ba%CC%81sic.mp4"
+    ],
+    "DaqT0JIRQ7o": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DaqT0JIRQ7o/Terra%20Tiuna%20Condominio%20top%20%F0%9F%92%8E%20(Precio%20al%20final%20de%20la%20descripcio%CC%81n)%20%F0%9F%91%87%F0%9F%8F%BB%C2%A1No%20pierdas%20tiempo%20en%20remo.mp4"
+    ],
+    "DZh_mYFRhyB": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DZh_mYFRhyB/%E2%9C%A8%C2%A1Oficina%20en%20venta!%20El%20epicentro%20de%20los%20negocios%20te%20espera%2C%20el%20espacio%20perfecto%20para%20disen%CC%83ar%20tu%20.mp4"
+    ],
+    "DZKVjpVOoqG": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DZKVjpVOoqG/%E2%9C%A8%C2%A1Oficina%20en%20venta!%20El%20epicentro%20de%20los%20negocios%20te%20espera%2C%20el%20espacio%20perfecto%20para%20disen%CC%83ar%20tu%20%20(1).mp4"
+    ],
+    "DZDyww2Bjdi": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DZDyww2Bjdi/En%20Venta%20%2C%20Chalet%20de%201600mts%20en%3B%20%F0%9F%93%8DCumbres%20de%20Guayamure.%F0%9F%91%89%F0%9F%8F%BCEscapa%20de%20la%20rutina%20en%20este%20exclusiv.mp4"
+    ],
+    "DZAwe8XxZha": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DZAwe8XxZha/Una%20casa%20moderna%20en%20el%20este%2C%20con%20planta%20ele%CC%81ctrica%20y%20excelentes%20a%CC%81reas%20comunes%20%E2%9C%A8te%20la%20tengo%20!%20%F0%9F%94%91Ur.mp4"
+    ],
+    "DYU2nr2RPKu": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DYU2nr2RPKu/%F0%9F%A4%A9En%20Segovia%20Plaza%20encuentras%20la%20comodidad%20de%20vivir%20en%20el%20Este%E2%9C%A8Apartamento%20en%20Venta%20Con%20%F0%9F%93%90127mts.mp4"
+    ],
+    "DYPNEG4xq63": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DYPNEG4xq63/En%20uno%20de%20los%20urbanismos%20ma%CC%81s%20exclusivos%20del%20este%20de%20BarquisimetoUrb.%20Monte%20Real800m2%20parcela550m.mp4"
+    ],
+    "DWKRA--kV4Y": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DWKRA--kV4Y/Tu%20propio%20oasis%20privado%20en%20las%20alturas-%20Piscina%2C%20parrillera%20y%20el%20mejor%20clima%20de%20Lara.%20Con%201080mt.mp4"
+    ],
+    "DV6aTA9kRna": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DV6aTA9kRna/%E2%9C%A8%20OPORTUNIDAD%20COMERCIAL%20Y%20TERRENO%20EN%20QUI%CC%81BOR%20%E2%9C%A8Quibor%20-%20Excelente%20terreno%20y%20casa%20comercial%20Ubicado.mp4"
+    ],
+    "DVyXY-aERlg": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DVyXY-aERlg/%E2%9C%A8%C2%BFCua%CC%81nto%20crees%20que%20cuesta%20una%20Casa%20Moderna%20en%20el%20Este%20de%20Barquisimeto%F0%9F%91%89%F0%9F%8F%BCTotalmente%20remodelada%20y.mp4"
+    ],
+    "DVw8UTxEb0p": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DVw8UTxEb0p/%C2%BFTienes%20un%20proyecto%20que%20desarrollar%20pero%20todavi%CC%81a%20no%20cuentas%20con%20las%20instalaciones%20adecuadas%20%20Que%CC%81.mp4"
+    ],
+    "DViv3FnAEJc": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DViv3FnAEJc/%C2%BFDonde%20tienes%20tu%20Hogar%20%20En%20Villa%20Esmeralda%20encuentras%20cada%20detalle%20que%20tu%20familia%20necesita%20para%20.mp4"
+    ],
+    "DVYoPkRka3f": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DVYoPkRka3f/Apartamento%20en%20venta%20en%20El%20Este%20de%20BarquisimetoAv.%20Los%20LeonesEdif.%20Makanaima86m23%20Habitaciones2%20.mp4"
+    ],
+    "DU-5NGFESkk": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DU-5NGFESkk/Moderna%20y%20exclusiva%20en%20una%20zona%20top%20de%20Barquisimeto%E2%80%A6%F0%9F%9A%80Urb.%20Barici%20360mts%205%20habitaciones%205%20ban%CC%83os%20.mp4"
+    ],
+    "DUnxBbGkTVw": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DUnxBbGkTVw/TERRENO%20COMERCIAL%20EN%20ESQUINA%20ESTRATE%CC%81GICA%20%E2%80%A6Si%20esta%CC%81s%20buscando%20llevar%20a%20otro%20nivel%20tu%20proyecto%2C%20est.mp4"
+    ],
+    "DUX9CAYkREo": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DUX9CAYkREo/Encontrar%20un%20apto%20moderno%20en%20el%20este%2C%20no%20es%20un%20problema%E2%80%A6Aqui%CC%81%20lo%20encontramos%20para%20ti%20%F0%9F%98%8CApartament.mp4"
+    ],
+    "DUQTBcqka3M": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DUQTBcqka3M/Un%20apartamento%20que%20lo%20tiene%20todo%20%2C%20solo%20necesitas%20traer%20tu%20ropa%20y%20listo%20%E2%80%A6%F0%9F%9A%80%F0%9F%AA%B4Totalmente%20amoblado.mp4"
+    ],
+    "DT2yZtZjIfZ": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DT2yZtZjIfZ/%F0%9F%8F%ADInvierte%20en%20tu%20pro%CC%81ximo%20proyecto%20comercial%20%E2%9C%A8%F0%9F%93%8D%20Centro%20de%20Barquisimeto%20-%20Zona%20estrate%CC%81gica%20y%20de%20f.mp4"
+    ],
+    "DTmCQ-sEVnj": [
+      "https://pub-0396125c6071462aa9f92fbcb727652c.r2.dev/Barquisimeto_merlynchavez_remax_DTmCQ-sEVnj/Apartamento%20en%20Venta%20%E2%80%93%20Residencias%20Lafayyete%2C%20Nueva%20SegoviaUbicado%20en%20uno%20de%20los%20edificios%20ma%CC%81s%20e.mp4"
     ]
   }
 }

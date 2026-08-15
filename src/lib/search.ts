@@ -84,7 +84,7 @@ export function buscarTexto(query: string): Listing[] {
     })
     .sort((a, b) =>
       Number(b.listing.indexable) - Number(a.listing.indexable) ||
-      b.listing.fotosCount - a.listing.fotosCount ||
+      (b.listing.fotosCount + b.listing.videosCount) - (a.listing.fotosCount + a.listing.videosCount) ||
       (b.listing.precio ?? 0) - (a.listing.precio ?? 0)
     )
     .map(({ listing }) => listing);

@@ -88,7 +88,8 @@ test("deduplicar conserva la publicación más completa", () => {
     operacion: "venta", tipo: "apartamento", estado: "lara", estadoNombre: "Lara",
     ciudad: "barquisimeto", ciudadNombre: "Barquisimeto", barrio: "del-este", barrioNombre: "Del Este",
     precio: 45000, m2: 90, habitaciones: 3, banos: 2, estacionamientos: null, areaTerreno: null,
-    amoblado: null, amenidades: [], whatsapp: null, fotos: [], titulo: "t", slug: "s",
+    amoblado: null, amenidades: [], whatsapp: null, fotos: [], fotosCount: 0,
+    videos: [], videosCount: 0, titulo: "t", slug: "s",
     fuente: { handle: null, postUrl: null, driveUrl: null },
     dataQuality: "completo", indexable: true,
   } as unknown as Listing;
@@ -119,7 +120,7 @@ test("deduplicar no agrupa fichas sin nada que las distinga", () => {
   assert.equal(unicas.length, 2);
 });
 
-test("las fotos publicadas son URLs verificadas y no hay fichas indexables sin imagen", () => {
+test("los medios publicados son URLs verificadas y no hay fichas indexables sin contenido visual", () => {
   const listings = JSON.parse(
     readFileSync(join(process.cwd(), "data", "listings.json"), "utf8")
   ) as Listing[];
@@ -130,14 +131,16 @@ test("las fotos publicadas son URLs verificadas y no hay fichas indexables sin i
 
   for (const listing of listings) {
     assert.equal(listing.fotosCount, listing.fotos.length, `${listing.publicId}: contador incorrecto`);
+    assert.equal(listing.videosCount, listing.videos.length, `${listing.publicId}: contador de videos incorrecto`);
     assert.equal(new Set(listing.fotos).size, listing.fotos.length, `${listing.publicId}: fotos duplicadas`);
-    for (const foto of listing.fotos) {
-      const url = new URL(foto);
-      assert.equal(url.protocol, "https:", `${listing.publicId}: la foto no usa HTTPS`);
+    assert.equal(new Set(listing.videos).size, listing.videos.length, `${listing.publicId}: videos duplicados`);
+    for (const medio of [...listing.fotos, ...listing.videos]) {
+      const url = new URL(medio);
+      assert.equal(url.protocol, "https:", `${listing.publicId}: el medio no usa HTTPS`);
       assert.equal(url.origin, cdnOrigin, `${listing.publicId}: origen CDN inesperado`);
     }
     if (listing.indexable) {
-      assert.ok(listing.fotos.length > 0, `${listing.publicId}: indexable sin foto real`);
+      assert.ok(listing.fotos.length + listing.videos.length > 0, `${listing.publicId}: indexable sin medio real`);
     }
   }
 });
