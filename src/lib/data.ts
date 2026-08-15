@@ -51,6 +51,24 @@ export type Filtro = {
   habitaciones?: number;
 };
 
+/** Cuantos medios trae una ficha. Una sola imagen no es una galeria. */
+export const medios = (l: Listing) => l.fotosCount + l.videosCount;
+
+/**
+ * Orden de cualquier lista de inmuebles.
+ *
+ * Manda cuantas fotos trae la ficha, y solo despues el precio. El 43% de las
+ * publicaciones de origen trae una sola imagen, asi que ordenar por precio
+ * llenaba la parte alta de fichas de una foto: 14 de las 24 primeras. Nadie
+ * escribe por WhatsApp a un inmueble del que solo ve una foto.
+ *
+ * Es el mismo criterio que ya usaba el buscador (search.ts), que ahora lo reusa.
+ */
+export const porRelevancia = (a: Listing, b: Listing) =>
+  Number(b.indexable) - Number(a.indexable) ||
+  medios(b) - medios(a) ||
+  (b.precio ?? 0) - (a.precio ?? 0);
+
 export function buscar(f: Filtro): Listing[] {
   return LISTINGS.filter(
     (l) =>
@@ -60,7 +78,7 @@ export function buscar(f: Filtro): Listing[] {
       (!f.ciudad || l.ciudad === f.ciudad) &&
       (!f.barrio || l.barrio === f.barrio) &&
       (!f.habitaciones || l.habitaciones === f.habitaciones)
-  ).sort((a, b) => Number(b.indexable) - Number(a.indexable) || (b.precio ?? 0) - (a.precio ?? 0));
+  ).sort(porRelevancia);
 }
 
 /** §10.4 anti-thin-content: un listado solo se indexa con 3 o mas inmuebles. */
@@ -71,7 +89,7 @@ export const esIndexable = (n: number) => n >= UMBRAL_LISTADO;
 export function similares(l: Listing, n = 4): Listing[] {
   return LISTINGS.filter(
     (o) => o.publicId !== l.publicId && o.ciudad === l.ciudad && o.tipo === l.tipo && o.operacion === l.operacion
-  ).slice(0, n);
+  ).sort(porRelevancia).slice(0, n);
 }
 
 /** Combinaciones op x tipo x ubicacion con inventario real, con su conteo. */
@@ -153,7 +171,7 @@ export function medianaM2Ciudad(ciudad: string, operacion: Operacion): number | 
 export function delMismoAnunciante(l: Listing, n = 3): { total: number; muestra: Listing[] } {
   if (!l.fuente.handle) return { total: 0, muestra: [] };
   const suyos = LISTINGS.filter((o) => o.fuente.handle === l.fuente.handle && o.publicId !== l.publicId);
-  return { total: suyos.length, muestra: suyos.slice(0, n) };
+  return { total: suyos.length, muestra: [...suyos].sort(porRelevancia).slice(0, n) };
 }
 
 export const cuantos = (f: Partial<Pick<Listing, "ciudad" | "estado" | "barrio" | "tipo" | "operacion">>) =>

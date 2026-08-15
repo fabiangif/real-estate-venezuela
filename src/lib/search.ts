@@ -1,4 +1,4 @@
-import { LISTINGS, LOCATIONS } from "./data";
+import { LISTINGS, LOCATIONS, porRelevancia } from "./data";
 import { TIPO_LABEL, type Listing } from "./types";
 import { normalizarTexto, terminosBusqueda } from "./search-core";
 
@@ -82,11 +82,7 @@ export function buscarTexto(query: string): Listing[] {
         return (esEstructurado ? palabrasEstructuradas : palabrasCompletas).has(termino);
       });
     })
-    .sort((a, b) =>
-      Number(b.listing.indexable) - Number(a.listing.indexable) ||
-      (b.listing.fotosCount + b.listing.videosCount) - (a.listing.fotosCount + a.listing.videosCount) ||
-      (b.listing.precio ?? 0) - (a.listing.precio ?? 0)
-    )
+    .sort((a, b) => porRelevancia(a.listing, b.listing))
     .map(({ listing }) => listing);
 }
 

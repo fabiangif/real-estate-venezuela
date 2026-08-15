@@ -60,6 +60,16 @@ export const IconWhatsapp = ({ className = "", size = 20 }: P) => (
   </svg>
 );
 
+/* El CTA cae a Instagram cuando el anunciante no dejó numero: el icono tiene que
+   decir la verdad sobre a donde lleva el boton. */
+export const IconInstagram = (p: P) => (
+  <Svg {...p}>
+    <rect x="3" y="3" width="18" height="18" rx="5" />
+    <circle cx="12" cy="12" r="4" />
+    <path d="M16.9 7.1h.01" />
+  </Svg>
+);
+
 /* Un icono por tipo de inmueble: son las categorías de la tira superior. */
 
 const Apartamento = (p: P) => (

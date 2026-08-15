@@ -3,7 +3,7 @@ import { formatPrecio, TIPO_LABEL, OPERACION_LABEL, type Listing } from "@/lib/t
 import { similares, rutaListado, rutaFicha, precioM2, medianaM2Ciudad, delMismoAnunciante, cuantos } from "@/lib/data";
 import { Grid, Seccion, MiniFila } from "@/components/ui";
 import MediaGallery from "@/components/MediaGallery";
-import { IconBed, IconBath, IconArea, IconCar, IconCheck, IconPin, IconWhatsapp, IconChevron } from "@/components/icons";
+import { IconBed, IconBath, IconArea, IconCar, IconCheck, IconPin, IconWhatsapp, IconInstagram, IconChevron } from "@/components/icons";
 
 import { SITIO as SITE } from "@/lib/seo";
 
@@ -15,22 +15,25 @@ const AMENIDAD_LABEL: Record<string, string> = {
 };
 
 /** §9: el CTA lleva el mensaje precargado y la URL del inmueble. */
-function ctaWhatsapp(l: Listing) {
+function contacto(l: Listing) {
   const url = `${SITE}${rutaFicha(l)}`;
   if (l.whatsapp) {
     return {
       href: `https://wa.me/${l.whatsapp.replace(/\D/g, "")}?text=${encodeURIComponent(`Hola, me interesa este inmueble: ${url}`)}`,
       label: "Contactar por WhatsApp",
+      Icono: IconWhatsapp,
     };
   }
-  // fallback documentado: si no hay número, se cae al perfil de origen
+  // fallback documentado: si no hay número, se cae al perfil de origen.
+  // El icono viaja con el canal: un logo de WhatsApp sobre "Contactar por
+  // Instagram" hace dudar de a donde lleva el boton justo en la conversion.
   return l.fuente.handle
-    ? { href: `https://instagram.com/${l.fuente.handle}`, label: "Contactar por Instagram" }
+    ? { href: `https://instagram.com/${l.fuente.handle}`, label: "Contactar por Instagram", Icono: IconInstagram }
     : null;
 }
 
 export default function Ficha({ l }: { l: Listing }) {
-  const cta = ctaWhatsapp(l);
+  const cta = contacto(l);
   const sim = similares(l);
   const tipoNombre = TIPO_LABEL[l.tipo].singular;
 
@@ -211,7 +214,7 @@ export default function Ficha({ l }: { l: Listing }) {
               {cta ? (
                 <a href={cta.href} target="_blank" rel="noopener noreferrer"
                   className="mt-4 flex items-center justify-center gap-2 rounded-full bg-acento px-5 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90">
-                  <IconWhatsapp size={18} />{cta.label}
+                  <cta.Icono size={18} />{cta.label}
                 </a>
               ) : (
                 <p className="mt-4 text-sm text-tinta-3">Sin datos de contacto disponibles.</p>
