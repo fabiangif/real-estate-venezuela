@@ -2,19 +2,18 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Buscador, type OpcionCiudad } from "./Buscador";
-import type { Tipo } from "@/lib/types";
+import { Buscador } from "./Buscador";
 
 /**
- * Navbar fija que se encoge al bajar, como la de Airbnb: el buscador pierde sus
- * etiquetas y la barra gana sombra, devolviendo altura de pantalla al contenido.
+ * Navbar fija que se encoge al bajar: el buscador reduce su altura y la barra gana
+ * sombra, devolviendo espacio de pantalla al contenido.
  *
  * El scroll se lee dentro de un requestAnimationFrame para no forzar layout en cada
  * evento; React descarta el re-render cuando el booleano no cambia, asi que en la
  * practica solo hay dos renders en todo el recorrido.
  * Las transiciones se anulan solas con prefers-reduced-motion (ver globals.css).
  */
-export function Header({ ciudades, tipos }: { ciudades: OpcionCiudad[]; tipos: Tipo[] }) {
+export function Header({ sugerencias }: { sugerencias: string[] }) {
   const [compacto, setCompacto] = useState(false);
 
   useEffect(() => {
@@ -60,7 +59,7 @@ export function Header({ ciudades, tipos }: { ciudades: OpcionCiudad[]; tipos: T
             compacto ? "lg:max-w-[27rem]" : "lg:max-w-[32rem]"
           }`}
         >
-          <Buscador ciudades={ciudades} tipos={tipos} compacto={compacto} />
+          <Buscador sugerencias={sugerencias} compacto={compacto} />
         </div>
 
         <div className="justify-self-end">

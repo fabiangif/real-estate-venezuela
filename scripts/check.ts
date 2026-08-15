@@ -5,7 +5,11 @@
  * Uso: npm run check
  */
 import { strict as assert } from "node:assert";
+import { existsSync, readFileSync } from "node:fs";
+import { join } from "node:path";
 import { slugify } from "../src/lib/types.ts";
+import { normalizarTexto, terminosBusqueda } from "../src/lib/search-core.ts";
+import { LOCATION_IMAGES, locationImage } from "../src/lib/location-images.ts";
 import { dentro } from "../src/lib/geo.ts";
 import { e164, titleCase, redondear, deduplicar } from "./import.ts";
 import type { Listing } from "../src/lib/types.ts";
@@ -21,6 +25,29 @@ test("slugify quita acentos y espacios", () => {
   assert.equal(slugify("  Los Palos Grandes "), "los-palos-grandes");
   assert.equal(slugify("La Trigaleña"), "la-trigalena");
   assert.equal(slugify("Zona Industrial II"), "zona-industrial-ii");
+});
+
+test("la búsqueda unifica sinónimos, acentos y palabras vacías", () => {
+  assert.equal(normalizarTexto("APTOS con 3 hab. y planta eléctrica"), "apartamento con 3 habitacion y planta electrica");
+  assert.deepEqual(
+    terminosBusqueda("Quiero apartamentos en alquiler en Caracas con piscina"),
+    ["apartamento", "alquiler", "caracas", "piscina"]
+  );
+});
+
+test("cada ciudad y estado publicado tiene una imagen local relacionada", () => {
+  const locations = JSON.parse(
+    readFileSync(join(process.cwd(), "data", "locations.json"), "utf8")
+  ) as { slug: string; ciudades: { slug: string }[] }[];
+
+  for (const estado of locations) {
+    assert.ok(locationImage(undefined, estado.slug), `falta imagen para el estado ${estado.slug}`);
+    for (const ciudad of estado.ciudades) {
+      const image = LOCATION_IMAGES[ciudad.slug];
+      assert.ok(image, `falta imagen para la ciudad ${ciudad.slug}`);
+      assert.ok(existsSync(join(process.cwd(), "public", image.src)), `no existe ${image.src}`);
+    }
+  }
 });
 
 test("e164 acepta móviles venezolanos y rechaza el resto", () => {
@@ -90,6 +117,29 @@ test("deduplicar no agrupa fichas sin nada que las distinga", () => {
   ]);
   assert.equal(retirados, 0, "sin precio ni área podrían ser inmuebles realmente distintos");
   assert.equal(unicas.length, 2);
+});
+
+test("las fotos publicadas son URLs verificadas y no hay fichas indexables sin imagen", () => {
+  const listings = JSON.parse(
+    readFileSync(join(process.cwd(), "data", "listings.json"), "utf8")
+  ) as Listing[];
+  const manifest = JSON.parse(
+    readFileSync(join(process.cwd(), "data", "cdn-images.json"), "utf8")
+  ) as { baseUrl: string };
+  const cdnOrigin = new URL(manifest.baseUrl).origin;
+
+  for (const listing of listings) {
+    assert.equal(listing.fotosCount, listing.fotos.length, `${listing.publicId}: contador incorrecto`);
+    assert.equal(new Set(listing.fotos).size, listing.fotos.length, `${listing.publicId}: fotos duplicadas`);
+    for (const foto of listing.fotos) {
+      const url = new URL(foto);
+      assert.equal(url.protocol, "https:", `${listing.publicId}: la foto no usa HTTPS`);
+      assert.equal(url.origin, cdnOrigin, `${listing.publicId}: origen CDN inesperado`);
+    }
+    if (listing.indexable) {
+      assert.ok(listing.fotos.length > 0, `${listing.publicId}: indexable sin foto real`);
+    }
+  }
 });
 
 if (!process.exitCode) console.log(`${n}/${n} checks OK`);

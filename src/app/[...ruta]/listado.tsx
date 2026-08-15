@@ -3,6 +3,8 @@ import { formatPrecio, TIPO_LABEL, OPERACION_LABEL, type Listing, type Operacion
 import { buscar, resolveUbicacion, rutaListado, rutaPagina, esIndexable, UMBRAL_LISTADO, POR_PAGINA, MAX_FACETA_HAB, LISTINGS } from "@/lib/data";
 import { Grid, Chips, Seccion } from "@/components/ui";
 import { TipoStrip } from "@/components/TipoStrip";
+import { LocationHero } from "@/components/LocationHero";
+import { locationImage } from "@/lib/location-images";
 
 export type Ctx = {
   operacion: Operacion; tipo: Tipo; ubicacion: string[];
@@ -180,6 +182,8 @@ function Paginacion({ c }: { c: Ctx }) {
 export default function Listado({ c }: { c: Ctx }) {
   const n = c.todos.length;
   const h1 = tituloListado(c);
+  const heroImage = locationImage(c.ciudadSlug, c.estadoSlug);
+  const indicadores = cifras(c);
 
   // interlinking: barrios de la misma ciudad, otros tipos, operacion opuesta
   const chipsBarrio = c.ciudadSlug
@@ -250,25 +254,58 @@ export default function Listado({ c }: { c: Ctx }) {
 
       <TipoStrip items={tiposStrip} activo={c.tipo} />
 
+      {heroImage && (
+        <LocationHero image={heroImage}>
+          <nav aria-label="Ruta" className="text-sm text-white/75">
+            <Link href="/" className="hover:text-white hover:underline">Inicio</Link>
+            <span className="mx-1.5 text-white/45">›</span>
+            <span className="text-white">{c.lugar}</span>
+          </nav>
+
+          <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-white/70">
+            Mercado inmobiliario · {heroImage.city}
+          </p>
+          <h1 className="mt-2 max-w-4xl text-2xl font-semibold tracking-[-0.025em] text-white sm:text-3xl">
+            {h1}
+          </h1>
+          <p className="mt-3 max-w-3xl text-sm leading-relaxed text-white/80 sm:text-base">{intro(c)}</p>
+
+          {indicadores.length > 0 && (
+            <dl className="mt-6 grid max-w-3xl grid-cols-2 gap-2 sm:grid-cols-4">
+              {indicadores.map((s) => (
+                <div key={s.k} className="rounded-card border border-white/20 bg-black/25 px-4 py-3 backdrop-blur-sm">
+                  <dt className="text-xs text-white/65">{s.k}</dt>
+                  <dd className="tabular mt-0.5 text-lg font-bold text-white">{s.v}</dd>
+                </div>
+              ))}
+            </dl>
+          )}
+        </LocationHero>
+      )}
+
       <div className="mx-auto max-w-7xl px-5 py-8">
-        <nav aria-label="Ruta" className="text-sm text-tinta-2">
-          <Link href="/" className="hover:text-tinta hover:underline">Inicio</Link>
-          <span className="mx-1.5 text-tinta-3">›</span>
-          <span className="text-tinta">{c.lugar}</span>
-        </nav>
+        {!heroImage && (
+          <>
+            <nav aria-label="Ruta" className="text-sm text-tinta-2">
+              <Link href="/" className="hover:text-tinta hover:underline">Inicio</Link>
+              <span className="mx-1.5 text-tinta-3">›</span>
+              <span className="text-tinta">{c.lugar}</span>
+            </nav>
 
-        <h1 className="mt-3 max-w-3xl text-xl font-semibold tracking-[-0.02em] sm:text-2xl">{h1}</h1>
-        <p className="mt-3 max-w-2xl leading-relaxed text-tinta-2">{intro(c)}</p>
+            <h1 className="mt-3 max-w-3xl text-xl font-semibold tracking-[-0.02em] sm:text-2xl">{h1}</h1>
+            <p className="mt-3 max-w-2xl leading-relaxed text-tinta-2">{intro(c)}</p>
 
-        {cifras(c).length > 0 && (
-          <dl className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:max-w-3xl">
-            {cifras(c).map((s) => (
-              <div key={s.k} className="rounded-card bg-crema px-4 py-3">
-                <dt className="text-xs text-tinta-2">{s.k}</dt>
-                <dd className={`tabular mt-0.5 text-lg font-bold ${s.color}`}>{s.v}</dd>
-              </div>
-            ))}
-          </dl>
+            {indicadores.length > 0 && (
+              <dl className="mt-6 grid grid-cols-2 gap-3 sm:grid-cols-4 lg:max-w-3xl">
+                {indicadores.map((s) => (
+                  <div key={s.k} className="rounded-card bg-crema px-4 py-3">
+                    <dt className="text-xs text-tinta-2">{s.k}</dt>
+                    <dd className={`tabular mt-0.5 text-lg font-bold ${s.color}`}>{s.v}</dd>
+                  </div>
+                ))}
+              </dl>
+            )}
+          </>
         )}
 
         {facetasHab.length > 0 && (

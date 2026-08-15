@@ -16,7 +16,7 @@ import { parseListado, tituloListado } from "@/app/[...ruta]/listado";
  * El contenido se DERIVA de la data a partir del id o de la ruta; nunca se pinta
  * texto libre que venga en la query.
  */
-export const size = { width: 1200, height: 630 };
+const size = { width: 1200, height: 630 };
 
 const ACENTO = "#d9480f";
 const TINTA = "#16130f";

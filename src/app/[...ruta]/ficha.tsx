@@ -147,11 +147,23 @@ export default function Ficha({ l }: { l: Listing }) {
           <div className="min-w-0">
             <Seccion titulo="Galería">
               <div className="grid gap-3 sm:grid-cols-2">
-                <div className="sm:col-span-2"><Foto listing={l} priority ratio="aspect-[16/9]" sizes="(max-width:1024px) 100vw, 60vw" /></div>
+                {l.fotos.length > 0 ? l.fotos.map((src, index) => (
+                  <div key={src} className={index === 0 ? "sm:col-span-2" : undefined}>
+                    <Foto
+                      listing={l}
+                      src={src}
+                      alt={`${l.titulo} — foto ${index + 1}`}
+                      preload={index === 0}
+                      ratio={index === 0 ? "aspect-[16/9]" : "aspect-[4/3]"}
+                      sizes={index === 0 ? "(max-width:1024px) 100vw, 60vw" : "(max-width:640px) 100vw, 30vw"}
+                    />
+                  </div>
+                )) : (
+                  <div className="sm:col-span-2">
+                    <Foto listing={l} ratio="aspect-[16/9]" sizes="(max-width:1024px) 100vw, 60vw" />
+                  </div>
+                )}
               </div>
-              {l.fotos.length === 0 && l.fotosCount > 0 && (
-                <p className="mt-2 text-xs text-tinta-3">Este inmueble tiene {l.fotosCount} {l.fotosCount === 1 ? "foto publicada" : "fotos publicadas"} por el anunciante.</p>
-              )}
             </Seccion>
 
             {l.descripcion && (

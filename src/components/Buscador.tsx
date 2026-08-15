@@ -1,83 +1,172 @@
 "use client";
 
-import { useRouter } from "next/navigation";
-import { useState } from "react";
-import { TIPO_LABEL, type Operacion, type Tipo } from "@/lib/types";
+import { Suspense, useEffect, useMemo, useRef, useState } from "react";
+import { usePathname, useSearchParams } from "next/navigation";
+import { normalizarTexto } from "@/lib/search-core";
 import { IconSearch } from "./icons";
 
-export type OpcionCiudad = { slug: string; nombre: string; estado: string };
+const MAX_SUGERENCIAS = 7;
+
+type Props = {
+  sugerencias: string[];
+  compacto?: boolean;
+};
+
+/** El Suspense conserva el HTML estático del layout mientras Next resuelve la URL. */
+export function Buscador(props: Props) {
+  return (
+    <Suspense fallback={<CampoBusqueda {...props} valorInicial="" />}>
+      <BusquedaConUrl {...props} />
+    </Suspense>
+  );
+}
+
+function BusquedaConUrl(props: Props) {
+  const pathname = usePathname();
+  const searchParams = useSearchParams();
+  const valorInicial = pathname === "/buscar" ? searchParams.get("q")?.slice(0, 100) ?? "" : "";
+  return <CampoBusqueda key={`${pathname}:${valorInicial}`} {...props} valorInicial={valorInicial} />;
+}
 
 /**
- * Pill de búsqueda de la navbar. Navega de verdad: compone la ruta pSEO y empuja.
- * Selects nativos a propósito — accesibles, con teclado, y cero JS de librería.
+ * Búsqueda global con envío GET: funciona sin JavaScript y deja una URL compartible.
+ * El autocompletado mejora la experiencia, pero nunca es requisito para buscar.
  */
-export function Buscador({
-  ciudades, tipos, compacto = false,
-}: { ciudades: OpcionCiudad[]; tipos: Tipo[]; compacto?: boolean }) {
-  const router = useRouter();
-  const [operacion, setOperacion] = useState<Operacion>("venta");
-  const [tipo, setTipo] = useState<Tipo>(tipos.includes("apartamento") ? "apartamento" : tipos[0]);
-  const [ciudad, setCiudad] = useState(ciudades[0]?.slug ?? "");
+function CampoBusqueda({
+  sugerencias,
+  compacto = false,
+  valorInicial,
+}: Props & { valorInicial: string }) {
+  const formRef = useRef<HTMLFormElement>(null);
+  const contenedorRef = useRef<HTMLDivElement>(null);
+  const [texto, setTexto] = useState(valorInicial);
+  const [abierto, setAbierto] = useState(false);
+  const [activo, setActivo] = useState(-1);
 
-  function buscar(e: React.FormEvent) {
-    e.preventDefault();
-    const c = ciudades.find((x) => x.slug === ciudad);
-    if (!c) return;
-    router.push(`/${operacion}/${TIPO_LABEL[tipo].slug}/${c.slug}/${c.estado}`);
+  useEffect(() => {
+    const cerrarFuera = (evento: PointerEvent) => {
+      if (!contenedorRef.current?.contains(evento.target as Node)) setAbierto(false);
+    };
+    document.addEventListener("pointerdown", cerrarFuera);
+    return () => document.removeEventListener("pointerdown", cerrarFuera);
+  }, []);
+
+  const opciones = useMemo(() => {
+    const consulta = normalizarTexto(texto);
+    if (!consulta) return sugerencias.slice(0, MAX_SUGERENCIAS);
+    const terminos = consulta.split(" ").filter(Boolean);
+    return sugerencias
+      .filter((sugerencia) => {
+        const normalizada = normalizarTexto(sugerencia);
+        return terminos.every((termino) => normalizada.includes(termino));
+      })
+      .slice(0, MAX_SUGERENCIAS);
+  }, [sugerencias, texto]);
+  const listaVisible = abierto && opciones.length > 0;
+
+  function seleccionar(valor: string) {
+    setTexto(valor);
+    setAbierto(false);
+    setActivo(-1);
+    requestAnimationFrame(() => formRef.current?.requestSubmit());
   }
 
-  // al compactar desaparecen las etiquetas y queda solo el valor: misma funcion, menos altura
-  const segmento = `flex min-w-0 flex-1 flex-col justify-center text-left transition-[padding] duration-200 ${
-    compacto ? "px-3 py-1.5 sm:px-4" : "px-3 py-2 sm:px-5"
-  }`;
-  const etiqueta = `overflow-hidden text-[11px] font-semibold leading-tight text-tinta transition-all duration-200 ${
-    compacto ? "h-0 opacity-0" : "h-4 opacity-100"
-  }`;
-  const campo =
-    "-ml-1 w-full cursor-pointer appearance-none truncate bg-transparent text-sm leading-tight text-tinta-2 outline-none";
+  function alTeclado(evento: React.KeyboardEvent<HTMLInputElement>) {
+    if (evento.key === "Escape") {
+      setAbierto(false);
+      setActivo(-1);
+      return;
+    }
+    if (evento.key === "ArrowDown") {
+      evento.preventDefault();
+      setAbierto(true);
+      setActivo((actual) => Math.min(actual + 1, opciones.length - 1));
+      return;
+    }
+    if (evento.key === "ArrowUp") {
+      evento.preventDefault();
+      setAbierto(true);
+      setActivo((actual) => Math.max(actual - 1, 0));
+      return;
+    }
+    if (evento.key === "Enter" && activo >= 0 && opciones[activo]) {
+      evento.preventDefault();
+      seleccionar(opciones[activo]);
+    }
+  }
+
+  const alto = compacto ? "h-10" : "h-12";
 
   return (
-    <form
-      onSubmit={buscar}
-      className="flex w-full items-center rounded-full border border-borde bg-papel shadow-[var(--shadow-pill)] transition-shadow hover:shadow-[var(--shadow-pill-hover)]"
-    >
-      <div className={segmento}>
-        <label htmlFor="b-op" className={etiqueta}>Operación</label>
-        <select id="b-op" className={campo} value={operacion} onChange={(e) => setOperacion(e.target.value as Operacion)}>
-          <option value="venta">En venta</option>
-          <option value="alquiler">En alquiler</option>
-        </select>
-      </div>
-
-      <span className={`w-px shrink-0 bg-borde transition-[height] duration-200 ${compacto ? "h-5" : "h-8"}`} />
-
-      <div className={segmento}>
-        <label htmlFor="b-tipo" className={etiqueta}>Tipo</label>
-        <select id="b-tipo" className={campo} value={tipo} onChange={(e) => setTipo(e.target.value as Tipo)}>
-          {tipos.map((t) => (
-            <option key={t} value={t}>{TIPO_LABEL[t].plural}</option>
-          ))}
-        </select>
-      </div>
-
-      <span className={`w-px shrink-0 bg-borde transition-[height] duration-200 ${compacto ? "h-5" : "h-8"}`} />
-
-      <div className={segmento}>
-        <label htmlFor="b-ciudad" className={etiqueta}>Dónde</label>
-        <select id="b-ciudad" className={campo} value={ciudad} onChange={(e) => setCiudad(e.target.value)}>
-          {ciudades.map((c) => (
-            <option key={c.slug} value={c.slug}>{c.nombre}</option>
-          ))}
-        </select>
-      </div>
-
-      <button
-        type="submit"
-        aria-label="Buscar inmuebles"
-        className={`m-1.5 grid shrink-0 place-content-center rounded-full bg-acento text-white transition-[width,height,opacity] duration-200 hover:opacity-90 ${compacto ? "size-8" : "size-10"}`}
+    <div ref={contenedorRef} className="relative w-full">
+      <form
+        ref={formRef}
+        action="/buscar"
+        method="get"
+        role="search"
+        onSubmit={() => setAbierto(false)}
+        className={`flex ${alto} w-full items-center rounded-full border border-borde bg-papel pl-4 shadow-[var(--shadow-pill)] transition-[height,box-shadow] duration-200 hover:shadow-[var(--shadow-pill-hover)] focus-within:border-tinta`}
       >
-        <IconSearch size={compacto ? 16 : 18} />
-      </button>
-    </form>
+        <label htmlFor="busqueda-global" className="sr-only">Buscar inmuebles</label>
+        <input
+          id="busqueda-global"
+          name="q"
+          type="search"
+          role="combobox"
+          value={texto}
+          minLength={2}
+          maxLength={100}
+          required
+          autoComplete="off"
+          enterKeyHint="search"
+          placeholder="Ciudad, zona, tipo o característica"
+          aria-label="Busca por ciudad, zona, tipo o característica"
+          aria-autocomplete="list"
+          aria-controls={listaVisible ? "sugerencias-busqueda" : undefined}
+          aria-expanded={listaVisible}
+          aria-activedescendant={listaVisible && activo >= 0 ? `sugerencia-${activo}` : undefined}
+          className="min-w-0 flex-1 bg-transparent text-sm text-tinta outline-none placeholder:text-tinta-2"
+          onChange={(evento) => {
+            setTexto(evento.target.value);
+            setAbierto(true);
+            setActivo(-1);
+          }}
+          onFocus={() => setAbierto(true)}
+          onKeyDown={alTeclado}
+        />
+        <button
+          type="submit"
+          aria-label="Buscar inmuebles"
+          className={`m-1 grid shrink-0 place-content-center rounded-full bg-acento text-white transition-[width,height,opacity] duration-200 hover:opacity-90 ${compacto ? "size-8" : "size-10"}`}
+        >
+          <IconSearch size={compacto ? 16 : 18} />
+        </button>
+      </form>
+
+      {listaVisible && (
+        <ul
+          id="sugerencias-busqueda"
+          role="listbox"
+          aria-label="Sugerencias de búsqueda"
+          className="absolute inset-x-0 top-full z-50 mt-2 overflow-hidden rounded-card border border-borde bg-papel py-2 shadow-[var(--shadow-pill-hover)]"
+        >
+          {opciones.map((opcion, indice) => (
+            <li
+              id={`sugerencia-${indice}`}
+              key={opcion}
+              role="option"
+              aria-selected={indice === activo}
+              className={`flex cursor-pointer items-center gap-3 px-4 py-2.5 text-sm ${indice === activo ? "bg-humo" : "hover:bg-humo"}`}
+              onMouseDown={(evento) => evento.preventDefault()}
+              onMouseEnter={() => setActivo(indice)}
+              onClick={() => seleccionar(opcion)}
+            >
+              <IconSearch size={16} className="shrink-0 text-tinta-3" />
+              <span className="truncate">{opcion}</span>
+            </li>
+          ))}
+        </ul>
+      )}
+    </div>
   );
 }

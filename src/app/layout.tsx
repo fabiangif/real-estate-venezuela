@@ -5,7 +5,7 @@ import "./globals.css";
 import { LISTINGS, LOCATIONS, rutaListado, destacadosPorOperacion, tiposConEnlace } from "@/lib/data";
 import { Header } from "@/components/Header";
 import { SITIO, OG_BASE } from "@/lib/seo";
-import { TIPO_LABEL, type Tipo } from "@/lib/types";
+import { sugerenciasBusqueda } from "@/lib/search";
 
 const figtree = Figtree({ variable: "--font-figtree", subsets: ["latin"], display: "swap" });
 
@@ -23,21 +23,6 @@ export const metadata: Metadata = {
   openGraph: OG_BASE,
   twitter: { card: "summary_large_image" },
 };
-
-function Logo() {
-  return (
-    <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="Inmuebles VE, inicio">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="m3 10.5 9-7 9 7V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10.5Z"
-          stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" className="text-acento" />
-        <path d="M9.5 21v-6h5v6" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" className="text-acento" />
-      </svg>
-      <span className="text-lg font-bold tracking-[-0.02em]">
-        Inmuebles<span className="text-acento">VE</span>
-      </span>
-    </Link>
-  );
-}
 
 /** Columna de enlaces del footer. Interlinking real, no decoracion. */
 function Columna({ titulo, enlaces }: { titulo: string; enlaces: { href: string; label: string; total?: number }[] }) {
@@ -121,7 +106,7 @@ function Footer() {
 
       <div className="border-t border-borde-suave bg-crema">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-6 text-xs text-tinta-2 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Inmuebles VE · Mapas © CARTO, © OpenStreetMap</p>
+          <p>© {new Date().getFullYear()} Inmuebles VE</p>
           <p className="max-w-xl sm:text-right">
             Los inmuebles son publicados por agentes e inmobiliarias. Verifica siempre los datos
             y la documentación directamente con el anunciante.
@@ -133,16 +118,13 @@ function Footer() {
 }
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-  const ciudadesNav = LOCATIONS.flatMap((e) => e.ciudades)
-    .sort((a, b) => b.total - a.total)
-    .map((c) => ({ slug: c.slug, nombre: c.nombre, estado: c.estado }));
-  const tiposNav = [...new Set(LISTINGS.map((l) => l.tipo))] as Tipo[];
+  const sugerencias = sugerenciasBusqueda();
 
   return (
     <html lang="es-VE" className={`${figtree.variable} h-full`}>
       <body className="flex min-h-full flex-col">
-        {/* identidad del sitio. Sin SearchAction todavia: requiere una URL de busqueda
-            por texto que aun no existe, y declararla apuntando a nada seria una senal falsa */}
+        {/* Identidad del sitio. Google retiró el sitelinks search box, por eso la
+            búsqueda interna no se marca como SearchAction. */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
           {
             "@context": "https://schema.org", "@type": "Organization",
@@ -151,7 +133,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           },
           { "@context": "https://schema.org", "@type": "WebSite", name: "Inmuebles VE", url: SITIO, inLanguage: "es-VE" },
         ]) }} />
-        <Header ciudades={ciudadesNav} tipos={tiposNav} />
+        <Header sugerencias={sugerencias} />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

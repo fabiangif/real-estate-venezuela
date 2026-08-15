@@ -10,14 +10,22 @@ import { ICONO_TIPO } from "./icons";
  * Sin imágenes reales muestra un marcador deliberado con el icono del tipo — nunca un roto.
  */
 export function Foto({
-  listing, priority = false, sizes = "(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw", ratio = "aspect-[4/3]",
-}: { listing: Listing; priority?: boolean; sizes?: string; ratio?: string }) {
-  const src = listing.fotos[0];
+  listing, src, alt, preload = false,
+  sizes = "(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw", ratio = "aspect-[4/3]",
+}: {
+  listing: Listing;
+  src?: string;
+  alt?: string;
+  preload?: boolean;
+  sizes?: string;
+  ratio?: string;
+}) {
+  const imageSrc = src ?? listing.fotos[0];
   const Icono = ICONO_TIPO[listing.tipo];
   return (
     <div className={`relative ${ratio} overflow-hidden rounded-card bg-humo`}>
-      {src ? (
-        <Image src={src} alt={listing.titulo} fill sizes={sizes} priority={priority}
+      {imageSrc ? (
+        <Image src={imageSrc} alt={alt ?? listing.titulo} fill sizes={sizes} preload={preload}
           className="object-cover transition-transform duration-300 group-hover:scale-[1.04]" />
       ) : (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-tinta-3">
@@ -45,7 +53,7 @@ export function BadgeOperacion({ operacion }: { operacion: Operacion }) {
 }
 
 /** Anatomía Airbnb: foto · título en negrita · detalle en gris · precio abajo. */
-export function ListingCard({ listing, priority }: { listing: Listing; priority?: boolean }) {
+export function ListingCard({ listing, preload }: { listing: Listing; preload?: boolean }) {
   const datos = [
     listing.habitaciones && `${listing.habitaciones} hab`,
     listing.banos && `${listing.banos} ${listing.banos === 1 ? "baño" : "baños"}`,
@@ -55,7 +63,7 @@ export function ListingCard({ listing, priority }: { listing: Listing; priority?
   return (
     <Link href={rutaFicha(listing)} className="group block">
       <div className="relative">
-        <Foto listing={listing} priority={priority} />
+        <Foto listing={listing} preload={preload} />
         <span className="absolute left-3 top-3">
           <span className={`rounded-full px-2.5 py-1 text-xs font-semibold shadow-sm ${
             listing.operacion === "venta" ? "bg-papel text-acento" : "bg-papel text-mar"
@@ -89,7 +97,7 @@ export function Grid({ listings }: { listings: Listing[] }) {
   return (
     <div className="grid grid-cols-1 gap-x-6 gap-y-9 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {listings.map((l, i) => (
-        <ListingCard key={l.publicId} listing={l} priority={i < 4} />
+        <ListingCard key={l.publicId} listing={l} preload={i === 0} />
       ))}
     </div>
   );

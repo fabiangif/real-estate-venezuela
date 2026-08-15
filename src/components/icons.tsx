@@ -51,20 +51,6 @@ export const IconPin = (p: P) => (
 
 export const IconChevron = (p: P) => (<Svg {...p}><path d="m9 5 7 7-7 7" /></Svg>);
 
-export const IconPencil = (p: P) => (
-  <Svg {...p}><path d="M4 20h4L19.5 8.5a2.1 2.1 0 0 0-3-3L5 17v3ZM15 6.5 17.5 9" /></Svg>
-);
-
-export const IconTrash = (p: P) => (
-  <Svg {...p}><path d="M4 6.5h16M9.5 6.5V4.8a1 1 0 0 1 1-1h3a1 1 0 0 1 1 1v1.7M6.5 6.5 7.4 20a1 1 0 0 0 1 .9h7.2a1 1 0 0 0 1-.9l.9-13.5" /></Svg>
-);
-
-export const IconClose = (p: P) => (<Svg {...p}><path d="m6 6 12 12M18 6 6 18" /></Svg>);
-
-export const IconMap = (p: P) => (
-  <Svg {...p}><path d="m9 4-5.5 2.2v13.6L9 17.6l6 2.2 5.5-2.2V4L15 6.2 9 4ZM9 4v13.6M15 6.2V19.8" /></Svg>
-);
-
 export const IconCheck = (p: P) => (<Svg {...p}><path d="m4 12.5 5 5L20 6.5" /></Svg>);
 
 /** Marca de WhatsApp: relleno, no trazo. */

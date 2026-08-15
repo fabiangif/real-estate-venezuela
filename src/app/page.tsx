@@ -1,11 +1,21 @@
+import Image from "next/image";
 import Link from "next/link";
-import { TIPO_LABEL, FAMILIA, formatPrecio, type Tipo, type Listing } from "@/lib/types";
+import { FAMILIA, formatPrecio, type Tipo, type Listing } from "@/lib/types";
 import { LISTINGS, LOCATIONS, rutaListado, tiposConEnlace } from "@/lib/data";
 import { OG_BASE } from "@/lib/seo";
+import { LOCATION_IMAGES } from "@/lib/location-images";
 import { Grid, Chips, Seccion, Banda } from "@/components/ui";
 import { TipoStrip } from "@/components/TipoStrip";
-import { MapaHero } from "@/components/MapaHero";
+import { PhotoCredits } from "@/components/LocationHero";
 import { IconPin, IconChevron } from "@/components/icons";
+
+const CITY_MOSAIC_CLASSES = [
+  "col-span-4 row-span-2",
+  "col-span-2",
+  "col-span-2",
+  "col-span-3",
+  "col-span-3",
+];
 
 export const metadata = {
   alternates: { canonical: "/" },
@@ -63,9 +73,11 @@ function zonasBuscadas(n = 16) {
 export default function Home() {
   const ciudades = LOCATIONS.flatMap((e) => e.ciudades).sort((a, b) => b.total - a.total);
   const principal = ciudades[0];
+  const barrios = ciudades.reduce((total, ciudad) => total + ciudad.barrios.length, 0);
   const stats = estadisticas();
 
   const tipos = tiposConEnlace();
+  const alquilerPopular = tiposConEnlace("alquiler")[0];
 
   const apartamentos = destacados((l) => l.tipo === "apartamento" && l.operacion === "venta");
   const casas = destacados((l) => l.tipo === "casa" && l.operacion === "venta");
@@ -103,21 +115,93 @@ export default function Home() {
         mainEntity: faqs.map((f) => ({ "@type": "Question", name: f.q, acceptedAnswer: { "@type": "Answer", text: f.a } })),
       }) }} />
 
-      {/* HERO: el mapa a sangre completa. El panel va DENTRO del mapa para que se
-          aparte solo cuando el usuario selecciona un inmueble o dibuja una zona. */}
-      <section className="relative">
-        <MapaHero>
-          <div className="rounded-card border border-borde bg-papel/95 p-5 shadow-[var(--shadow-pill)] backdrop-blur-sm">
-            <h1 className="text-lg font-bold tracking-[-0.02em] sm:text-xl">
-              Portal inmobiliario de Venezuela: apartamentos y casas en venta y alquiler
+      <section className="border-b border-borde-suave bg-crema">
+        <div className="mx-auto grid max-w-7xl gap-10 px-5 py-12 sm:py-16 lg:grid-cols-[minmax(0,1.05fr)_minmax(28rem,.95fr)] lg:items-center lg:py-20">
+          <div>
+            <p className="text-sm font-semibold text-acento">Inmuebles en toda Venezuela</p>
+            <h1 className="mt-2 max-w-3xl text-2xl font-bold tracking-[-0.035em] sm:text-3xl">
+              Apartamentos y casas en venta y alquiler, en una sola búsqueda
             </h1>
-            <p className="mt-2 text-sm leading-relaxed text-tinta-2">
-              {LISTINGS.length.toLocaleString("es-VE")} inmuebles en {ciudades.length} ciudades, con precios
-              en dólares y contacto directo por WhatsApp.{" "}
-              <span className="text-tinta">Dibuja tu zona en el mapa</span> para ver solo lo que hay ahí.
+            <p className="mt-4 max-w-2xl text-base leading-relaxed text-tinta-2 sm:text-lg">
+              Busca desde la barra superior por ciudad, urbanización, tipo de inmueble,
+              habitaciones o características como piscina, planta eléctrica y vigilancia.
+              Todos los precios están en dólares y el contacto es directo por WhatsApp.
             </p>
+            <div className="mt-6 flex flex-wrap gap-2">
+              <Link
+                href={rutaListado("venta", "apartamento", [principal.slug, principal.estado])}
+                className="rounded-full border border-borde bg-papel px-4 py-2 text-sm font-medium transition-colors hover:border-tinta hover:bg-humo"
+              >
+                Apartamentos en {principal.nombre}
+              </Link>
+              {alquilerPopular && (
+                <Link
+                  href={alquilerPopular.href}
+                  className="rounded-full border border-borde bg-papel px-4 py-2 text-sm font-medium transition-colors hover:border-tinta hover:bg-humo"
+                >
+                  Explorar alquileres
+                </Link>
+              )}
+            </div>
+            <dl className="mt-8 grid max-w-xl grid-cols-3 divide-x divide-borde border-y border-borde py-4">
+              {[
+                { k: "Inmuebles", v: LISTINGS.length.toLocaleString("es-VE"), c: "text-acento" },
+                { k: "Ciudades", v: String(ciudades.length), c: "text-mar" },
+                { k: "Zonas", v: String(barrios), c: "text-ambar" },
+              ].map((dato) => (
+                <div key={dato.k} className="px-2 text-center first:pl-0 sm:px-4">
+                  <dt className="text-xs text-tinta-2">{dato.k}</dt>
+                  <dd className={`tabular mt-1 text-xl font-bold ${dato.c}`}>{dato.v}</dd>
+                </div>
+              ))}
+            </dl>
           </div>
-        </MapaHero>
+
+          <div>
+            <div className="grid h-80 grid-cols-6 grid-rows-3 gap-2 sm:h-96">
+              {ciudades.slice(0, 5).map((ciudad, index) => {
+                const image = LOCATION_IMAGES[ciudad.slug];
+                if (!image) return null;
+
+                const sizes = index === 0
+                  ? "(max-width: 1023px) 66vw, 32vw"
+                  : index < 3
+                    ? "(max-width: 1023px) 33vw, 16vw"
+                    : "(max-width: 1023px) 50vw, 24vw";
+
+                return (
+                  <Link
+                    key={ciudad.slug}
+                    href={rutaListado("venta", "apartamento", [ciudad.slug, ciudad.estado])}
+                    aria-label={`Ver ${ciudad.total} inmuebles en ${ciudad.nombre}`}
+                    className={`group relative overflow-hidden rounded-card bg-tinta ${CITY_MOSAIC_CLASSES[index]}`}
+                  >
+                    <Image
+                      src={image.src}
+                      alt={image.alt}
+                      fill
+                      sizes={sizes}
+                      preload={index === 0}
+                      style={{ objectPosition: image.objectPosition }}
+                      className="object-cover transition duration-500 ease-out group-hover:scale-[1.04]"
+                    />
+                    <span className="absolute inset-0 bg-gradient-to-t from-black/75 via-black/10 to-transparent" />
+                    <span className="absolute inset-x-0 bottom-0 p-3 text-white">
+                      <span className="block text-sm font-semibold leading-tight sm:text-base">{ciudad.nombre}</span>
+                      <span className="tabular mt-0.5 block text-[11px] text-white/80 sm:text-xs">
+                        {ciudad.total} inmuebles
+                      </span>
+                    </span>
+                  </Link>
+                );
+              })}
+            </div>
+            <PhotoCredits images={ciudades.slice(0, 5).flatMap((ciudad) => {
+              const image = LOCATION_IMAGES[ciudad.slug];
+              return image ? [image] : [];
+            })} />
+          </div>
+        </div>
       </section>
 
       <TipoStrip items={tipos} />

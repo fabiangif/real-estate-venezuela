@@ -43,6 +43,28 @@ export function e164(raw: string | null): string | null {
 const num = (v: unknown): number | null =>
   typeof v === "number" && Number.isFinite(v) ? v : null;
 
+const texto = (v: unknown): string | null =>
+  typeof v === "string" && v.trim() ? v.trim() : null;
+
+type Extraido = {
+  id: string;
+  ofertas?: unknown[];
+  barrio?: unknown;
+  tipo?: unknown;
+  telefono?: string | null;
+  m2?: unknown;
+  habitaciones?: unknown;
+  banos?: unknown;
+  area_terreno?: unknown;
+  estacionamientos?: unknown;
+  amoblado?: unknown;
+  amenidades?: unknown;
+};
+
+type CdnManifest = {
+  imagesByShortcode?: Record<string, string[]>;
+};
+
 /** El area a dos decimales es ruido de parseo: "371.06 m²" se lee peor que "371 m²". */
 export const redondear = (v: number | null): number | null => (v === null ? null : Math.round(v));
 
@@ -86,62 +108,11 @@ export function deduplicar(listings: Listing[]): { unicas: Listing[]; retirados:
 const enRango = (v: number | null, max: number): number | null =>
   v !== null && v > 0 && v <= max ? v : null;
 
-/**
- * Emite public/mapa.json: los puntos que consume el mapa del Home.
- *
- * Solo entran los inmuebles cuyo BARRIO se pudo ubicar de verdad. Muchas urbanizaciones
- * venezolanas no existen en OpenStreetMap; esos inmuebles se quedan fuera del mapa en
- * lugar de caer al centro de su ciudad. Si cayeran ahi, dibujar una zona pequena
- * devolveria inmuebles que no estan alli: la funcion mentiria. Mejor mostrar menos.
- *
- * Dentro de un barrio si conocemos el centroide pero no la direccion, asi que los
- * inmuebles se dispersan con un desplazamiento DETERMINISTA (derivado del publicId)
- * dentro de ~350 m: sin eso se apilan en un unico pin y el mapa no sirve para nada.
- */
-function escribirMapa(listings: Listing[]): number {
-  if (!existsSync(D("geo.json"))) {
-    console.log("  (sin data/geo.json: se omite public/mapa.json — corre scripts/geocode.py)");
-    return 0;
-  }
-  const geo: Record<string, { lat: number; lng: number; exacto: boolean }> = read("geo.json");
-
-  // hash estable -> dos numeros en [0,1)
-  const disp = (id: string) => {
-    let h = 2166136261;
-    for (let i = 0; i < id.length; i++) h = Math.imul(h ^ id.charCodeAt(i), 16777619);
-    const a = ((h >>> 0) % 3600) / 3600 * 2 * Math.PI;   // angulo
-    const r = ((Math.imul(h, 48271) >>> 0) % 1000) / 1000; // radio normalizado
-    const metros = 350 * Math.sqrt(r);                     // sqrt = reparto uniforme en el disco
-    return { dLat: (metros * Math.cos(a)) / 111_320, dLng: (metros * Math.sin(a)) / (111_320 * Math.cos(10.5 * Math.PI / 180)) };
-  };
-
-  const puntos = listings.flatMap((l) => {
-    const g = l.barrio ? geo[`barrio:${l.ciudad}:${l.barrio}`] : undefined;
-    if (!g?.exacto) return [];   // sin ubicacion real de su barrio, fuera del mapa
-    const { dLat, dLng } = disp(l.publicId);
-    return [{
-      id: l.publicId,
-      lat: +(g.lat + dLat).toFixed(5),
-      lng: +(g.lng + dLng).toFixed(5),
-      precio: l.precio,
-      tipo: l.tipo,
-      op: l.operacion,
-      barrio: l.barrioNombre,
-      ciudad: l.ciudadNombre,
-      hab: l.habitaciones,
-      m2: l.m2,
-      url: `/${l.slug}/${l.publicId}`,
-    }];
-  });
-
-  writeFileSync(join(ROOT, "public", "mapa.json"), JSON.stringify(puntos));
-  return puntos.length;
-}
-
 function main() {
-  const raw = read("raw/Inmuebles.json") as Record<string, any>[];
-  const extracted: Record<string, any>[] = existsSync(D("extracted.json")) ? read("extracted.json") : [];
+  const raw = read("raw/Inmuebles.json") as Record<string, unknown>[];
+  const extracted: Extraido[] = existsSync(D("extracted.json")) ? read("extracted.json") : [];
   const wa: Record<string, string | null> = existsSync(D("whatsapp.json")) ? read("whatsapp.json") : {};
+  const cdn: CdnManifest = existsSync(D("cdn-images.json")) ? read("cdn-images.json") : {};
   const ex = new Map(extracted.map((e) => [e.id, e]));
 
   const listings: Listing[] = [];
@@ -157,8 +128,12 @@ function main() {
     if (!e) { stats.sinExtraer++; continue; }
 
     // ofertas: normalmente una; dos cuando el aviso se vende Y se alquila
-    const ofertas: { operacion: Operacion; precio: number | null }[] = (e.ofertas ?? [])
-      .filter((o: any) => o?.operacion === "venta" || o?.operacion === "alquiler");
+    const ofertas: { operacion: Operacion; precio: number | null }[] = (e.ofertas ?? []).flatMap((valor) => {
+      if (!valor || typeof valor !== "object") return [];
+      const oferta = valor as Record<string, unknown>;
+      if (oferta.operacion !== "venta" && oferta.operacion !== "alquiler") return [];
+      return [{ operacion: oferta.operacion, precio: num(oferta.precio) }];
+    });
     if (!ofertas.length) { stats.sinOperacion++; continue; }
     if (ofertas.length > 1) stats.dobles++;
 
@@ -174,11 +149,12 @@ function main() {
     const barrio = barrioNombre ? slugify(barrioNombre) : null;
 
     // sin tipo no hay listado al que pertenecer: seria una ficha huerfana sin enlaces internos
-    if (!TIPOS.has(e.tipo)) { stats.sinTipo++; continue; }
-    const tipo: Tipo = e.tipo;
+    if (typeof e.tipo !== "string" || !TIPOS.has(e.tipo)) { stats.sinTipo++; continue; }
+    const tipo = e.tipo as Tipo;
     const descripcion = (r["Caption completo"] ?? "").toString().trim() || null;
     const handle = (r["Perfil IG"] ?? "").toString().trim() || null;
-    const fotosCount = num(r["Cant. Fotos"]) ?? 0;
+    const fotos = [...new Set(cdn.imagesByShortcode?.[shortcode] ?? [])];
+    const fotosCount = fotos.length;
     const whatsapp = e164(e.telefono) ?? e164(handle ? wa[handle] ?? null : null);
 
     const m2 = redondear(num(e.m2) ?? num(r["M2"]));
@@ -205,19 +181,19 @@ function main() {
         banos,
         estacionamientos: enRango(num(e.estacionamientos), 50),
         amoblado: typeof e.amoblado === "boolean" ? e.amoblado : null,
-        amenidades: Array.isArray(e.amenidades) ? e.amenidades : [],
+        amenidades: Array.isArray(e.amenidades) ? e.amenidades.filter((a): a is string => typeof a === "string") : [],
         whatsapp,
-        fotos: [], // se llenan cuando lleguen las imagenes; fotosCount ya dice cuantas hay
+        fotos,
         fotosCount,
         fuente: {
           handle,
-          postUrl: r["URL del Post URL"] || r["URL del Post"] || null,
-          driveUrl: r["Carpeta en Drive URL"] || null,
+          postUrl: texto(r["URL del Post URL"]) ?? texto(r["URL del Post"]),
+          driveUrl: texto(r["Carpeta en Drive URL"]),
         },
         // §10.4: completo si hay precio y (habitaciones o area)
         dataQuality: precio !== null && (habitaciones !== null || m2 !== null) ? "completo" : "parcial",
         // ficha indexable: >=1 foto y (precio o descripcion)
-        indexable: fotosCount >= 1 && (precio !== null || descripcion !== null),
+        indexable: fotos.length >= 1 && (precio !== null || descripcion !== null),
       });
     }
   }
@@ -250,8 +226,6 @@ function main() {
 
   writeFileSync(D("listings.json"), JSON.stringify(unicas, null, 2));
   writeFileSync(D("locations.json"), JSON.stringify(tree, null, 2));
-  const puntos = escribirMapa(unicas);
-
   const conPrecio = unicas.filter((l) => l.precio !== null).length;
   const indexables = unicas.filter((l) => l.indexable).length;
   const sinWa = unicas.filter((l) => !l.whatsapp).length;
@@ -261,7 +235,6 @@ function main() {
     `  avisos con venta Y alquiler: ${stats.dobles}  |  republicaciones retiradas: ${retirados}\n` +
     `  con precio: ${conPrecio}/${unicas.length}  ` +
     `indexables: ${indexables}  sin whatsapp: ${sinWa}\n` +
-    `  ${puntos} puntos en el mapa (${Math.round(puntos * 100 / unicas.length)}% del inventario ubicable)\n` +
     `  ${tree.length} estados, ${tree.reduce((n, e) => n + e.ciudades.length, 0)} ciudades, ` +
     `${tree.reduce((n, e) => n + e.ciudades.reduce((m, c) => m + c.barrios.length, 0), 0)} barrios`
   );

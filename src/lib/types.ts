@@ -31,8 +31,8 @@ export type Listing = {
   amenidades: string[];
 
   whatsapp: string | null;     // E.164. null => se cae al perfil de Instagram
-  fotos: string[];             // rutas locales; vacio hasta que lleguen las imagenes
-  fotosCount: number;          // cuantas existen segun el scraper
+  fotos: string[];             // URLs públicas verificadas en el CDN
+  fotosCount: number;          // cuántas imágenes verificadas existen
 
   fuente: { handle: string | null; postUrl: string | null; driveUrl: string | null };
   dataQuality: "completo" | "parcial";
