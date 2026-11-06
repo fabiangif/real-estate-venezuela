@@ -32,14 +32,18 @@ const ESTADO_POR_CIUDAD: Record<string, string> = {
 };
 
 /**
- * Lanzamiento escalonado: solo estas ciudades (slug) llegan a listings.json,
- * locations.json y public/mapa.json. Una ciudad que no esta aqui no existe en el
+ * Lanzamiento escalonado: data/lanzamientos.json lista las ciudades publicadas,
+ * { "<slug de la ciudad>": "AAAA-MM-DD" }. Solo ellas llegan a listings.json,
+ * locations.json y public/mapa.json. Una ciudad que no esta ahi no existe en el
  * build: sin paginas, sin sitemap, sin enlaces internos y sin pines en el mapa.
  *
- * Para lanzar otra: agregar su slug y correr `npm run import`.
+ * La fecha es el dia en que la ciudad salio: el sitemap la usa como <lastmod>.
+ *
+ * Para lanzar otra: agregar su slug con la fecha del dia y correr `npm run import`.
  * Solo se agrega, nunca se quita: retirar una ciudad deja en 404 URLs ya indexadas.
  */
-export const CIUDADES_ACTIVAS = new Set(["barquisimeto"]);
+const LANZAMIENTOS: Record<string, string> = read("lanzamientos.json");
+export const CIUDADES_ACTIVAS = new Set(Object.keys(LANZAMIENTOS));
 
 const TIPOS = new Set(Object.keys(TIPO_LABEL));
 
@@ -270,7 +274,11 @@ function main() {
 
   // un slug mal escrito publicaria un sitio vacio sin avisar
   for (const c of CIUDADES_ACTIVAS) {
-    if (!todas.some((l) => l.ciudad === c)) throw new Error(`CIUDADES_ACTIVAS: "${c}" no tiene inmuebles`);
+    if (!todas.some((l) => l.ciudad === c)) throw new Error(`lanzamientos.json: "${c}" no tiene inmuebles`);
+    // el sitemap publica esta fecha tal cual: una mal escrita invalida el <lastmod>
+    if (!/^\d{4}-\d{2}-\d{2}$/.test(LANZAMIENTOS[c]) || Number.isNaN(Date.parse(LANZAMIENTOS[c]))) {
+      throw new Error(`lanzamientos.json: la fecha de "${c}" debe ser AAAA-MM-DD`);
+    }
   }
   const unicas = todas.filter((l) => CIUDADES_ACTIVAS.has(l.ciudad));
 

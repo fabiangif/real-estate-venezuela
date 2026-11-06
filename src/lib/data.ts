@@ -7,12 +7,25 @@ const load = <T,>(f: string): T =>
 
 export const LISTINGS: Listing[] = load("listings.json");
 export const LOCATIONS: Estado[] = load("locations.json");
+/** Fecha de lanzamiento por ciudad (slug -> AAAA-MM-DD). Ver scripts/import.ts. */
+export const LANZAMIENTOS: Record<string, string> = load("lanzamientos.json");
 
 export const byId = new Map(LISTINGS.map((l) => [l.publicId, l]));
 
 const ciudades: Ciudad[] = LOCATIONS.flatMap((e) => e.ciudades);
 export const ciudadPorSlug = new Map(ciudades.map((c) => [c.slug, c]));
 export const estadoPorSlug = new Map(LOCATIONS.map((e) => [e.slug, e]));
+
+/**
+ * <lastmod> de una URL segun su ubicacion ([estado] | [ciudad, estado, barrio?]):
+ * el lanzamiento de su ciudad. A nivel de estado, o sin ubicacion (el Home), manda
+ * la ciudad lanzada mas recientemente, porque es cuando esa pagina cambio.
+ */
+export function lanzamiento(ubicacion: string[] = []): string | undefined {
+  if (ubicacion.length >= 2) return LANZAMIENTOS[ubicacion[0]];
+  const deAqui = ubicacion.length ? estadoPorSlug.get(ubicacion[0])?.ciudades ?? [] : ciudades;
+  return deAqui.map((c) => LANZAMIENTOS[c.slug]).filter(Boolean).sort().at(-1);
+}
 /** slug de tipo en la URL ("apartamentos") -> enum ("apartamento") */
 export const tipoPorSlug = new Map(
   (Object.entries(TIPO_LABEL) as [Tipo, { slug: string }][]).map(([t, v]) => [v.slug, t])
