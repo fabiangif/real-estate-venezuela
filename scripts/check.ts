@@ -6,8 +6,10 @@
  */
 import { strict as assert } from "node:assert";
 import { slugify } from "../src/lib/types.ts";
-import { dentro } from "../src/lib/geo.ts";
-import { e164, titleCase, redondear, deduplicar } from "./import.ts";
+import { dentro, cerrarTrazo } from "../src/lib/geo.ts";
+import { readFileSync } from "node:fs";
+import { join } from "node:path";
+import { e164, titleCase, redondear, deduplicar, CIUDADES_ACTIVAS } from "./import.ts";
 import type { Listing } from "../src/lib/types.ts";
 
 let n = 0;
@@ -56,6 +58,38 @@ test("dentro resuelve punto en polígono", () => {
   assert.equal(dentro(3, 2, c), false, "en el hueco de la C");
 });
 
+test("dentro acepta los trazos imperfectos de un dibujo a mano", () => {
+  // circulo que se pasa del inicio: da una vuelta y un cuarto, el solape NO es un hueco
+  const pasado: [number, number][] = [[-2, -2], [2, -2], [2, 2], [-2, 2], [-2, -2], [2, -2], [2, 0]];
+  assert.equal(dentro(1.5, -1.5, pasado), true, "la parte recorrida dos veces sigue dentro");
+  assert.equal(dentro(0, 0, pasado), true);
+  assert.equal(dentro(3, 0, pasado), false);
+  // un ocho: los dos lobulos cuentan aunque el trazo gire en sentidos opuestos
+  const ocho: [number, number][] = [[0, 0], [2, 2], [2, -2], [-2, 2], [-2, -2]];
+  assert.equal(dentro(1.5, 0, ocho), true, "lóbulo derecho");
+  assert.equal(dentro(-1.5, 0, ocho), true, "lóbulo izquierdo");
+  assert.equal(dentro(0, 3, ocho), false);
+  // sentido horario y antihorario dan lo mismo
+  const horario: [number, number][] = [[-1, 1], [1, 1], [1, -1], [-1, -1]];
+  assert.equal(dentro(0, 0, horario), true);
+});
+
+test("cerrarTrazo recorta la cola de un círculo que se pasa del inicio", () => {
+  const circulo = (vueltas: number): [number, number][] =>
+    Array.from({ length: Math.round(48 * vueltas) + 1 }, (_, i) => {
+      const a = (i / 48) * 2 * Math.PI;
+      return [200 + 100 * Math.cos(a), 200 + 100 * Math.sin(a)];
+    });
+  // el corte cae al volver a menos de 16 px del inicio: uno o dos puntos antes de la vuelta exacta
+  const unaVuelta = (n: number) => n >= 47 && n <= 49;
+  assert.ok(unaVuelta(cerrarTrazo(circulo(1.2)).length), "una vuelta y un quinto queda en una vuelta");
+  assert.ok(unaVuelta(cerrarTrazo(circulo(2.5)).length), "varias vueltas quedan en una");
+  assert.ok(unaVuelta(cerrarTrazo(circulo(1)).length), "un círculo exacto se conserva");
+  assert.equal(cerrarTrazo(circulo(0.7)).length, circulo(0.7).length, "un trazo abierto se deja como está");
+  const raya: [number, number][] = [[0, 0], [5, 0], [10, 0]];
+  assert.deepEqual(cerrarTrazo(raya), raya, "si nunca se aleja del inicio no hay nada que recortar");
+});
+
 test("deduplicar conserva la publicación más completa", () => {
   const base = {
     operacion: "venta", tipo: "apartamento", estado: "lara", estadoNombre: "Lara",
@@ -90,6 +124,17 @@ test("deduplicar no agrupa fichas sin nada que las distinga", () => {
   ]);
   assert.equal(retirados, 0, "sin precio ni área podrían ser inmuebles realmente distintos");
   assert.equal(unicas.length, 2);
+});
+
+test("la data publicada solo contiene ciudades lanzadas", () => {
+  // falla si se edita CIUDADES_ACTIVAS sin volver a correr `npm run import`
+  const leer = (f: string) => JSON.parse(readFileSync(join(import.meta.dirname, "..", f), "utf8"));
+  const fuera = (xs: { ciudad: string }[]) => xs.filter((x) => !CIUDADES_ACTIVAS.has(slugify(x.ciudad))).length;
+  assert.equal(fuera(leer("data/listings.json")), 0, "listings.json trae ciudades sin lanzar");
+  assert.equal(fuera(leer("public/mapa.json")), 0, "mapa.json trae pines de ciudades sin lanzar");
+  assert.deepEqual(
+    leer("data/locations.json").flatMap((e: { ciudades: { slug: string }[] }) => e.ciudades.map((c) => c.slug)).sort(),
+    [...CIUDADES_ACTIVAS].sort(), "locations.json no coincide con las ciudades activas");
 });
 
 if (!process.exitCode) console.log(`${n}/${n} checks OK`);

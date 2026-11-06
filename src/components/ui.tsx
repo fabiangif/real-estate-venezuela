@@ -2,7 +2,7 @@ import Link from "next/link";
 import Image from "next/image";
 import { formatPrecio, TIPO_LABEL, FAMILIA, COLOR_FAMILIA, type Listing, type Operacion } from "@/lib/types";
 import { rutaFicha } from "@/lib/data";
-import { ICONO_TIPO } from "./icons";
+import { ICONO_TIPO, IconBed, IconBath, IconArea } from "./icons";
 
 /**
  * Foto del inmueble. Ratio 4:3 fijo en todo el grid: la consistencia del ratio es
@@ -44,41 +44,49 @@ export function BadgeOperacion({ operacion }: { operacion: Operacion }) {
   );
 }
 
-/** Anatomía Airbnb: foto · título en negrita · detalle en gris · precio abajo. */
+/**
+ * Tres lineas, en el orden en que se compara: precio grande · datos con icono ·
+ * que es y donde. Sin badges sobre la foto: la operacion va en la linea de texto
+ * y el "/mes" ya distingue un alquiler.
+ */
 export function ListingCard({ listing, priority }: { listing: Listing; priority?: boolean }) {
+  // un terreno no tiene area construida: su dato esencial es la del terreno
+  const area = listing.m2 ?? listing.areaTerreno;
+  // el nombre solo lo lee el lector de pantalla: a la vista basta el icono
   const datos = [
-    listing.habitaciones && `${listing.habitaciones} hab`,
-    listing.banos && `${listing.banos} ${listing.banos === 1 ? "baño" : "baños"}`,
-    listing.m2 && `${listing.m2} m²`,
-  ].filter(Boolean);
+    listing.habitaciones && { Icono: IconBed, v: listing.habitaciones, nombre: listing.habitaciones === 1 ? "habitación" : "habitaciones" },
+    listing.banos && { Icono: IconBath, v: listing.banos.toLocaleString("es-VE"), nombre: listing.banos === 1 ? "baño" : "baños" },
+    area && { Icono: IconArea, v: `${area} m²`, nombre: listing.m2 ? "construidos" : "de terreno" },
+  ].filter(Boolean) as { Icono: typeof IconBed; v: string | number; nombre: string }[];
+
+  const donde = [listing.barrioNombre, listing.ciudadNombre].filter(Boolean).join(", ");
 
   return (
     <Link href={rutaFicha(listing)} className="group block">
-      <div className="relative">
-        <Foto listing={listing} priority={priority} />
-        <span className="absolute left-3 top-3">
-          <span className={`rounded-full px-2.5 py-1 text-xs font-semibold shadow-sm ${
-            listing.operacion === "venta" ? "bg-papel text-acento" : "bg-papel text-mar"
-          }`}>
-            {listing.operacion === "venta" ? "Venta" : "Alquiler"}
-          </span>
-        </span>
-      </div>
-      <div className="mt-3 space-y-0.5">
-        <p className="truncate font-semibold">
-          {listing.barrioNombre ?? TIPO_LABEL[listing.tipo].singular}
-        </p>
-        <p className="truncate text-sm text-tinta-2">{listing.ciudadNombre}</p>
-        {datos.length > 0 && <p className="tabular truncate text-sm text-tinta-2">{datos.join(" · ")}</p>}
-        <p className="tabular pt-1">
+      <Foto listing={listing} priority={priority} />
+      <div className="mt-3">
+        <p className="tabular truncate text-xl font-bold tracking-[-0.01em]">
           {listing.precio === null ? (
-            <span className="text-tinta-2">Precio a consultar</span>
+            <span className="text-lg font-semibold text-tinta-2">Precio a consultar</span>
           ) : (
             <>
-              <span className="font-semibold">{formatPrecio(listing.precio)}</span>
-              {listing.operacion === "alquiler" && <span className="text-tinta-2"> /mes</span>}
+              {formatPrecio(listing.precio)}
+              {listing.operacion === "alquiler" && <span className="text-sm font-normal text-tinta-2"> /mes</span>}
             </>
           )}
+        </p>
+        {datos.length > 0 && (
+          <ul className="tabular mt-1.5 flex flex-wrap items-center gap-x-4 gap-y-1 text-sm">
+            {datos.map(({ Icono, v, nombre }) => (
+              <li key={nombre} className="flex items-center gap-1.5">
+                <Icono size={17} className="text-tinta-2" />{v}
+                <span className="sr-only">{nombre}</span>
+              </li>
+            ))}
+          </ul>
+        )}
+        <p className="mt-1.5 truncate text-sm text-tinta-2">
+          {TIPO_LABEL[listing.tipo].singular} en {listing.operacion} · {donde}
         </p>
       </div>
     </Link>

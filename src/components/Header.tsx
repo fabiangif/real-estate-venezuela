@@ -3,6 +3,8 @@
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { Buscador, type OpcionCiudad } from "./Buscador";
+import { Logo } from "./Logo";
+import { MARCA } from "@/lib/seo";
 import type { Tipo } from "@/lib/types";
 
 /**
@@ -43,16 +45,8 @@ export function Header({ ciudades, tipos }: { ciudades: OpcionCiudad[]; tipos: T
           compacto ? "py-2 lg:py-2.5" : "py-3 lg:py-4"
         }`}
       >
-        <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="Inmuebles VE, inicio">
-          <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true"
-            className={`transition-transform duration-200 ${compacto ? "scale-90" : ""}`}>
-            <path d="m3 10.5 9-7 9 7V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10.5Z"
-              stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" className="text-acento" />
-            <path d="M9.5 21v-6h5v6" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" className="text-acento" />
-          </svg>
-          <span className="text-lg font-bold tracking-[-0.02em]">
-            Inmuebles<span className="text-acento">VE</span>
-          </span>
+        <Link href="/" className="flex shrink-0 items-center" aria-label={`${MARCA}, inicio`}>
+          <Logo className={`origin-left text-[1.75rem] transition-transform duration-200 ${compacto ? "scale-90" : ""}`} />
         </Link>
 
         <div

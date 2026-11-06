@@ -4,12 +4,19 @@ import { useEffect, useState, type ComponentType } from "react";
 import type { Punto } from "./Mapa";
 
 /**
- * Mapa del hero. Se monta despues de la hidratacion, no en el render inicial:
- * asi el H1 y el texto del hero (que son HTML estatico) pintan de inmediato y
- * el LCP no depende de los ~250 KB de MapLibre ni de los tiles.
+ * Alto del mapa, compartido por el marcador de carga y el mapa real para que no haya salto.
+ * En sm+ no llena la pantalla: deja asomar la seccion siguiente para que se note que hay mas.
+ */
+const ALTO = "h-[52dvh] min-h-[20rem] sm:h-[calc(100dvh-13rem)] sm:max-h-[44rem] sm:min-h-[26rem]";
+
+/**
+ * Mapa del hero. MapLibre (~250 KB) y los puntos se cargan despues de la hidratacion.
+ *
+ * El panel (H1 + texto) se pinta SIEMPRE, tambien en el marcador de carga: asi esta en
+ * el HTML estatico desde el primer byte y ni el LCP ni Google dependen del mapa.
  */
 export function MapaHero({ children }: { children?: React.ReactNode }) {
-  const [Mapa, setMapa] = useState<ComponentType<{ puntos: Punto[]; hero?: boolean; children?: React.ReactNode }> | null>(null);
+  const [Mapa, setMapa] = useState<ComponentType<{ puntos: Punto[]; alto: string; children?: React.ReactNode }> | null>(null);
   const [puntos, setPuntos] = useState<Punto[] | null>(null);
   const [error, setError] = useState(false);
 
@@ -30,11 +37,24 @@ export function MapaHero({ children }: { children?: React.ReactNode }) {
     return () => { vivo = false; };
   }, []);
 
-  if (Mapa && puntos) return <Mapa puntos={puntos} hero>{children}</Mapa>;
+  // movil: bloque normal encima del mapa · sm+: flota abajo a la izquierda, sobre el mapa
+  const panel = children && (
+    <div className="sm:pointer-events-none sm:absolute sm:inset-x-0 sm:bottom-0">
+      <div className="mx-auto max-w-7xl px-5 py-5 sm:pb-6 sm:pt-0">
+        <div className="sm:pointer-events-auto sm:max-w-lg">{children}</div>
+      </div>
+    </div>
+  );
+
+  if (Mapa && puntos) return <Mapa puntos={puntos} alto={ALTO}>{panel}</Mapa>;
 
   return (
-    <div className="grid h-[58dvh] min-h-[22rem] sm:h-[calc(100dvh-4.75rem)] sm:max-h-[48rem] sm:min-h-[28rem] w-full place-content-center bg-humo text-sm text-tinta-2">
-      {error ? "No se pudo cargar el mapa." : "Cargando mapa…"}
+    // mismo marco que pinta Mapa: si cambia alli, cambia aqui
+    <div className="relative flex flex-col-reverse sm:block">
+      <div className={`grid w-full place-content-center bg-humo text-sm text-tinta-2 ${ALTO}`}>
+        {error ? "No se pudo cargar el mapa." : "Cargando mapa…"}
+      </div>
+      {panel}
     </div>
   );
 }

@@ -182,7 +182,7 @@ tipos comercial/industrial/suelo · búsqueda por radio/PostGIS · Meilisearch.
 ### Sigue abierto
 - **Los 13 números de WhatsApp** (uno por perfil de Instagram). Ver §8.
 - **Las fotos reales.** Ver §8.
-- **Dominio y hosting** (necesario para canonicals y sitemap, pero no bloquea el desarrollo).
+- ~~Dominio y hosting~~ **Cerrado:** la marca es **Mudave** y el dominio **mudave.com** (registrado el 2026-11-06). Es el valor por defecto de `SITIO` en `src/lib/seo.ts`; `NEXT_PUBLIC_SITE_URL` lo sobreescribe. Hosting en Vercel.
 
 ---
 
@@ -385,11 +385,13 @@ sin eso se apilan en un solo pin. La UI avisa: *"Ubicación aproximada a nivel d
 | Pieza | Decisión |
 |---|---|
 | Librería | **MapLibre GL** (open source, sin API key). Ojo: la v6 eliminó el `export default`, hay que usar imports nombrados. |
-| Tiles | **Positron de CARTO en raster**, con un estilo mínimo escrito en el propio componente. El estilo *vectorial* de CARTO encadena TileJSON + sprite + glyphs + 93 capas y **nunca completaba**: `isStyleLoaded()` se quedaba en `false` para siempre y el mapa salía en blanco, sin errores en consola. Raster son imágenes: una petición por tile y nada más que resolver. Requiere mantener la atribución. |
+| Tiles | **Actualización:** CARTO pasó a devolver "API KEY REQUIRED" en todos los tiles. Ahora se usa **Positron de OpenFreeMap** (vectorial, sin API key, uso comercial libre); funciona porque el worker ya está arreglado (ver abajo). El resto de esta fila es historia. — **Positron de CARTO en raster**, con un estilo mínimo escrito en el propio componente. El estilo *vectorial* de CARTO encadena TileJSON + sprite + glyphs + 93 capas y **nunca completaba**: `isStyleLoaded()` se quedaba en `false` para siempre y el mapa salía en blanco, sin errores en consola. Raster son imágenes: una petición por tile y nada más que resolver. Requiere mantener la atribución. |
 | Montaje de capas | En cuanto el estilo está listo (`styledata`/`sourcedata`/`load`/`idle`, con guarda), **no** en `load`. Ese evento espera al primer render completo y puede tardar o no llegar, dejando el mapa base pintado sin un solo inmueble encima. |
 | Agrupación | `cluster: true` **nativo** de la fuente GeoJSON. Cero código y cero plugins para agrupar 1.000+ puntos. |
 | Dibujo | Eventos `pointer*` sobre el contenedor → puntos de pantalla → `unproject()` a lat/lng. SVG encima para el trazo en vivo. |
-| Punto en polígono | **Ray casting, 12 líneas.** Se evita turf.js (~80 KB) para una sola función. |
+| Punto en polígono | **Número de vueltas (regla nonzero), 12 líneas.** Se evita turf.js (~80 KB) para una sola función. No es par-impar porque un círculo dibujado a mano casi siempre se cruza consigo mismo al cerrarse, y ese solape no debe quedar "fuera". |
+| Zonas | Varias zonas que se **suman**. Se guardan en lat/lng y se pintan como capa del mapa, así siguen en su sitio al mover o acercar. `cerrarTrazo()` recorta la cola cuando el trazo se pasa del inicio. |
+| Gestos | `cooperativeGestures`: la rueda y un dedo bajan la página; el zoom pide Ctrl/⌘ o dos dedos. El mapa llena casi toda la primera pantalla y sin esto atrapaba el scroll. Se desactiva solo mientras se dibuja. |
 | Carga | **Diferida hasta el clic.** MapLibre son ~250 KB y el Home es la página más importante para SEO: hasta que el usuario lo pide, es HTML estático y el LCP no se entera. |
 
 ### El bug que costó encontrar: el web worker de MapLibre

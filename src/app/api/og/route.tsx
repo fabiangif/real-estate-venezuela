@@ -1,6 +1,7 @@
 import { ImageResponse } from "next/og";
 import { TIPO_LABEL, OPERACION_LABEL, formatPrecio } from "@/lib/types";
 import { byId, tipoPorSlug } from "@/lib/data";
+import { MARCA } from "@/lib/seo";
 import { parseListado, tituloListado } from "@/app/[...ruta]/listado";
 
 /**
@@ -29,9 +30,15 @@ const Marco = ({ children }: { children: React.ReactNode }) => (
     fontFamily: "sans-serif", borderBottom: `18px solid ${ACENTO}`,
   }}>
     {children}
-    <div style={{ display: "flex", alignItems: "center", gap: 10, fontSize: 30, fontWeight: 700, color: TINTA }}>
-      <div style={{ display: "flex", width: 22, height: 22, background: ACENTO, borderRadius: 6 }} />
-      <span>Inmuebles</span><span style={{ color: ACENTO }}>VE</span>
+    {/* icono + nombre: el logo completo depende de Figtree, que aqui no esta cargada.
+        El icono es el mismo dibujo de src/app/icon.svg */}
+    <div style={{ display: "flex", alignItems: "center", gap: 14, fontSize: 40, fontWeight: 800, color: TINTA }}>
+      <svg width="52" height="52" viewBox="0 0 48 48">
+        <rect width="48" height="48" rx="11" fill={ACENTO} />
+        <path d="M12 16 24 9l12 7" fill="none" stroke="#fff" strokeWidth="4.5" strokeLinecap="round" strokeLinejoin="round" />
+        <path d="M16 22v8a8 8 0 0 0 16 0v-8" fill="none" stroke="#fff" strokeWidth="6" />
+      </svg>
+      <span>{MARCA.toLowerCase()}</span>
     </div>
   </div>
 );

@@ -77,8 +77,11 @@ export default function Home() {
 
   const faqs = [
     {
-      q: "¿Cuánto cuesta el metro cuadrado en Venezuela?",
-      a: stats.length
+      // con una sola ciudad lanzada no hay rango que comparar
+      q: `¿Cuánto cuesta el metro cuadrado en ${stats.length === 1 ? stats[0].nombre : "Venezuela"}?`,
+      a: stats.length === 1 && stats[0].m2
+        ? `Según los inmuebles en venta publicados, la mediana del metro cuadrado en ${stats[0].nombre} es de ${formatPrecio(stats[0].m2)}.`
+        : stats.length > 1
         ? `Según los ${LISTINGS.filter((l) => l.operacion === "venta" && l.precio && l.m2).length} inmuebles en venta publicados, el metro cuadrado va de ${formatPrecio(stats.at(-1)!.m2)} en ${stats.at(-1)!.nombre} a ${formatPrecio(stats[0].m2)} en ${stats[0].nombre}.`
         : "Publicamos el precio por metro cuadrado calculado con el inventario real de cada ciudad.",
     },
@@ -104,15 +107,17 @@ export default function Home() {
       }) }} />
 
       {/* HERO: el mapa a sangre completa. El panel va DENTRO del mapa para que se
-          aparte solo cuando el usuario selecciona un inmueble o dibuja una zona. */}
+          aparte solo cuando el usuario selecciona un inmueble o dibuja una zona.
+          En movil es texto llano encima del mapa; la tarjeta flotante es de sm+. */}
       <section className="relative">
         <MapaHero>
-          <div className="rounded-card border border-borde bg-papel/95 p-5 shadow-[var(--shadow-pill)] backdrop-blur-sm">
+          <div className="sm:rounded-card sm:border sm:border-borde sm:bg-papel/95 sm:p-5 sm:shadow-[var(--shadow-pill)] sm:backdrop-blur-sm">
             <h1 className="text-lg font-bold tracking-[-0.02em] sm:text-xl">
               Portal inmobiliario de Venezuela: apartamentos y casas en venta y alquiler
             </h1>
             <p className="mt-2 text-sm leading-relaxed text-tinta-2">
-              {LISTINGS.length.toLocaleString("es-VE")} inmuebles en {ciudades.length} ciudades, con precios
+              {LISTINGS.length.toLocaleString("es-VE")} inmuebles en{" "}
+              {ciudades.length === 1 ? ciudades[0].nombre : `${ciudades.length} ciudades`}, con precios
               en dólares y contacto directo por WhatsApp.{" "}
               <span className="text-tinta">Dibuja tu zona en el mapa</span> para ver solo lo que hay ahí.
             </p>
@@ -123,8 +128,9 @@ export default function Home() {
       <TipoStrip items={tipos} />
 
       <div className="mx-auto max-w-7xl px-5 py-10">
-        {/* precio del m2: contenido propio, no un listado mas */}
-        {stats.length > 0 && (
+        {/* precio del m2: contenido propio, no un listado mas.
+            Las secciones que comparan ciudades solo salen con 2 o mas lanzadas. */}
+        {stats.length > 1 && (
           <section>
             <h2 className="text-xl font-semibold tracking-[-0.01em]">Precio del metro cuadrado por ciudad</h2>
             <p className="mt-1.5 max-w-2xl text-sm text-tinta-2">
@@ -197,7 +203,7 @@ export default function Home() {
           </Seccion>
         )}
 
-        <Seccion titulo="Busca por ciudad">
+        {ciudades.length > 1 && <Seccion titulo="Busca por ciudad">
           <div className="grid grid-cols-2 gap-3 sm:grid-cols-3 lg:grid-cols-5">
             {ciudades.map((c) => (
               <Link key={c.slug} href={rutaListado("venta", "apartamento", [c.slug, c.estado])}
@@ -213,13 +219,13 @@ export default function Home() {
               </Link>
             ))}
           </div>
-        </Seccion>
+        </Seccion>}
 
-        <Seccion titulo="Explora por estado">
+        {LOCATIONS.length > 1 && <Seccion titulo="Explora por estado">
           <Chips items={LOCATIONS.map((e) => ({
             href: rutaListado("venta", "apartamento", [e.slug]), label: e.nombre, count: e.total,
           }))} />
-        </Seccion>
+        </Seccion>}
 
         <Seccion titulo="Explora por tipo de inmueble">
           <Chips items={tipos.map((t) => ({ href: t.href, label: t.label, count: t.total }))} />

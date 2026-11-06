@@ -4,40 +4,29 @@ import { Figtree } from "next/font/google";
 import "./globals.css";
 import { LISTINGS, LOCATIONS, rutaListado, destacadosPorOperacion, tiposConEnlace } from "@/lib/data";
 import { Header } from "@/components/Header";
-import { SITIO, OG_BASE } from "@/lib/seo";
-import { TIPO_LABEL, type Tipo } from "@/lib/types";
+import { Logo } from "@/components/Logo";
+import { SITIO, OG_BASE, MARCA } from "@/lib/seo";
+import type { Tipo } from "@/lib/types";
 
 const figtree = Figtree({ variable: "--font-figtree", subsets: ["latin"], display: "swap" });
 
 export const metadata: Metadata = {
   metadataBase: new URL(SITIO),
   title: {
-    default: "Inmuebles VE — Apartamentos y casas en venta y alquiler en Venezuela",
-    template: "%s | Inmuebles VE",
+    default: `${MARCA} — Apartamentos y casas en venta y alquiler en Venezuela`,
+    template: `%s | ${MARCA}`,
   },
-  description:
-    "Portal inmobiliario de Venezuela. Apartamentos, casas, quintas y townhouses en venta y alquiler en Caracas, Maracaibo, Valencia, Maracay y Barquisimeto.",
+  // las ciudades salen de la data: con el lanzamiento escalonado cambian cada semana
+  description: `Portal inmobiliario de Venezuela. Apartamentos, casas, quintas y townhouses en venta y alquiler en ${
+    new Intl.ListFormat("es", { type: "conjunction" }).format(
+      LOCATIONS.flatMap((e) => e.ciudades).sort((a, b) => b.total - a.total).map((c) => c.nombre))
+  }.`,
   alternates: { languages: { "es-VE": "/" } },
   // hasta ahora cada enlace compartido por WhatsApp —el unico canal de conversion—
   // llegaba sin imagen, sin titulo y sin precio
   openGraph: OG_BASE,
   twitter: { card: "summary_large_image" },
 };
-
-function Logo() {
-  return (
-    <Link href="/" className="flex shrink-0 items-center gap-2" aria-label="Inmuebles VE, inicio">
-      <svg width="26" height="26" viewBox="0 0 24 24" fill="none" aria-hidden="true">
-        <path d="m3 10.5 9-7 9 7V20a1 1 0 0 1-1 1H4a1 1 0 0 1-1-1V10.5Z"
-          stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" className="text-acento" />
-        <path d="M9.5 21v-6h5v6" stroke="currentColor" strokeWidth="1.8" strokeLinejoin="round" className="text-acento" />
-      </svg>
-      <span className="text-lg font-bold tracking-[-0.02em]">
-        Inmuebles<span className="text-acento">VE</span>
-      </span>
-    </Link>
-  );
-}
 
 /** Columna de enlaces del footer. Interlinking real, no decoracion. */
 function Columna({ titulo, enlaces }: { titulo: string; enlaces: { href: string; label: string; total?: number }[] }) {
@@ -87,9 +76,7 @@ function Footer() {
         <div className="mx-auto max-w-7xl px-5 py-12">
           <div className="grid gap-10 lg:grid-cols-[1.2fr_repeat(4,minmax(0,1fr))]">
             <div>
-              <p className="text-lg font-bold tracking-[-0.02em]">
-                Inmuebles<span className="text-acento">VE</span>
-              </p>
+              <p><Logo className="text-[1.75rem]" /></p>
               <p className="mt-2 max-w-xs text-sm leading-relaxed text-tinta-2">
                 El portal inmobiliario de Venezuela. Precios en dólares y contacto directo
                 con quien publica cada inmueble.
@@ -99,7 +86,7 @@ function Footer() {
                   { k: "Inmuebles", v: LISTINGS.length.toLocaleString("es-VE"), c: "text-acento" },
                   { k: "Ciudades", v: String(ciudades.length), c: "text-mar" },
                   { k: "Zonas", v: String(barrios), c: "text-ambar" },
-                ].map((s) => (
+                ].filter((s) => s.k !== "Ciudades" || ciudades.length > 1).map((s) => (
                   <div key={s.k}>
                     <dt className="text-xs text-tinta-2">{s.k}</dt>
                     <dd className={`tabular text-xl font-bold ${s.c}`}>{s.v}</dd>
@@ -121,7 +108,7 @@ function Footer() {
 
       <div className="border-t border-borde-suave bg-crema">
         <div className="mx-auto flex max-w-7xl flex-col gap-2 px-5 py-6 text-xs text-tinta-2 sm:flex-row sm:items-center sm:justify-between">
-          <p>© {new Date().getFullYear()} Inmuebles VE · Mapas © CARTO, © OpenStreetMap</p>
+          <p>© {new Date().getFullYear()} {MARCA} · Mapas © OpenFreeMap, © OpenMapTiles, © OpenStreetMap</p>
           <p className="max-w-xl sm:text-right">
             Los inmuebles son publicados por agentes e inmobiliarias. Verifica siempre los datos
             y la documentación directamente con el anunciante.
@@ -146,10 +133,10 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
           {
             "@context": "https://schema.org", "@type": "Organization",
-            name: "Inmuebles VE", url: SITIO, description: metadata.description,
+            name: MARCA, url: SITIO, description: metadata.description,
             areaServed: { "@type": "Country", name: "Venezuela" },
           },
-          { "@context": "https://schema.org", "@type": "WebSite", name: "Inmuebles VE", url: SITIO, inLanguage: "es-VE" },
+          { "@context": "https://schema.org", "@type": "WebSite", name: MARCA, url: SITIO, inLanguage: "es-VE" },
         ]) }} />
         <Header ciudades={ciudadesNav} tipos={tiposNav} />
         <main className="flex-1">{children}</main>

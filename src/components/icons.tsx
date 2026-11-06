@@ -61,10 +61,6 @@ export const IconTrash = (p: P) => (
 
 export const IconClose = (p: P) => (<Svg {...p}><path d="m6 6 12 12M18 6 6 18" /></Svg>);
 
-export const IconMap = (p: P) => (
-  <Svg {...p}><path d="m9 4-5.5 2.2v13.6L9 17.6l6 2.2 5.5-2.2V4L15 6.2 9 4ZM9 4v13.6M15 6.2V19.8" /></Svg>
-);
-
 export const IconCheck = (p: P) => (<Svg {...p}><path d="m4 12.5 5 5L20 6.5" /></Svg>);
 
 /** Marca de WhatsApp: relleno, no trazo. */

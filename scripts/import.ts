@@ -31,6 +31,16 @@ const ESTADO_POR_CIUDAD: Record<string, string> = {
   Barquisimeto: "Lara",
 };
 
+/**
+ * Lanzamiento escalonado: solo estas ciudades (slug) llegan a listings.json,
+ * locations.json y public/mapa.json. Una ciudad que no esta aqui no existe en el
+ * build: sin paginas, sin sitemap, sin enlaces internos y sin pines en el mapa.
+ *
+ * Para lanzar otra: agregar su slug y correr `npm run import`.
+ * Solo se agrega, nunca se quita: retirar una ciudad deja en 404 URLs ya indexadas.
+ */
+export const CIUDADES_ACTIVAS = new Set(["barquisimeto"]);
+
 const TIPOS = new Set(Object.keys(TIPO_LABEL));
 
 /** Venezuela: +58 y 10 digitos. Devuelve null si no es un movil valido. */
@@ -222,7 +232,13 @@ function main() {
     }
   }
 
-  const { unicas, retirados } = deduplicar(listings);
+  const { unicas: todas, retirados } = deduplicar(listings);
+
+  // un slug mal escrito publicaria un sitio vacio sin avisar
+  for (const c of CIUDADES_ACTIVAS) {
+    if (!todas.some((l) => l.ciudad === c)) throw new Error(`CIUDADES_ACTIVAS: "${c}" no tiene inmuebles`);
+  }
+  const unicas = todas.filter((l) => CIUDADES_ACTIVAS.has(l.ciudad));
 
   // arbol geografico derivado de la data real: sin combinaciones vacias por construccion
   const estados = new Map<string, Estado>();
@@ -256,7 +272,8 @@ function main() {
   const indexables = unicas.filter((l) => l.indexable).length;
   const sinWa = unicas.filter((l) => !l.whatsapp).length;
   console.log(
-    `${stats.avisos} avisos -> ${unicas.length} fichas\n` +
+    `${stats.avisos} avisos -> ${unicas.length} fichas publicadas (${[...CIUDADES_ACTIVAS].join(", ")})\n` +
+    `  en espera: ${todas.length - unicas.length} fichas de ciudades sin lanzar\n` +
     `  descartados: ${stats.sinExtraer} sin extraer, ${stats.sinOperacion} sin operacion, ${stats.sinTipo} sin tipo clasificable\n` +
     `  avisos con venta Y alquiler: ${stats.dobles}  |  republicaciones retiradas: ${retirados}\n` +
     `  con precio: ${conPrecio}/${unicas.length}  ` +
