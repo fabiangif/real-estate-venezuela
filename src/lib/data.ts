@@ -131,7 +131,8 @@ export const MAX_FACETA_HAB = 5;
 /**
  * Facetas de habitaciones que superan el umbral. Es la unica faceta indexable
  * (ROADMAP §2.2.7): tiene demanda real ("apartamentos 3 habitaciones caracas").
- * El resto de filtros van por query param y los bloquea robots.txt.
+ * El resto de filtros iran por query param; al crearlos hay que bloquear su patron
+ * en robots.ts (ya no existe un `Disallow: /*?` general: bloqueaba las fotos).
  */
 export function facetasConInventario() {
   const set = new Map<string, { operacion: Operacion; tipo: Tipo; ubicacion: string[]; habitaciones: number; total: number }>();

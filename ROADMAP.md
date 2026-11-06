@@ -446,8 +446,12 @@ llegaba sin imagen, sin título y sin precio.
 ### Faceta de habitaciones
 
 `/venta/apartamentos/caracas/distrito-capital/3-habitaciones` — la **única faceta indexable**,
-porque es la única con demanda real de búsqueda. El resto de filtros irán por query param,
-ya bloqueados por robots.
+porque es la única con demanda real de búsqueda. El resto de filtros irán por query param.
+
+> **Corrección (2026-11-06):** robots ya no lleva `Disallow: /*?`. Esa regla bloqueaba todas
+> las fotos (`/_next/image?url=…`), la tarjeta OG (`/api/og?id=…`) y el favicon, sin ningún
+> aviso. Ahora solo se bloquea `/buscar?`. Cada filtro nuevo por query param debe bloquear
+> su propio patrón en `src/app/robots.ts`.
 
 142 facetas superan el umbral; 87 entran al sitemap (las 55 de nivel estado canonicalizan a su
 ciudad por la misma regla de §10). Solo se ofrecen en la UI las que superan el umbral: enviar al
