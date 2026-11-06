@@ -58,6 +58,30 @@ body {
 .sin-scrollbar { scrollbar-width: none; -ms-overflow-style: none; }
 .sin-scrollbar::-webkit-scrollbar { display: none; }
 
+/* Controles del reproductor: deliberadamente discretos, visibles sobre el video. */
+.media-progress {
+  height: 3px;
+  cursor: pointer;
+  appearance: none;
+  border-radius: 999px;
+}
+.media-progress::-webkit-slider-thumb {
+  width: 12px;
+  height: 12px;
+  appearance: none;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+}
+.media-progress::-moz-range-thumb {
+  width: 12px;
+  height: 12px;
+  border: 0;
+  border-radius: 999px;
+  background: #fff;
+  box-shadow: 0 1px 4px rgba(0, 0, 0, .3);
+}
+
 :where(a, button, input, select):focus-visible {
   outline: 2px solid var(--color-tinta);
   outline-offset: 2px;

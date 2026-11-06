@@ -5,6 +5,7 @@ import { useEffect, useMemo, useRef, useState } from "react";
 import { Map as MapLibre, NavigationControl, setWorkerUrl, type GeoJSONSource } from "maplibre-gl";
 import "maplibre-gl/dist/maplibre-gl.css";
 import Link from "next/link";
+import Image from "next/image";
 import { formatPrecio, TIPO_LABEL, type Tipo, type Operacion } from "@/lib/types";
 import { IconPencil, IconTrash, IconClose, IconBed, IconArea, IconChevron } from "./icons";
 import { dentro, cerrarTrazo } from "@/lib/geo";
@@ -14,6 +15,7 @@ export type Punto = {
   precio: number | null; tipo: Tipo; op: Operacion;
   barrio: string | null; ciudad: string;
   hab: number | null; m2: number | null; url: string;
+  foto: string | null; // primera foto en el CDN, si la ficha tiene
 };
 
 type Coord = [number, number]; // [lng, lat]
@@ -415,20 +417,27 @@ export default function Mapa({
 
           {/* tarjeta del punto seleccionado: hoja inferior en movil, tarjeta a la derecha en sm+ */}
           {sel && (
-            <article className="absolute inset-x-3 bottom-3 rounded-card border border-borde bg-papel p-4 shadow-[var(--shadow-pill-hover)] sm:inset-x-auto sm:bottom-11 sm:right-4 sm:w-[21rem]">
-              <button onClick={() => setSel(null)} aria-label="Cerrar"
-                className="absolute right-2 top-2 grid size-9 place-content-center rounded-full text-tinta-2 transition-colors hover:bg-humo hover:text-tinta">
-                <IconClose size={16} />
-              </button>
-              <p className="tabular pr-9 text-xl font-bold tracking-[-0.01em]">{precioCon(sel)}</p>
-              <p className="mt-0.5 truncate text-sm text-tinta-2">{queEs(sel)}</p>
-              <div className="mt-3 flex items-center justify-between gap-3">
-                <ul className="tabular flex items-center gap-x-4 text-sm">
-                  {sel.hab && <li className="flex items-center gap-1.5"><IconBed size={17} className="text-tinta-2" />{sel.hab}<span className="sr-only">habitaciones</span></li>}
-                  {sel.m2 && <li className="flex items-center gap-1.5"><IconArea size={17} className="text-tinta-2" />{sel.m2} m²</li>}
-                </ul>
+            <article className="absolute inset-x-3 bottom-3 flex overflow-hidden rounded-card border border-borde bg-papel shadow-[var(--shadow-pill-hover)] sm:inset-x-auto sm:bottom-11 sm:right-4 sm:w-[25rem]">
+              {sel.foto && (
+                <div className="relative w-28 shrink-0 bg-humo sm:w-36">
+                  <Image src={sel.foto} alt="" fill sizes="144px" className="object-cover" />
+                </div>
+              )}
+              <div className="relative min-w-0 flex-1 p-4">
+                <button onClick={() => setSel(null)} aria-label="Cerrar"
+                  className="absolute right-2 top-2 grid size-9 place-content-center rounded-full text-tinta-2 transition-colors hover:bg-humo hover:text-tinta">
+                  <IconClose size={16} />
+                </button>
+                <p className="tabular truncate pr-9 text-xl font-bold tracking-[-0.01em]">{precioCon(sel)}</p>
+                <p className="mt-0.5 truncate text-sm text-tinta-2">{queEs(sel)}</p>
+                {(sel.hab || sel.m2) && (
+                  <ul className="tabular mt-2 flex items-center gap-x-4 text-sm">
+                    {sel.hab && <li className="flex items-center gap-1.5"><IconBed size={17} className="text-tinta-2" />{sel.hab}<span className="sr-only">habitaciones</span></li>}
+                    {sel.m2 && <li className="flex items-center gap-1.5"><IconArea size={17} className="text-tinta-2" />{sel.m2} m²</li>}
+                  </ul>
+                )}
                 <Link href={sel.url}
-                  className="flex min-h-11 items-center gap-1 rounded-full bg-acento px-4 text-sm font-semibold text-white transition-opacity hover:opacity-90">
+                  className="mt-3 flex min-h-11 w-fit items-center gap-1 rounded-full bg-acento px-4 text-sm font-semibold text-white transition-opacity hover:opacity-90">
                   Ver inmueble <IconChevron size={15} />
                 </Link>
               </div>
@@ -459,12 +468,17 @@ export default function Mapa({
                 {visibles.slice(0, MAX_LISTA).map((p) => (
                   <li key={p.id}>
                     <Link href={p.url}
-                      className="block rounded-card border border-borde px-4 py-3 transition-colors hover:border-tinta hover:bg-humo">
-                      <p className="tabular truncate text-lg font-bold">{precioCon(p)}</p>
-                      <p className="tabular text-sm">
-                        {[p.hab && `${p.hab} hab`, p.m2 && `${p.m2} m²`].filter(Boolean).join(" · ") || " "}
-                      </p>
-                      <p className="truncate text-sm text-tinta-2">{queEs(p)}</p>
+                      className="flex items-center gap-3 rounded-card border border-borde p-3 transition-colors hover:border-tinta hover:bg-humo">
+                      <span className="relative size-20 shrink-0 overflow-hidden rounded-lg bg-humo">
+                        {p.foto && <Image src={p.foto} alt="" fill sizes="80px" className="object-cover" />}
+                      </span>
+                      <span className="min-w-0 flex-1">
+                        <span className="tabular block truncate text-lg font-bold">{precioCon(p)}</span>
+                        <span className="tabular block text-sm">
+                          {[p.hab && `${p.hab} hab`, p.m2 && `${p.m2} m²`].filter(Boolean).join(" · ") || " "}
+                        </span>
+                        <span className="block truncate text-sm text-tinta-2">{queEs(p)}</span>
+                      </span>
                     </Link>
                   </li>
                 ))}

@@ -8,6 +8,7 @@
     "start": "next start",
     "lint": "eslint",
     "import": "node scripts/import.ts",
+    "sync:cdn": "node scripts/sync-cdn.ts",
     "check": "node scripts/check.ts",
     "prebuild": "node scripts/copy-map-worker.mjs"
   },

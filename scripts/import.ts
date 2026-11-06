@@ -53,6 +53,29 @@ export function e164(raw: string | null): string | null {
 const num = (v: unknown): number | null =>
   typeof v === "number" && Number.isFinite(v) ? v : null;
 
+const texto = (v: unknown): string | null =>
+  typeof v === "string" && v.trim() ? v.trim() : null;
+
+type Extraido = {
+  id: string;
+  ofertas?: unknown[];
+  barrio?: unknown;
+  tipo?: unknown;
+  telefono?: string | null;
+  m2?: unknown;
+  habitaciones?: unknown;
+  banos?: unknown;
+  area_terreno?: unknown;
+  estacionamientos?: unknown;
+  amoblado?: unknown;
+  amenidades?: unknown;
+};
+
+type CdnManifest = {
+  imagesByShortcode?: Record<string, string[]>;
+  videosByShortcode?: Record<string, string[]>;
+};
+
 /** El area a dos decimales es ruido de parseo: "371.06 m²" se lee peor que "371 m²". */
 export const redondear = (v: number | null): number | null => (v === null ? null : Math.round(v));
 
@@ -69,7 +92,7 @@ export function titleCase(s: string): string {
 
 /** Cuanta informacion util trae una ficha. Decide cual sobrevive al deduplicar. */
 const riqueza = (l: Listing) =>
-  l.fotosCount * 10 +
+  (l.fotosCount + l.videosCount) * 10 +
   [l.precio, l.m2, l.habitaciones, l.banos, l.estacionamientos, l.areaTerreno, l.barrio].filter((v) => v !== null).length +
   l.amenidades.length +
   (l.descripcion?.length ?? 0) / 1000;
@@ -141,6 +164,7 @@ function escribirMapa(listings: Listing[]): number {
       hab: l.habitaciones,
       m2: l.m2,
       url: `/${l.slug}/${l.publicId}`,
+      foto: l.fotos[0] ?? null,
     }];
   });
 
@@ -149,9 +173,10 @@ function escribirMapa(listings: Listing[]): number {
 }
 
 function main() {
-  const raw = read("raw/Inmuebles.json") as Record<string, any>[];
-  const extracted: Record<string, any>[] = existsSync(D("extracted.json")) ? read("extracted.json") : [];
+  const raw = read("raw/Inmuebles.json") as Record<string, unknown>[];
+  const extracted: Extraido[] = existsSync(D("extracted.json")) ? read("extracted.json") : [];
   const wa: Record<string, string | null> = existsSync(D("whatsapp.json")) ? read("whatsapp.json") : {};
+  const cdn: CdnManifest = existsSync(D("cdn-images.json")) ? read("cdn-images.json") : {};
   const ex = new Map(extracted.map((e) => [e.id, e]));
 
   const listings: Listing[] = [];
@@ -167,8 +192,12 @@ function main() {
     if (!e) { stats.sinExtraer++; continue; }
 
     // ofertas: normalmente una; dos cuando el aviso se vende Y se alquila
-    const ofertas: { operacion: Operacion; precio: number | null }[] = (e.ofertas ?? [])
-      .filter((o: any) => o?.operacion === "venta" || o?.operacion === "alquiler");
+    const ofertas: { operacion: Operacion; precio: number | null }[] = (e.ofertas ?? []).flatMap((valor) => {
+      if (!valor || typeof valor !== "object") return [];
+      const oferta = valor as Record<string, unknown>;
+      if (oferta.operacion !== "venta" && oferta.operacion !== "alquiler") return [];
+      return [{ operacion: oferta.operacion, precio: num(oferta.precio) }];
+    });
     if (!ofertas.length) { stats.sinOperacion++; continue; }
     if (ofertas.length > 1) stats.dobles++;
 
@@ -184,11 +213,14 @@ function main() {
     const barrio = barrioNombre ? slugify(barrioNombre) : null;
 
     // sin tipo no hay listado al que pertenecer: seria una ficha huerfana sin enlaces internos
-    if (!TIPOS.has(e.tipo)) { stats.sinTipo++; continue; }
-    const tipo: Tipo = e.tipo;
+    if (typeof e.tipo !== "string" || !TIPOS.has(e.tipo)) { stats.sinTipo++; continue; }
+    const tipo = e.tipo as Tipo;
     const descripcion = (r["Caption completo"] ?? "").toString().trim() || null;
     const handle = (r["Perfil IG"] ?? "").toString().trim() || null;
-    const fotosCount = num(r["Cant. Fotos"]) ?? 0;
+    const fotos = [...new Set(cdn.imagesByShortcode?.[shortcode] ?? [])];
+    const videos = [...new Set(cdn.videosByShortcode?.[shortcode] ?? [])];
+    const fotosCount = fotos.length;
+    const videosCount = videos.length;
     const whatsapp = e164(e.telefono) ?? e164(handle ? wa[handle] ?? null : null);
 
     const m2 = redondear(num(e.m2) ?? num(r["M2"]));
@@ -215,19 +247,21 @@ function main() {
         banos,
         estacionamientos: enRango(num(e.estacionamientos), 50),
         amoblado: typeof e.amoblado === "boolean" ? e.amoblado : null,
-        amenidades: Array.isArray(e.amenidades) ? e.amenidades : [],
+        amenidades: Array.isArray(e.amenidades) ? e.amenidades.filter((a): a is string => typeof a === "string") : [],
         whatsapp,
-        fotos: [], // se llenan cuando lleguen las imagenes; fotosCount ya dice cuantas hay
+        fotos,
         fotosCount,
+        videos,
+        videosCount,
         fuente: {
           handle,
-          postUrl: r["URL del Post URL"] || r["URL del Post"] || null,
-          driveUrl: r["Carpeta en Drive URL"] || null,
+          postUrl: texto(r["URL del Post URL"]) ?? texto(r["URL del Post"]),
+          driveUrl: texto(r["Carpeta en Drive URL"]),
         },
         // §10.4: completo si hay precio y (habitaciones o area)
         dataQuality: precio !== null && (habitaciones !== null || m2 !== null) ? "completo" : "parcial",
-        // ficha indexable: >=1 foto y (precio o descripcion)
-        indexable: fotosCount >= 1 && (precio !== null || descripcion !== null),
+        // ficha indexable: >=1 recurso visual y (precio o descripcion)
+        indexable: fotos.length + videos.length >= 1 && (precio !== null || descripcion !== null),
       });
     }
   }

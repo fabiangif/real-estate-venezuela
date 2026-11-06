@@ -2,21 +2,20 @@
 
 import Link from "next/link";
 import { useEffect, useState } from "react";
-import { Buscador, type OpcionCiudad } from "./Buscador";
+import { Buscador } from "./Buscador";
 import { Logo } from "./Logo";
 import { MARCA } from "@/lib/seo";
-import type { Tipo } from "@/lib/types";
 
 /**
- * Navbar fija que se encoge al bajar, como la de Airbnb: el buscador pierde sus
- * etiquetas y la barra gana sombra, devolviendo altura de pantalla al contenido.
+ * Navbar fija que se encoge al bajar: el buscador reduce su altura y la barra gana
+ * sombra, devolviendo espacio de pantalla al contenido.
  *
  * El scroll se lee dentro de un requestAnimationFrame para no forzar layout en cada
  * evento; React descarta el re-render cuando el booleano no cambia, asi que en la
  * practica solo hay dos renders en todo el recorrido.
  * Las transiciones se anulan solas con prefers-reduced-motion (ver globals.css).
  */
-export function Header({ ciudades, tipos }: { ciudades: OpcionCiudad[]; tipos: Tipo[] }) {
+export function Header({ sugerencias }: { sugerencias: string[] }) {
   const [compacto, setCompacto] = useState(false);
 
   useEffect(() => {
@@ -41,7 +40,7 @@ export function Header({ ciudades, tipos }: { ciudades: OpcionCiudad[]; tipos: T
       }`}
     >
       <div
-        className={`mx-auto grid max-w-7xl grid-cols-[auto_1fr] items-center gap-4 px-5 transition-[padding] duration-200 lg:grid-cols-[1fr_auto_1fr] lg:gap-6 ${
+        className={`mx-auto grid max-w-7xl grid-cols-[auto_1fr] items-center gap-4 px-5 transition-[padding] duration-200 lg:grid-cols-[1fr_minmax(0,32rem)_1fr] lg:gap-6 ${
           compacto ? "py-2 lg:py-2.5" : "py-3 lg:py-4"
         }`}
       >
@@ -50,11 +49,11 @@ export function Header({ ciudades, tipos }: { ciudades: OpcionCiudad[]; tipos: T
         </Link>
 
         <div
-          className={`order-3 col-span-2 w-full transition-[max-width] duration-200 lg:order-none lg:col-span-1 lg:justify-self-center ${
+          className={`order-3 col-span-2 w-full transition-[max-width] duration-200 lg:order-none lg:col-span-1 lg:mx-auto ${
             compacto ? "lg:max-w-[27rem]" : "lg:max-w-[32rem]"
           }`}
         >
-          <Buscador ciudades={ciudades} tipos={tipos} compacto={compacto} />
+          <Buscador sugerencias={sugerencias} compacto={compacto} />
         </div>
 
         <div className="justify-self-end">

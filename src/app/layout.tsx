@@ -6,7 +6,7 @@ import { LISTINGS, LOCATIONS, rutaListado, destacadosPorOperacion, tiposConEnlac
 import { Header } from "@/components/Header";
 import { Logo } from "@/components/Logo";
 import { SITIO, OG_BASE, MARCA } from "@/lib/seo";
-import type { Tipo } from "@/lib/types";
+import { sugerenciasBusqueda } from "@/lib/search";
 
 const figtree = Figtree({ variable: "--font-figtree", subsets: ["latin"], display: "swap" });
 
@@ -120,16 +120,13 @@ function Footer() {
 }
 
 export default function RootLayout({ children }: LayoutProps<"/">) {
-  const ciudadesNav = LOCATIONS.flatMap((e) => e.ciudades)
-    .sort((a, b) => b.total - a.total)
-    .map((c) => ({ slug: c.slug, nombre: c.nombre, estado: c.estado }));
-  const tiposNav = [...new Set(LISTINGS.map((l) => l.tipo))] as Tipo[];
+  const sugerencias = sugerenciasBusqueda();
 
   return (
     <html lang="es-VE" className={`${figtree.variable} h-full`}>
       <body className="flex min-h-full flex-col">
-        {/* identidad del sitio. Sin SearchAction todavia: requiere una URL de busqueda
-            por texto que aun no existe, y declararla apuntando a nada seria una senal falsa */}
+        {/* Identidad del sitio. Google retiró el sitelinks search box, por eso la
+            búsqueda interna no se marca como SearchAction. */}
         <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
           {
             "@context": "https://schema.org", "@type": "Organization",
@@ -138,7 +135,7 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           },
           { "@context": "https://schema.org", "@type": "WebSite", name: MARCA, url: SITIO, inLanguage: "es-VE" },
         ]) }} />
-        <Header ciudades={ciudadesNav} tipos={tiposNav} />
+        <Header sugerencias={sugerencias} />
         <main className="flex-1">{children}</main>
         <Footer />
       </body>

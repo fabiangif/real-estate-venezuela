@@ -1,6 +1,6 @@
 import Link from "next/link";
-import { TIPO_LABEL, FAMILIA, formatPrecio, type Tipo, type Listing } from "@/lib/types";
-import { LISTINGS, LOCATIONS, rutaListado, tiposConEnlace } from "@/lib/data";
+import { FAMILIA, formatPrecio, type Tipo, type Listing } from "@/lib/types";
+import { LISTINGS, LOCATIONS, rutaListado, tiposConEnlace, medios } from "@/lib/data";
 import { OG_BASE } from "@/lib/seo";
 import { Grid, Chips, Seccion, Banda } from "@/components/ui";
 import { TipoStrip } from "@/components/TipoStrip";
@@ -14,10 +14,14 @@ export const metadata = {
 
 const mediana = (xs: number[]) => (xs.length ? [...xs].sort((a, b) => a - b)[Math.floor(xs.length / 2)] : null);
 
-/** Los que mejor lucen en un grid: con precio y con datos. */
+/**
+ * Los que mejor lucen en un grid: con precio, con datos y con galeria.
+ * Ordenar solo por m² dejaba 7 de los 8 apartamentos destacados con una sola
+ * foto; quien entraba desde la portada abria ficha tras ficha sin galeria.
+ */
 const destacados = (filtro: (l: Listing) => boolean, n = 8) =>
   LISTINGS.filter((l) => filtro(l) && l.precio !== null && l.habitaciones !== null)
-    .sort((a, b) => (b.m2 ?? 0) - (a.m2 ?? 0))
+    .sort((a, b) => medios(b) - medios(a) || (b.m2 ?? 0) - (a.m2 ?? 0))
     .slice(0, n);
 
 /** Precio del m² por ciudad: contenido único que ningún competidor publica. */
@@ -62,7 +66,6 @@ function zonasBuscadas(n = 16) {
 
 export default function Home() {
   const ciudades = LOCATIONS.flatMap((e) => e.ciudades).sort((a, b) => b.total - a.total);
-  const principal = ciudades[0];
   const stats = estadisticas();
 
   const tipos = tiposConEnlace();
@@ -70,9 +73,11 @@ export default function Home() {
   const apartamentos = destacados((l) => l.tipo === "apartamento" && l.operacion === "venta");
   const casas = destacados((l) => l.tipo === "casa" && l.operacion === "venta");
   const comerciales = destacados((l) => FAMILIA[l.tipo] === "comercial", 4);
-  const alquileres = LISTINGS.filter((l) => l.operacion === "alquiler" && l.precio !== null)
+  // Estas dos tiras prometen orden por precio en su copy, asi que aqui la galeria
+  // filtra en vez de reordenar: siguen siendo las mas baratas, pero las que se ven.
+  const alquileres = LISTINGS.filter((l) => l.operacion === "alquiler" && l.precio !== null && medios(l) > 1)
     .sort((a, b) => a.precio! - b.precio!).slice(0, 8);
-  const economicos = LISTINGS.filter((l) => l.operacion === "venta" && l.precio !== null && l.precio <= 50_000)
+  const economicos = LISTINGS.filter((l) => l.operacion === "venta" && l.precio !== null && l.precio <= 50_000 && medios(l) > 1)
     .sort((a, b) => a.precio! - b.precio!).slice(0, 8);
 
   const faqs = [

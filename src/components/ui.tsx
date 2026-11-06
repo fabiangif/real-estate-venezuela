@@ -10,14 +10,22 @@ import { ICONO_TIPO, IconBed, IconBath, IconArea } from "./icons";
  * Sin imágenes reales muestra un marcador deliberado con el icono del tipo — nunca un roto.
  */
 export function Foto({
-  listing, priority = false, sizes = "(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw", ratio = "aspect-[4/3]",
-}: { listing: Listing; priority?: boolean; sizes?: string; ratio?: string }) {
-  const src = listing.fotos[0];
+  listing, src, alt, preload = false,
+  sizes = "(max-width:640px) 100vw, (max-width:1024px) 50vw, 33vw", ratio = "aspect-[4/3]",
+}: {
+  listing: Listing;
+  src?: string;
+  alt?: string;
+  preload?: boolean;
+  sizes?: string;
+  ratio?: string;
+}) {
+  const imageSrc = src ?? listing.fotos[0];
   const Icono = ICONO_TIPO[listing.tipo];
   return (
     <div className={`relative ${ratio} overflow-hidden rounded-card bg-humo`}>
-      {src ? (
-        <Image src={src} alt={listing.titulo} fill sizes={sizes} priority={priority}
+      {imageSrc ? (
+        <Image src={imageSrc} alt={alt ?? listing.titulo} fill sizes={sizes} preload={preload}
           className="object-cover transition-transform duration-300 group-hover:scale-[1.04]" />
       ) : (
         <div className="absolute inset-0 flex flex-col items-center justify-center gap-2 text-tinta-3">
@@ -25,6 +33,8 @@ export function Foto({
           <span className="text-xs">
             {listing.fotosCount > 0
               ? `${listing.fotosCount} ${listing.fotosCount === 1 ? "foto" : "fotos"}`
+              : listing.videosCount > 0
+                ? `${listing.videosCount} ${listing.videosCount === 1 ? "video" : "videos"}`
               : TIPO_LABEL[listing.tipo].singular}
           </span>
         </div>
@@ -49,7 +59,7 @@ export function BadgeOperacion({ operacion }: { operacion: Operacion }) {
  * que es y donde. Sin badges sobre la foto: la operacion va en la linea de texto
  * y el "/mes" ya distingue un alquiler.
  */
-export function ListingCard({ listing, priority }: { listing: Listing; priority?: boolean }) {
+export function ListingCard({ listing, preload }: { listing: Listing; preload?: boolean }) {
   // un terreno no tiene area construida: su dato esencial es la del terreno
   const area = listing.m2 ?? listing.areaTerreno;
   // el nombre solo lo lee el lector de pantalla: a la vista basta el icono
@@ -63,7 +73,7 @@ export function ListingCard({ listing, priority }: { listing: Listing; priority?
 
   return (
     <Link href={rutaFicha(listing)} className="group block">
-      <Foto listing={listing} priority={priority} />
+      <Foto listing={listing} preload={preload} />
       <div className="mt-3">
         <p className="tabular truncate text-xl font-bold tracking-[-0.01em]">
           {listing.precio === null ? (
@@ -97,7 +107,7 @@ export function Grid({ listings }: { listings: Listing[] }) {
   return (
     <div className="grid grid-cols-1 gap-x-6 gap-y-9 sm:grid-cols-2 lg:grid-cols-3 xl:grid-cols-4">
       {listings.map((l, i) => (
-        <ListingCard key={l.publicId} listing={l} priority={i < 4} />
+        <ListingCard key={l.publicId} listing={l} preload={i === 0} />
       ))}
     </div>
   );

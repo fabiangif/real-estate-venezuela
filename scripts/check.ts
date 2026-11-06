@@ -5,10 +5,12 @@
  * Uso: npm run check
  */
 import { strict as assert } from "node:assert";
-import { slugify } from "../src/lib/types.ts";
-import { dentro, cerrarTrazo } from "../src/lib/geo.ts";
-import { readFileSync } from "node:fs";
+import { existsSync, readFileSync } from "node:fs";
 import { join } from "node:path";
+import { slugify } from "../src/lib/types.ts";
+import { normalizarTexto, terminosBusqueda } from "../src/lib/search-core.ts";
+import { LOCATION_IMAGES, locationImage } from "../src/lib/location-images.ts";
+import { dentro, cerrarTrazo } from "../src/lib/geo.ts";
 import { e164, titleCase, redondear, deduplicar, CIUDADES_ACTIVAS } from "./import.ts";
 import type { Listing } from "../src/lib/types.ts";
 
@@ -23,6 +25,29 @@ test("slugify quita acentos y espacios", () => {
   assert.equal(slugify("  Los Palos Grandes "), "los-palos-grandes");
   assert.equal(slugify("La Trigaleña"), "la-trigalena");
   assert.equal(slugify("Zona Industrial II"), "zona-industrial-ii");
+});
+
+test("la búsqueda unifica sinónimos, acentos y palabras vacías", () => {
+  assert.equal(normalizarTexto("APTOS con 3 hab. y planta eléctrica"), "apartamento con 3 habitacion y planta electrica");
+  assert.deepEqual(
+    terminosBusqueda("Quiero apartamentos en alquiler en Caracas con piscina"),
+    ["apartamento", "alquiler", "caracas", "piscina"]
+  );
+});
+
+test("cada ciudad y estado publicado tiene una imagen local relacionada", () => {
+  const locations = JSON.parse(
+    readFileSync(join(process.cwd(), "data", "locations.json"), "utf8")
+  ) as { slug: string; ciudades: { slug: string }[] }[];
+
+  for (const estado of locations) {
+    assert.ok(locationImage(undefined, estado.slug), `falta imagen para el estado ${estado.slug}`);
+    for (const ciudad of estado.ciudades) {
+      const image = LOCATION_IMAGES[ciudad.slug];
+      assert.ok(image, `falta imagen para la ciudad ${ciudad.slug}`);
+      assert.ok(existsSync(join(process.cwd(), "public", image.src)), `no existe ${image.src}`);
+    }
+  }
 });
 
 test("e164 acepta móviles venezolanos y rechaza el resto", () => {
@@ -95,7 +120,8 @@ test("deduplicar conserva la publicación más completa", () => {
     operacion: "venta", tipo: "apartamento", estado: "lara", estadoNombre: "Lara",
     ciudad: "barquisimeto", ciudadNombre: "Barquisimeto", barrio: "del-este", barrioNombre: "Del Este",
     precio: 45000, m2: 90, habitaciones: 3, banos: 2, estacionamientos: null, areaTerreno: null,
-    amoblado: null, amenidades: [], whatsapp: null, fotos: [], titulo: "t", slug: "s",
+    amoblado: null, amenidades: [], whatsapp: null, fotos: [], fotosCount: 0,
+    videos: [], videosCount: 0, titulo: "t", slug: "s",
     fuente: { handle: null, postUrl: null, driveUrl: null },
     dataQuality: "completo", indexable: true,
   } as unknown as Listing;
@@ -135,6 +161,31 @@ test("la data publicada solo contiene ciudades lanzadas", () => {
   assert.deepEqual(
     leer("data/locations.json").flatMap((e: { ciudades: { slug: string }[] }) => e.ciudades.map((c) => c.slug)).sort(),
     [...CIUDADES_ACTIVAS].sort(), "locations.json no coincide con las ciudades activas");
+});
+
+test("los medios publicados son URLs verificadas y no hay fichas indexables sin contenido visual", () => {
+  const listings = JSON.parse(
+    readFileSync(join(process.cwd(), "data", "listings.json"), "utf8")
+  ) as Listing[];
+  const manifest = JSON.parse(
+    readFileSync(join(process.cwd(), "data", "cdn-images.json"), "utf8")
+  ) as { baseUrl: string };
+  const cdnOrigin = new URL(manifest.baseUrl).origin;
+
+  for (const listing of listings) {
+    assert.equal(listing.fotosCount, listing.fotos.length, `${listing.publicId}: contador incorrecto`);
+    assert.equal(listing.videosCount, listing.videos.length, `${listing.publicId}: contador de videos incorrecto`);
+    assert.equal(new Set(listing.fotos).size, listing.fotos.length, `${listing.publicId}: fotos duplicadas`);
+    assert.equal(new Set(listing.videos).size, listing.videos.length, `${listing.publicId}: videos duplicados`);
+    for (const medio of [...listing.fotos, ...listing.videos]) {
+      const url = new URL(medio);
+      assert.equal(url.protocol, "https:", `${listing.publicId}: el medio no usa HTTPS`);
+      assert.equal(url.origin, cdnOrigin, `${listing.publicId}: origen CDN inesperado`);
+    }
+    if (listing.indexable) {
+      assert.ok(listing.fotos.length + listing.videos.length > 0, `${listing.publicId}: indexable sin medio real`);
+    }
+  }
 });
 
 if (!process.exitCode) console.log(`${n}/${n} checks OK`);
