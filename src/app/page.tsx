@@ -1,5 +1,5 @@
 import Link from "next/link";
-import { FAMILIA, formatPrecio, type Tipo, type Listing } from "@/lib/types";
+import { FAMILIA, TIPO_LABEL, formatPrecio, type Tipo, type Listing } from "@/lib/types";
 import { LISTINGS, LOCATIONS, rutaListado, tiposConEnlace, medios } from "@/lib/data";
 import { OG_BASE } from "@/lib/seo";
 import { Grid, Chips, Seccion, Banda } from "@/components/ui";
@@ -64,6 +64,95 @@ function zonasBuscadas(n = 16) {
     });
 }
 
+
+const lista = (xs: string[]) => new Intl.ListFormat("es", { type: "conjunction" }).format(xs);
+
+/** Mediana de precio de venta por tipo. Exige 5 muestras: con menos es ruido. */
+function medianaVenta(tipo: Tipo) {
+  const xs = LISTINGS.filter((l) => l.operacion === "venta" && l.tipo === tipo && l.precio !== null).map((l) => l.precio!);
+  return xs.length >= 5 ? mediana(xs) : null;
+}
+
+/**
+ * Preguntas frecuentes del Home. Las cifras salen del inventario publicado y se
+ * recalculan en cada build; el resto es orientacion practica del mercado venezolano,
+ * escrita sin cifras legales que puedan quedar desactualizadas.
+ * `ciudad` es null cuando hay mas de una ciudad lanzada.
+ */
+function preguntas(stats: ReturnType<typeof estadisticas>, ciudad: string | null) {
+  const donde = ciudad ?? "Venezuela";
+  const total = LISTINGS.length;
+  const alquileres = LISTINGS.filter((l) => l.operacion === "alquiler" && l.precio !== null).map((l) => l.precio!);
+  const ventas = [
+    ["apartamento", medianaVenta("apartamento")],
+    ["casa", medianaVenta("casa")],
+    ["townhouse", medianaVenta("townhouse")],
+  ].filter((x): x is [Tipo, number] => x[1] !== null);
+  const zonas = [...LISTINGS.reduce((m, l) => {
+    if (l.barrioNombre && FAMILIA[l.tipo] === "residencial") m.set(l.barrioNombre, (m.get(l.barrioNombre) ?? 0) + 1);
+    return m;
+  }, new Map<string, number>())].sort((a, b) => b[1] - a[1]).slice(0, 5).map(([n]) => n);
+  const con = (a: string) => LISTINGS.filter((l) => l.amenidades.includes(a)).length;
+  const planta = con("planta_electrica"), tanque = con("tanque_agua"), vigilancia = con("vigilancia_24h");
+
+  return [
+    {
+      q: `¿Cuánto cuesta el metro cuadrado en ${donde}?`,
+      a: stats.length === 1 && stats[0].m2
+        ? `Según los inmuebles en venta publicados, la mediana del metro cuadrado en ${stats[0].nombre} es de ${formatPrecio(stats[0].m2)}. La calculamos solo con fichas que publican precio y área construida, y cambia cada vez que entra o sale un inmueble.`
+        : stats.length > 1
+        ? `Según los ${LISTINGS.filter((l) => l.operacion === "venta" && l.precio && l.m2).length} inmuebles en venta publicados, el metro cuadrado va de ${formatPrecio(stats.at(-1)!.m2)} en ${stats.at(-1)!.nombre} a ${formatPrecio(stats[0].m2)} en ${stats[0].nombre}.`
+        : "Publicamos el precio por metro cuadrado calculado con el inventario real de cada ciudad.",
+    },
+    ...(ventas.length ? [{
+      q: `¿Cuánto cuesta un apartamento o una casa en ${donde}?`,
+      a: `Con los ${total} inmuebles publicados hoy, la mediana de precio es ${lista(ventas.map(([t, p]) => `${formatPrecio(p)} para ${TIPO_LABEL[t].plural.toLowerCase()}`))}. La mediana es el valor del medio: la mitad de los inmuebles cuesta menos y la otra mitad más, así que un penthouse de lujo no la distorsiona como sí haría con un promedio.`,
+    }] : []),
+    ...(alquileres.length >= 5 ? [{
+      q: `¿Cuánto cuesta alquilar en ${donde}?`,
+      a: `La mediana de los ${alquileres.length} alquileres con precio publicado es de ${formatPrecio(mediana(alquileres))} al mes. En Venezuela lo habitual es pedir un depósito de uno a tres meses más el primer mes por adelantado, y el condominio suele pagarse aparte. Cada anunciante fija sus condiciones: confírmalas antes de visitar.`,
+    }] : []),
+    ...(zonas.length >= 3 ? [{
+      q: `¿Qué zonas de ${donde} tienen más oferta?`,
+      a: `Hoy la mayor oferta residencial está en ${lista(zonas)}. En cada listado encontrarás las zonas de esa ciudad con su número de inmuebles, y en el mapa del inicio puedes dibujar la zona exacta que te interesa para ver solo lo que hay ahí.`,
+    }] : []),
+    {
+      q: "¿Se puede comprar un inmueble en Venezuela en dólares?",
+      a: "Sí. El mercado inmobiliario venezolano fija los precios en dólares y las operaciones suelen cerrarse al contado, sin crédito hipotecario. Todos los precios de Mudave están en USD. Pregunta al agente cómo se hará el pago (transferencia internacional, efectivo o Zelle son los más comunes) y cómo se reflejará el precio en el documento de venta.",
+    },
+    {
+      q: "¿Qué documentos debo revisar antes de comprar?",
+      a: "Como mínimo: el documento de propiedad registrado a nombre de quien vende, la cédula catastral, la solvencia del impuesto inmobiliario municipal, la solvencia de condominio y servicios, y una certificación de gravámenes reciente que confirme que no hay hipotecas ni medidas sobre el inmueble. Si el vendedor es casado, hace falta el consentimiento del cónyuge. Pide copias antes de entregar cualquier reserva y revísalas con un abogado si tienes dudas.",
+    },
+    {
+      q: "¿Cómo se firma la compra y quién paga cada gasto?",
+      a: "Lo habitual es firmar primero una opción de compraventa ante notaría, con un adelanto y un plazo para completar el pago, y luego protocolizar la venta definitiva en el Registro Público Inmobiliario. Por costumbre el comprador asume los gastos de notaría y registro, y el vendedor paga el anticipo de impuesto sobre la renta (la Forma 33 del SENIAT) y la comisión de la inmobiliaria. Todo esto es negociable: déjalo por escrito en la opción.",
+    },
+    {
+      q: `¿Qué servicios tienen los inmuebles en ${donde}?`,
+      a: `En Venezuela importan tanto como los metros: ${planta} de los ${total} inmuebles publicados declaran planta eléctrica, ${tanque} tanque de agua y ${vigilancia} vigilancia 24 horas. Cada ficha lista las comodidades que el anunciante menciona; si una no aparece, no la des por hecha y pregúntala.`,
+    },
+    {
+      q: '¿Qué significa "Precio a consultar"?',
+      a: "Que el anunciante no publicó el precio en su aviso. No lo estimamos ni lo inventamos: preferimos decir que no lo sabemos a mostrarte una cifra falsa. Escríbele directamente desde la ficha para conocerlo.",
+    },
+    {
+      q: "¿Cómo contacto al dueño o al agente?",
+      a: "Cada ficha tiene un botón que abre la conversación directamente con quien publica el inmueble, por WhatsApp cuando el anunciante dejó su número y por Instagram cuando no. El trato es directo entre ustedes: Mudave no intermedia ni cobra comisión.",
+    },
+    {
+      q: "¿Cómo evito una estafa?",
+      a: "Nunca entregues dinero sin haber visitado el inmueble y visto los documentos originales. Comprueba que quien firma es el propietario que aparece en el documento registrado, desconfía de precios muy por debajo de la mediana de su zona y de quien presione para reservar rápido, y haz los pagos siempre con respaldo escrito. Mudave publica avisos de agentes e inmobiliarias; verifica cada dato directamente con ellos.",
+    },
+    {
+      q: "¿Cuándo llegarán otras ciudades?",
+      a: ciudad
+        ? `Empezamos por ${ciudad} y vamos sumando ciudades una por una, con su inventario completo y verificado, en lugar de lanzar todo el país a medias. Las siguientes son Caracas, Maracaibo, Valencia y Maracay.`
+        : `Hoy cubrimos ${lista(LOCATIONS.flatMap((e) => e.ciudades).map((c) => c.nombre))} y seguimos sumando ciudades con inventario verificado.`,
+    },
+  ];
+}
+
 export default function Home() {
   const ciudades = LOCATIONS.flatMap((e) => e.ciudades).sort((a, b) => b.total - a.total);
   const stats = estadisticas();
@@ -80,25 +169,7 @@ export default function Home() {
   const economicos = LISTINGS.filter((l) => l.operacion === "venta" && l.precio !== null && l.precio <= 50_000 && medios(l) > 1)
     .sort((a, b) => a.precio! - b.precio!).slice(0, 8);
 
-  const faqs = [
-    {
-      // con una sola ciudad lanzada no hay rango que comparar
-      q: `¿Cuánto cuesta el metro cuadrado en ${stats.length === 1 ? stats[0].nombre : "Venezuela"}?`,
-      a: stats.length === 1 && stats[0].m2
-        ? `Según los inmuebles en venta publicados, la mediana del metro cuadrado en ${stats[0].nombre} es de ${formatPrecio(stats[0].m2)}.`
-        : stats.length > 1
-        ? `Según los ${LISTINGS.filter((l) => l.operacion === "venta" && l.precio && l.m2).length} inmuebles en venta publicados, el metro cuadrado va de ${formatPrecio(stats.at(-1)!.m2)} en ${stats.at(-1)!.nombre} a ${formatPrecio(stats[0].m2)} en ${stats[0].nombre}.`
-        : "Publicamos el precio por metro cuadrado calculado con el inventario real de cada ciudad.",
-    },
-    {
-      q: "¿Se puede comprar un inmueble en Venezuela en dólares?",
-      a: "Sí. Prácticamente todo el mercado inmobiliario venezolano opera al contado y en dólares. Todos los precios de este portal están expresados en USD.",
-    },
-    {
-      q: "¿Cómo contacto al dueño o al agente?",
-      a: "Cada ficha tiene un botón de WhatsApp que abre la conversación directamente con quien publica el inmueble, con el enlace de la propiedad ya escrito en el mensaje.",
-    },
-  ];
+  const faqs = preguntas(stats, ciudades.length === 1 ? ciudades[0].nombre : null);
 
   return (
     <>
@@ -233,14 +304,18 @@ export default function Home() {
         </Seccion>
 
         <Seccion titulo="Preguntas frecuentes">
-          <dl className="max-w-3xl divide-y divide-borde border-y border-borde">
+          {/* <details> nativo: sin JS, accesible y con el contenido en el HTML para el FAQPage */}
+          <div className="grid items-start gap-3 lg:grid-cols-2">
             {faqs.map((f) => (
-              <div key={f.q} className="py-5">
-                <dt className="font-medium"><h3>{f.q}</h3></dt>
-                <dd className="mt-1.5 text-sm leading-relaxed text-tinta-2">{f.a}</dd>
-              </div>
+              <details key={f.q} className="group rounded-card border border-borde open:border-tinta">
+                <summary className="flex cursor-pointer list-none items-center justify-between gap-4 px-5 py-4 [&::-webkit-details-marker]:hidden">
+                  <h3 className="font-semibold">{f.q}</h3>
+                  <IconChevron size={18} className="shrink-0 text-tinta-3 transition-transform group-open:rotate-90" />
+                </summary>
+                <p className="px-5 pb-5 text-sm leading-relaxed text-tinta-2">{f.a}</p>
+              </details>
             ))}
-          </dl>
+          </div>
         </Seccion>
       </div>
 
