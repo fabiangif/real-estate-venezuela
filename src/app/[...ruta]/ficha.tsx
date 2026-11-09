@@ -83,6 +83,13 @@ export default function Ficha({ l }: { l: Listing }) {
     l.estacionamientos && { Icono: IconCar, txt: `${l.estacionamientos} ${l.estacionamientos === 1 ? "puesto" : "puestos"}` },
   ].filter(Boolean) as { Icono: (p: { size?: number }) => React.JSX.Element; txt: string }[];
 
+  const precio = (
+    <p className={`tabular tracking-[-0.03em] ${l.precio === null ? "text-xl font-bold text-tinta-2" : "text-2xl font-extrabold"}`}>
+      {formatPrecio(l.precio)}
+      {l.operacion === "alquiler" && l.precio !== null && <span className="text-base font-medium text-tinta-2"> /mes</span>}
+    </p>
+  );
+
   return (
     <>
       <script type="application/ld+json" dangerouslySetInnerHTML={{ __html: JSON.stringify([
@@ -136,11 +143,14 @@ export default function Ficha({ l }: { l: Listing }) {
           {l.barrioNombre ? `${l.barrioNombre}, ` : ""}{l.ciudadNombre}, {l.estadoNombre}
         </p>
 
+        {/* en movil la tarjeta de contacto queda bajo la galeria: el precio sube junto al titulo */}
+        <div className="mt-4 lg:hidden">{precio}</div>
+
         {/* barra de datos clave: solo los presentes */}
         {clave.length > 0 && (
           <ul className="mt-5 flex flex-wrap items-center gap-x-6 gap-y-3 border-y border-borde-suave py-4">
             {clave.map(({ Icono, txt }) => (
-              <li key={txt} className="tabular flex items-center gap-2 text-sm text-tinta-2">
+              <li key={txt} className="tabular flex items-center gap-2 text-base font-medium">
                 <Icono size={20} />{txt}
               </li>
             ))}
@@ -195,8 +205,9 @@ export default function Ficha({ l }: { l: Listing }) {
           {/* contacto: sticky en escritorio, es el unico mecanismo de conversion */}
           <aside className="min-w-0 space-y-4 lg:sticky lg:top-24 lg:self-start">
             <div className="rounded-card border border-borde p-6 shadow-[var(--shadow-pill)]">
-              <p className="tabular text-lg font-semibold">{formatPrecio(l.precio)}</p>
-              <p className="mt-0.5 text-sm text-tinta-2">{tipoNombre} en {OPERACION_LABEL[l.operacion].toLowerCase()}</p>
+              {/* el precio es lo primero que se compara: manda sobre todo lo demas de la tarjeta */}
+              {precio}
+              <p className="mt-1 text-sm text-tinta-2">{tipoNombre} en {OPERACION_LABEL[l.operacion].toLowerCase()}</p>
 
               {/* situa el precio frente al mercado de su ciudad: el dato que de verdad
                   necesita quien compara, y que ningun competidor publica */}
