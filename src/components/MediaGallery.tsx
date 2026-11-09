@@ -148,7 +148,7 @@ function Media({ item, listing, index, desktop = false }: {
     <div className={`relative ${desktop && index === 0 ? "aspect-[16/9]" : "aspect-[4/3]"} overflow-hidden rounded-card bg-humo`}>
       <Image
         src={item.src}
-        alt={`${listing.titulo} — foto ${item.photoNumber}`}
+        alt={`${listing.titulo}, foto ${item.photoNumber}`}
         fill
         preload={desktop && index === 0}
         sizes={desktop

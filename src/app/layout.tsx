@@ -13,7 +13,7 @@ const figtree = Figtree({ variable: "--font-figtree", subsets: ["latin"], displa
 export const metadata: Metadata = {
   metadataBase: new URL(SITIO),
   title: {
-    default: `${MARCA} — Apartamentos y casas en venta y alquiler en Venezuela`,
+    default: `${MARCA} | Apartamentos y casas en venta y alquiler en Venezuela`,
     template: `%s | ${MARCA}`,
   },
   // las ciudades salen de la data: con el lanzamiento escalonado cambian cada semana

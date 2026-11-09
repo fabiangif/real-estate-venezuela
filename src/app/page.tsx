@@ -145,7 +145,7 @@ export default function Home() {
                     <IconPin size={15} className="text-tinta-3" />{c.nombre}
                   </p>
                   <p className="tabular mt-2 text-lg font-bold text-ambar">
-                    {c.m2 ? `US$ ${c.m2.toLocaleString("es-VE")}` : "—"}
+                    {c.m2 ? `US$ ${c.m2.toLocaleString("es-VE")}` : "Sin dato"}
                     <span className="text-xs font-normal text-tinta-2"> /m²</span>
                   </p>
                   <p className="tabular mt-1 text-xs text-tinta-2">Mediana venta {formatPrecio(c.venta)}</p>

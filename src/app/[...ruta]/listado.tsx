@@ -68,7 +68,7 @@ export function tituloListado(c: Ctx) {
     ? `${TIPO_LABEL[c.tipo].plural} de ${c.habitaciones} ${c.habitaciones === 1 ? "habitación" : "habitaciones"} en ${OPERACION_LABEL[c.operacion]} en ${c.lugar}`
     : `${TIPO_LABEL[c.tipo].plural} en ${OPERACION_LABEL[c.operacion]} en ${c.lugar}`;
   // sin esto, las paginas 2+ competirian con la 1 por el mismo title
-  return c.pagina > 1 ? `${base} — página ${c.pagina}` : base;
+  return c.pagina > 1 ? `${base}, página ${c.pagina}` : base;
 }
 
 /** Párrafo único por ubicación, construido con los datos reales del inventario. */

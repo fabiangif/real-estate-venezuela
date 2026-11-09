@@ -54,7 +54,7 @@ export async function generateMetadata({ params }: PageProps<"/[...ruta]">): Pro
     const donde = `${l.barrioNombre ? `${l.barrioNombre}, ` : ""}${l.ciudadNombre}`;
     const tipo = TIPO_LABEL[l.tipo].singular;
     return {
-      title: `${tipo} en ${OPERACION_LABEL[l.operacion]} en ${donde} — ${formatPrecio(l.precio)}`,
+      title: `${tipo} en ${OPERACION_LABEL[l.operacion]} en ${donde} · ${formatPrecio(l.precio)}`,
       description: (l.descripcion ?? l.titulo).replace(/\s+/g, " ").slice(0, 155),
       alternates: { canonical: rutaFicha(l) },
       openGraph: { ...OG_BASE, images: [`/api/og?id=${encodeURIComponent(l.publicId)}`] },
@@ -66,7 +66,7 @@ export async function generateMetadata({ params }: PageProps<"/[...ruta]">): Pro
   const { c } = r;
   const n = c.todos.length;
   return {
-    title: `${tituloListado(c)} — ${n} ${n === 1 ? "inmueble" : "inmuebles"}`,
+    title: `${tituloListado(c)} · ${n} ${n === 1 ? "inmueble" : "inmuebles"}`,
     description: `${n} ${TIPO_LABEL[c.tipo].plural.toLowerCase()} en ${c.operacion === "venta" ? "venta" : "alquiler"} en ${c.lugar}. Precios en USD y contacto directo por WhatsApp.`,
     alternates: { canonical: canonicaListado(c.operacion, c.tipo, c.ubicacion, c.pagina, c.habitaciones) },
     openGraph: { ...OG_BASE, images: [`/api/og?l=${encodeURIComponent(ruta.join("/"))}`] },
