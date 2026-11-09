@@ -95,7 +95,7 @@ function CampoBusqueda({
     }
   }
 
-  const alto = compacto ? "h-10" : "h-12";
+  const alto = compacto ? "h-11" : "h-14";
 
   return (
     <div ref={contenedorRef} className="relative w-full">
@@ -105,7 +105,7 @@ function CampoBusqueda({
         method="get"
         role="search"
         onSubmit={() => setAbierto(false)}
-        className={`flex ${alto} w-full items-center rounded-full border border-borde bg-papel pl-4 shadow-[var(--shadow-pill)] transition-[height,box-shadow] duration-200 hover:shadow-[var(--shadow-pill-hover)] focus-within:border-tinta`}
+        className={`flex ${alto} w-full items-center rounded-full border border-borde bg-papel pl-5 shadow-[var(--shadow-pill)] transition-[height,box-shadow] duration-200 hover:shadow-[var(--shadow-pill-hover)] focus-within:border-tinta`}
       >
         <label htmlFor="busqueda-global" className="sr-only">Buscar inmuebles</label>
         <input
@@ -125,7 +125,7 @@ function CampoBusqueda({
           aria-controls={listaVisible ? "sugerencias-busqueda" : undefined}
           aria-expanded={listaVisible}
           aria-activedescendant={listaVisible && activo >= 0 ? `sugerencia-${activo}` : undefined}
-          className="min-w-0 flex-1 bg-transparent text-sm text-tinta outline-none placeholder:text-tinta-2"
+          className="min-w-0 flex-1 bg-transparent text-base text-tinta outline-none placeholder:text-tinta-2"
           onChange={(evento) => {
             setTexto(evento.target.value);
             setAbierto(true);
@@ -137,9 +137,9 @@ function CampoBusqueda({
         <button
           type="submit"
           aria-label="Buscar inmuebles"
-          className={`m-1 grid shrink-0 place-content-center rounded-full bg-acento text-white transition-[width,height,opacity] duration-200 hover:opacity-90 ${compacto ? "size-8" : "size-10"}`}
+          className={`m-1 grid shrink-0 place-content-center rounded-full bg-acento text-white transition-[width,height,opacity] duration-200 hover:opacity-90 ${compacto ? "size-9" : "size-11"}`}
         >
-          <IconSearch size={compacto ? 16 : 18} />
+          <IconSearch size={compacto ? 17 : 20} />
         </button>
       </form>
 

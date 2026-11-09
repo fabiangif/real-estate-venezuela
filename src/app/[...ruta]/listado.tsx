@@ -130,10 +130,6 @@ function faqs(c: Ctx) {
         ? `Las zonas con más oferta de ${TIPO_LABEL[c.tipo].plural.toLowerCase()} en ${c.lugar} son ${zonas.join(", ")}. Cada una tiene su propio perfil de precio y servicios.`
         : `La oferta en ${c.lugar} está distribuida en distintas urbanizaciones. Revisa el listado completo para ver las zonas disponibles.`,
     },
-    {
-      q: `¿Cómo publico mi ${tipoS} en ${c.lugar}?`,
-      a: `La publicación es gratuita. Escríbenos con las fotos y los datos del inmueble y lo incorporamos al portal para que aparezca en las búsquedas de ${c.lugar}.`,
-    },
   ];
 }
 
@@ -149,7 +145,7 @@ function Paginacion({ c }: { c: Ctx }) {
     .filter((n) => n >= 1 && n <= c.totalPaginas);
   const paginas = [...new Set(cerca)].sort((a, b) => a - b);
 
-  const estilo = "grid h-10 min-w-10 place-content-center rounded-full px-3 text-sm transition-colors";
+  const estilo = "grid h-11 min-w-11 place-content-center rounded-full px-3.5 text-sm font-medium transition-colors";
 
   return (
     <nav aria-label="Paginación" className="mt-10 flex flex-wrap items-center justify-center gap-2">
@@ -265,7 +261,7 @@ export default function Listado({ c }: { c: Ctx }) {
           <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-white/70">
             Mercado inmobiliario · {heroImage.city}
           </p>
-          <h1 className="mt-2 max-w-4xl text-2xl font-semibold tracking-[-0.025em] text-white sm:text-3xl">
+          <h1 className="mt-2 max-w-4xl text-2xl font-extrabold tracking-[-0.03em] text-white sm:text-3xl">
             {h1}
           </h1>
           <p className="mt-3 max-w-3xl text-sm leading-relaxed text-white/80 sm:text-base">{intro(c)}</p>
@@ -292,7 +288,7 @@ export default function Listado({ c }: { c: Ctx }) {
               <span className="text-tinta">{c.lugar}</span>
             </nav>
 
-            <h1 className="mt-3 max-w-3xl text-xl font-semibold tracking-[-0.02em] sm:text-2xl">{h1}</h1>
+            <h1 className="mt-3 max-w-3xl text-xl font-extrabold tracking-[-0.03em] sm:text-2xl">{h1}</h1>
             <p className="mt-3 max-w-2xl leading-relaxed text-tinta-2">{intro(c)}</p>
 
             {indicadores.length > 0 && (
@@ -313,7 +309,7 @@ export default function Listado({ c }: { c: Ctx }) {
             <span className="text-sm text-tinta-2">Habitaciones:</span>
             <Link href={rutaPagina(c.operacion, c.tipo, c.ubicacion)}
               aria-current={c.habitaciones ? undefined : "page"}
-              className={`rounded-full border px-3.5 py-1.5 text-sm transition-colors ${
+              className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
                 c.habitaciones ? "border-borde hover:bg-humo" : "border-tinta bg-tinta text-white"
               }`}>
               Todas
@@ -323,7 +319,7 @@ export default function Listado({ c }: { c: Ctx }) {
               return (
                 <Link key={h} href={rutaPagina(c.operacion, c.tipo, c.ubicacion, 1, h)}
                   aria-current={activa ? "page" : undefined}
-                  className={`rounded-full border px-3.5 py-1.5 text-sm transition-colors ${
+                  className={`rounded-full border px-4 py-2 text-sm font-medium transition-colors ${
                     activa ? "border-tinta bg-tinta text-white" : "border-borde hover:bg-humo"
                   }`}>
                   {h}

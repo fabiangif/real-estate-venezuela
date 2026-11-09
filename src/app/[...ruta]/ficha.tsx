@@ -127,7 +127,7 @@ export default function Ficha({ l }: { l: Listing }) {
           )}
         </nav>
 
-        <h1 className="mt-4 max-w-3xl text-xl font-semibold tracking-tight sm:text-2xl">
+        <h1 className="mt-4 max-w-3xl text-xl font-extrabold tracking-[-0.03em] sm:text-2xl">
           {tipoNombre} en {OPERACION_LABEL[l.operacion]} en {l.barrioNombre ? `${l.barrioNombre}, ` : ""}{l.ciudadNombre}
         </h1>
 
@@ -213,7 +213,7 @@ export default function Ficha({ l }: { l: Listing }) {
 
               {cta ? (
                 <a href={cta.href} target="_blank" rel="noopener noreferrer"
-                  className="mt-4 flex items-center justify-center gap-2 rounded-full bg-acento px-5 py-3.5 text-sm font-semibold text-white transition-opacity hover:opacity-90">
+                  className="mt-4 flex items-center justify-center gap-2 rounded-full bg-acento px-6 py-4 text-base font-bold text-white transition-opacity hover:opacity-90">
                   <cta.Icono size={18} />{cta.label}
                 </a>
               ) : (

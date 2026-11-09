@@ -93,7 +93,7 @@ export default async function BuscarPage({ searchParams }: Props) {
           <p className="mt-5 text-xs font-semibold uppercase tracking-[0.16em] text-white/70">
             Resultados relacionados con {heroImage.city}
           </p>
-          <h1 className="mt-2 max-w-4xl text-2xl font-semibold tracking-[-0.025em] text-white sm:text-3xl">
+          <h1 className="mt-2 max-w-4xl text-2xl font-extrabold tracking-[-0.03em] text-white sm:text-3xl">
             {title}
           </h1>
           <p className="tabular mt-3 text-sm text-white/80 sm:text-base">
@@ -111,7 +111,7 @@ export default async function BuscarPage({ searchParams }: Props) {
               <span className="text-tinta">Buscar</span>
             </nav>
 
-            <h1 className="mt-4 max-w-4xl text-xl font-semibold tracking-[-0.02em] sm:text-2xl">
+            <h1 className="mt-4 max-w-4xl text-xl font-extrabold tracking-[-0.03em] sm:text-2xl">
               {title}
             </h1>
           </>
@@ -160,7 +160,7 @@ export default async function BuscarPage({ searchParams }: Props) {
               Prueba con menos características o revisa la escritura. También puedes explorar
               una ciudad o un tipo de inmueble desde los enlaces de la portada.
             </p>
-            <Link href="/" className="mt-5 inline-flex rounded-full bg-tinta px-5 py-2.5 text-sm font-semibold text-white hover:opacity-90">
+            <Link href="/" className="mt-5 inline-flex rounded-full bg-tinta px-6 py-3 text-base font-bold text-white hover:opacity-90">
               Volver al inicio
             </Link>
           </section>

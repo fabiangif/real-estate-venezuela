@@ -1,7 +1,7 @@
 import type { Tipo } from "@/lib/types";
 
 /**
- * Iconos de línea, 24×24, trazo 1.6. Heredan color y tamaño del contexto.
+ * Iconos de línea, 24×24, trazo 2. Heredan color y tamaño del contexto.
  * Escritos a mano en vez de instalar una librería: son 14 y no cambian nunca.
  */
 type P = { className?: string; size?: number };
@@ -9,7 +9,7 @@ type P = { className?: string; size?: number };
 const Svg = ({ children, className = "", size = 24 }: P & { children: React.ReactNode }) => (
   <svg
     width={size} height={size} viewBox="0 0 24 24" fill="none"
-    stroke="currentColor" strokeWidth={1.6} strokeLinecap="round" strokeLinejoin="round"
+    stroke="currentColor" strokeWidth={2} strokeLinecap="round" strokeLinejoin="round"
     className={className} aria-hidden="true" focusable="false"
   >
     {children}

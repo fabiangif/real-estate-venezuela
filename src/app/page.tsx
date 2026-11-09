@@ -98,10 +98,6 @@ export default function Home() {
       q: "¿Cómo contacto al dueño o al agente?",
       a: "Cada ficha tiene un botón de WhatsApp que abre la conversación directamente con quien publica el inmueble, con el enlace de la propiedad ya escrito en el mensaje.",
     },
-    {
-      q: "¿Publicar un inmueble tiene costo?",
-      a: "No. La publicación es gratuita para propietarios, agentes e inmobiliarias.",
-    },
   ];
 
   return (
@@ -117,7 +113,7 @@ export default function Home() {
       <section className="relative">
         <MapaHero>
           <div className="sm:rounded-card sm:border sm:border-borde sm:bg-papel/95 sm:p-5 sm:shadow-[var(--shadow-pill)] sm:backdrop-blur-sm">
-            <h1 className="text-lg font-bold tracking-[-0.02em] sm:text-xl">
+            <h1 className="text-xl font-extrabold tracking-[-0.03em] sm:text-2xl">
               Portal inmobiliario de Venezuela: apartamentos y casas en venta y alquiler
             </h1>
             <p className="mt-2 text-sm leading-relaxed text-tinta-2">
@@ -137,7 +133,7 @@ export default function Home() {
             Las secciones que comparan ciudades solo salen con 2 o mas lanzadas. */}
         {stats.length > 1 && (
           <section>
-            <h2 className="text-xl font-semibold tracking-[-0.01em]">Precio del metro cuadrado por ciudad</h2>
+            <h2 className="text-xl font-extrabold tracking-[-0.02em]">Precio del metro cuadrado por ciudad</h2>
             <p className="mt-1.5 max-w-2xl text-sm text-tinta-2">
               Mediana calculada con los inmuebles en venta publicados hoy. Se actualiza con el inventario.
             </p>
@@ -170,7 +166,7 @@ export default function Home() {
       </div>
 
       <Banda tono="crema">
-        <h2 className="text-xl font-semibold tracking-[-0.01em]">Las zonas con más oferta</h2>
+        <h2 className="text-xl font-extrabold tracking-[-0.02em]">Las zonas con más oferta</h2>
         <p className="mt-1.5 max-w-2xl text-sm text-tinta-2">
           Las urbanizaciones donde hoy hay más inmuebles publicados.
         </p>
@@ -186,7 +182,7 @@ export default function Home() {
       </div>
 
       <Banda tono="menta">
-        <h2 className="text-xl font-semibold tracking-[-0.01em]">
+        <h2 className="text-xl font-extrabold tracking-[-0.02em]">
           En alquiler, desde {formatPrecio(alquileres[0]?.precio ?? null)} al mes
         </h2>
         <p className="mt-1.5 max-w-2xl text-sm text-tinta-2">

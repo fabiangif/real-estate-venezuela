@@ -75,7 +75,7 @@ export function ListingCard({ listing, preload }: { listing: Listing; preload?: 
     <Link href={rutaFicha(listing)} className="group block">
       <Foto listing={listing} preload={preload} />
       <div className="mt-3">
-        <p className="tabular truncate text-xl font-bold tracking-[-0.01em]">
+        <p className="tabular truncate text-xl font-extrabold tracking-[-0.02em]">
           {listing.precio === null ? (
             <span className="text-lg font-semibold text-tinta-2">Precio a consultar</span>
           ) : (
@@ -121,7 +121,7 @@ export function Chips({ items }: { items: { href: string; label: string; count?:
       {items.map((i) => (
         <li key={i.href}>
           <Link href={i.href}
-            className="inline-flex items-center gap-1.5 rounded-full border border-borde px-4 py-2 text-sm transition-colors hover:border-tinta hover:bg-humo">
+            className="inline-flex items-center gap-1.5 rounded-full border border-borde px-4 py-2.5 text-sm font-medium transition-colors hover:border-tinta hover:bg-humo">
             {i.label}
             {i.count !== undefined && <span className="tabular text-xs text-tinta-3">{i.count}</span>}
           </Link>
@@ -133,9 +133,9 @@ export function Chips({ items }: { items: { href: string; label: string; count?:
 
 export function Seccion({ titulo, children }: { titulo: string; children: React.ReactNode }) {
   return (
-    <section className="mt-12">
-      <h2 className="text-xl font-semibold tracking-[-0.01em]">{titulo}</h2>
-      <div className="mt-5">{children}</div>
+    <section className="mt-14">
+      <h2 className="text-xl font-extrabold tracking-[-0.02em]">{titulo}</h2>
+      <div className="mt-6">{children}</div>
     </section>
   );
 }

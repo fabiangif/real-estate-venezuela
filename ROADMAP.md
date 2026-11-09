@@ -227,7 +227,7 @@ ya sabe usar, así que el esfuerzo de diseño no se gasta en enseñar a navegar.
 | Acento | **terracota `#d9480f`** | El equivalente al coral de Airbnb sin ser rosado. Rojo y azul ya los ocupan ReMax y TuInmueble. Vive en 4 sitios y en ninguno más: logo, botón de búsqueda, CTA de contacto y categoría activa. |
 | Secundarios | **mar `#0b7285`** · **ámbar `#b8760b`** | Clasifican, no decoran: mar = alquiler y comercial, ámbar = suelo y cifras destacadas. |
 | Tintes de fondo | crema `#fdf7f3` · menta `#f1f8f8` | Separan secciones por color en vez de dibujar más cajas. |
-| Bordes | `1px #dddddd` · suave `#ebebeb` · radio `12px` | Definición por borde. |
+| Bordes | `2px #dddddd` · suave `#ebebeb` · radio `20px` | Definición por borde. Trazo grueso y esquinas muy redondeadas (2026-11-09): el sitio se lee más sólido sin añadir color ni sombra. |
 | Sombras | Una sola en el sistema: el pill de búsqueda y la tarjeta de contacto. | Las sombras difusas por todos lados son la firma de la plantilla genérica. |
 | Ratio de foto | `4:3` en el grid, `16:9` en la galería de ficha | Consistencia de ratio = grid profesional, y cero layout shift. |
 

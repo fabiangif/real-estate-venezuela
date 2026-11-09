@@ -16,7 +16,7 @@ export default function NoEncontrada() {
   return (
     <div className="mx-auto max-w-3xl px-5 py-20 text-center">
       <p className="tabular text-sm font-semibold text-acento">Error 404</p>
-      <h1 className="mt-3 text-2xl font-bold tracking-[-0.02em]">Esta página no existe</h1>
+      <h1 className="mt-3 text-2xl font-extrabold tracking-[-0.03em]">Esta página no existe</h1>
       <p className="mt-3 leading-relaxed text-tinta-2">
         Puede que el inmueble ya no esté publicado o que la dirección tenga una errata.
         Sigue desde aquí:
@@ -38,7 +38,7 @@ export default function NoEncontrada() {
 <Chips items={tipos.map((t) => ({ href: t.href, label: t.label, count: t.total }))} />
       </div>
 
-      <Link href="/" className="mt-10 inline-block rounded-full bg-acento px-6 py-3 text-sm font-semibold text-white hover:opacity-90">
+      <Link href="/" className="mt-10 inline-block rounded-full bg-acento px-6 py-3.5 text-base font-bold text-white hover:opacity-90">
         Volver al inicio
       </Link>
     </div>

@@ -428,7 +428,7 @@ export default function Mapa({
                   className="absolute right-2 top-2 grid size-9 place-content-center rounded-full text-tinta-2 transition-colors hover:bg-humo hover:text-tinta">
                   <IconClose size={16} />
                 </button>
-                <p className="tabular truncate pr-9 text-xl font-bold tracking-[-0.01em]">{precioCon(sel)}</p>
+                <p className="tabular truncate pr-9 text-xl font-extrabold tracking-[-0.02em]">{precioCon(sel)}</p>
                 <p className="mt-0.5 truncate text-sm text-tinta-2">{queEs(sel)}</p>
                 {(sel.hab || sel.m2) && (
                   <ul className="tabular mt-2 flex items-center gap-x-4 text-sm">

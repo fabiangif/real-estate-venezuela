@@ -1,7 +1,8 @@
 @import "tailwindcss";
 
 /* Sistema de diseño — minimalismo tipo Airbnb.
-   Blanco puro, gris neutro, borde de 1px, cero sombras salvo en flotantes.
+   Blanco puro, gris neutro, bordes de 2px y esquinas de 20px: trazo grueso y redondo,
+   cero sombras salvo en flotantes.
    El acento vive en 4 sitios y en ninguno mas: logo, boton de busqueda, CTA de contacto
    y categoria activa. Es la contencion lo que hace que un acento acentue. */
 @theme {
@@ -37,7 +38,10 @@
   --text-2xl: 2rem;       /* 32 */
   --text-3xl: 3rem;       /* 48 */
 
-  --radius-card: 12px;
+  --radius-card: 20px;
+
+  /* Lineas gruesas en todo el sistema: bordes y divisores de 2 px. */
+  --default-border-width: 2px;
 
   /* única sombra del sistema: la del buscador flotante */
   --shadow-pill: 0 1px 2px rgba(0,0,0,.08), 0 4px 12px rgba(0,0,0,.05);
@@ -84,8 +88,7 @@ body {
 
 :where(a, button, input, select):focus-visible {
   outline: 2px solid var(--color-tinta);
-  outline-offset: 2px;
-  border-radius: 4px;
+  outline-offset: 3px;
 }
 
 @media (prefers-reduced-motion: reduce) {

@@ -22,7 +22,10 @@ export function Header({ sugerencias }: { sugerencias: string[] }) {
     let raf = 0;
     const alScroll = () => {
       cancelAnimationFrame(raf);
-      raf = requestAnimationFrame(() => setCompacto(window.scrollY > 64));
+      // Histeresis: se encoge pasados 80 px y solo se expande por debajo de 24. Con un
+      // unico umbral, al encogerse (~20 px menos de alto) el navegador reajusta el scroll
+      // para anclar el contenido, cruza el umbral de vuelta y la barra tiembla en bucle.
+      raf = requestAnimationFrame(() => setCompacto((c) => (c ? window.scrollY > 24 : window.scrollY > 80)));
     };
     alScroll();
     window.addEventListener("scroll", alScroll, { passive: true });
@@ -56,12 +59,7 @@ export function Header({ sugerencias }: { sugerencias: string[] }) {
           <Buscador sugerencias={sugerencias} compacto={compacto} />
         </div>
 
-        <div className="justify-self-end">
-          <Link href="/#publicar"
-            className="hidden rounded-full px-4 py-2.5 text-sm font-medium transition-colors hover:bg-humo sm:block">
-            Publica tu inmueble
-          </Link>
-        </div>
+        <div aria-hidden="true" className="hidden lg:block" />
       </div>
     </header>
   );

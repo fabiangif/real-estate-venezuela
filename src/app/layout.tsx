@@ -56,22 +56,6 @@ function Footer() {
 
   return (
     <footer className="mt-16">
-      {/* banda de color en TODAS las paginas: el sitio deja de ser blanco y negro
-          fuera de la Home, y el CTA de publicar viaja con el usuario */}
-      <section id="publicar" className="scroll-mt-24 bg-acento">
-        <div className="mx-auto flex max-w-7xl flex-col gap-4 px-5 py-10 text-white sm:flex-row sm:items-center sm:justify-between">
-          <div>
-            <p className="text-lg font-bold tracking-[-0.01em]">¿Tienes un inmueble? Publícalo gratis</p>
-            <p className="mt-1 max-w-xl text-sm text-white/85">
-              Envíanos las fotos y los datos y aparecerá en las búsquedas de tu ciudad y tu urbanización.
-            </p>
-          </div>
-          <span className="self-start rounded-full bg-white px-5 py-3 text-sm font-semibold text-acento sm:self-auto">
-            Publicar inmueble
-          </span>
-        </div>
-      </section>
-
       <div className="border-t border-borde-suave bg-crema">
         <div className="mx-auto max-w-7xl px-5 py-12">
           <div className="grid gap-10 lg:grid-cols-[1.2fr_repeat(4,minmax(0,1fr))]">
