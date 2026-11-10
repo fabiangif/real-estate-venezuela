@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import Link from "next/link";
 import { Figtree } from "next/font/google";
+import Script from "next/script";
 import "./globals.css";
 import { LISTINGS, LOCATIONS, rutaListado, destacadosPorOperacion, tiposConEnlace } from "@/lib/data";
 import { Header } from "@/components/Header";
@@ -119,6 +120,9 @@ export default function RootLayout({ children }: LayoutProps<"/">) {
           },
           { "@context": "https://schema.org", "@type": "WebSite", name: MARCA, url: SITIO, inLanguage: "es-VE" },
         ]) }} />
+        {/* Google Tag Manager. Carga tras la hidratacion: no compite con el LCP. */}
+        <Script id="gtm-init">{`window.dataLayer = window.dataLayer || []; function gtag(){dataLayer.push(arguments);} gtag('js', new Date());`}</Script>
+        <Script src="https://www.googletagmanager.com/gtm.js?id=GTM-WJ8SCGQM" />
         <Header sugerencias={sugerencias} />
         <main className="flex-1">{children}</main>
         <Footer />
